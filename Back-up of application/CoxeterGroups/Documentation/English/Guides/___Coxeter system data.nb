@@ -1,0 +1,248 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9559,        240]
+NotebookOptionsPosition[      6767,        178]
+NotebookOutlinePosition[      8042,        211]
+CellTagsIndexPosition[      7999,        208]
+WindowTitle->Coxeter system data - CoxeterGroups
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["COXETERGROUPS GUIDE", "PacletNameCell",ExpressionUUID->
+     "3fc6fe80-23c0-449c-beed-9e994b1708ab"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"Tutorials \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"Title of tutorial 1\"\>":>
+       Documentation`HelpLookup[
+        StringJoin[
+        "paclet:", "CoxeterGroups", 
+         "/tutorial/tutorialName1"]], "\<\"Title of tutorial 2\"\>":>
+       Documentation`HelpLookup[
+        StringJoin["paclet:", "CoxeterGroups", "/tutorial/tutorialName2"]]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "d6649ceb-6dfc-4445-b1ef-a1092c2b9ab3"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"URL \[RightGuillemet]\"\>",
+        StripOnInput->
+         False], {"\<\"Go to CoxeterGroups/tutorial/Coxeter system data URL\"\
+\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL["your.website.goes.here/documentationIfAny"], None}]}], 
+       Delimiter, "\<\"Go to wolfram URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+           "http://reference.wolfram.com/mathematica/guide/Mathematica.html"],
+            None}]}], "\<\"Go to authors URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL["your.website.goes.here"], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "532bfe23-5077-45da-9e59-53f035514a77"]
+    }], "AnchorBar",ExpressionUUID->"b60c96d8-c2e7-45f7-8852-3dccd3c6ffe3"]}
+  }]], "AnchorBarGrid",
+ CellID->48839969,ExpressionUUID->"88af35ad-2226-4b6e-8648-9bb605c13135"],
+
+Cell[CellGroupData[{
+
+Cell["Coxeter system data", "GuideTitle",
+ CellID->222509296,ExpressionUUID->"c351ba72-b25d-4c8a-9db3-b4645c5f592d"],
+
+Cell["\<\
+Given a Coxeter system there are many common properties, and types of data it \
+is useful to be able compute. The CoxeterGroups package has many of these \
+properties already defined as functions for you to use.\
+\>", "GuideAbstract",
+ CellID->332824747,ExpressionUUID->"fcb26fd6-ba62-4b72-93f4-14e8385b9fed"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["Whole system properties \[RightGuillemet]",
+ BaseStyle->{"GuideFunctionsSubsection"}]], "GuideFunctionsSubsection",
+ CellID->449242739,ExpressionUUID->"5015f295-1405-4d93-89b4-42e8c6be23f7"],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["IrreducibleCGQ",
+  BaseStyle->"Link",
+  ButtonData->"paclet:CoxeterGroups/ref/IrreducibleCGQ"]], 
+  "InlineFunctionSans",ExpressionUUID->"33894e15-8416-4ad7-8b0e-b342d9ca377e"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ " Tests whether the Coxeter system is irreducible, ie doesn't decompose as a \
+non-trivial direct product."
+}], "GuideText",
+ CellID->146044324,ExpressionUUID->"c8062d87-12b5-4e63-be2d-8d10dbd940f7"],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["SphericalCGQ",
+  BaseStyle->"Link",
+  ButtonData->"paclet:CoxeterGroups/ref/SphericalCGQ"]], "InlineFunctionSans",
+  ExpressionUUID->"6adec2c8-de0f-425e-bd22-b42d8d60e7bb"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ "  Tests whether the Coxeter system is finite, or of spherical type, ie acts \
+naturally on the n-sphere."
+}], "GuideText",
+ CellID->275912583,ExpressionUUID->"6b5278e5-bae9-4bb8-908f-4b8655612754"],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["EuclideanCGQ",
+  BaseStyle->"Link",
+  ButtonData->"paclet:CoxeterGroups/ref/EuclideanCGQ"]], "InlineFunctionSans",
+  ExpressionUUID->"95f0bc98-06ce-4450-ba31-052b9effa2a8"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ "  Tests whether the Coxeter system is affine, or of Euclidean type, ie it \
+acts naturally on Euclidean space."
+}], "GuideText",
+ CellID->368635854,ExpressionUUID->"479454e0-fa8b-4449-bfa7-a313470a6e8a"],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["HyperbolicCGQ",
+  BaseStyle->"Link",
+  ButtonData->"paclet:CoxeterGroups/ref/HyperbolicCGQ"]], 
+  "InlineFunctionSans",ExpressionUUID->"4f33fb25-2303-4de5-bc21-2f2b86c7bc0b"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ "  Tests whether the Coxeter system is of hyperbolic type, ie it acts \
+naturally on some hyperbolic space."
+}], "GuideText",
+ CellID->531094522,ExpressionUUID->"f73d29c0-cfee-4844-94a2-12c5dc8b9c06"],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["EvenCGQ",
+  BaseStyle->"Link",
+  ButtonData->"paclet:CoxeterGroups/ref/EvenCGQ"]], "InlineFunctionSans",
+  ExpressionUUID->"e2aa431a-3c9a-4a34-820d-5265ac63088d"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ "  Tests whether the Coxeter system is of even type, ie all off-diagonal \
+entries in its Coxeter matrix are even or infinite."
+}], "GuideText",
+ CellID->36577452,ExpressionUUID->"02212d60-a5a7-4f0c-88b2-4633a356a840"],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["RACGQ",
+  BaseStyle->"Link",
+  ButtonData->"paclet:CoxeterGroups/ref/RACGQ"]], "InlineFunctionSans",
+  ExpressionUUID->"8334d41a-ec90-4f9e-bcd4-7c8dca76e831"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ "  Tests whether the Coxeter system is right-angled, ie every off-diagonal \
+entry in the Coxeter matrix is either 2 or infinite."
+}], "GuideText",
+ CellID->168451495,ExpressionUUID->"f36e2aeb-51bf-40ed-b7f3-45e6c18d922b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["Equivalent representations of a Coxeter system \
+\[RightGuillemet]",
+ BaseStyle->{"GuideFunctionsSubsection"}]], "GuideFunctionsSubsection",
+ CellID->53419384,ExpressionUUID->"08940c19-3fab-4a82-8f50-17bd1312e3b8"],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["BilinearForm",
+  BaseStyle->"Link",
+  ButtonData->"paclet:CoxeterGroups/ref/BilinearForm"]], "InlineFunctionSans",
+  ExpressionUUID->"b08833d4-d94c-4889-bd58-6e934bad75aa"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ "  Gives the symmetric bilinear form associated to a Coxeter matrix."
+}], "GuideText",
+ CellID->255564448,ExpressionUUID->"27aace3f-1d4b-47a0-9bb5-580e081a6f65"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell",
+ CellID->289707968,ExpressionUUID->"1601498b-4c51-4b93-bbd5-08c8ba4eaddc"]
+},
+WindowSize->{682, 820},
+WindowMargins->{{-7, Automatic}, {Automatic, 0}},
+WindowTitle->"Coxeter system data - CoxeterGroups",
+DockedCells->None,
+TaggingRules->{
+ "ModificationHighlight" -> False, 
+  "Metadata" -> {
+   "context" -> "CoxeterGroups`", 
+    "keywords" -> {"coxeter system data", "COXETER SYSTEM DATA"}, "index" -> 
+    True, "label" -> "CoxeterGroups Guide", "language" -> "en", "paclet" -> 
+    "CoxeterGroups", "status" -> "", "summary" -> 
+    "This summary was generated by \
+ApplicationMaker`DocumentationMaker`NewGuide.", 
+    "synonyms" -> {"coxeter system data", "COXETER SYSTEM DATA"}, "title" -> 
+    "Coxeter system data", "windowTitle" -> "Coxeter system data", "type" -> 
+    "Guide", "uri" -> "CoxeterGroups/guide/Coxeter system data"}, 
+  "SearchTextTranslated" -> ""},
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->FrontEnd`FileName[{$RootDirectory, "C:", "Users", "dhstr", 
+   "AppData", "Roaming", "Mathematica", "Applications", "ApplicationMaker", 
+   "FrontEnd", "Stylesheets"}, "UserReference12.nb", CharacterEncoding -> 
+  "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[607, 21, 1793, 40, 47, "AnchorBarGrid",ExpressionUUID->"88af35ad-2226-4b6e-8648-9bb605c13135",
+ CellID->48839969],
+Cell[CellGroupData[{
+Cell[2425, 65, 116, 1, 66, "GuideTitle",ExpressionUUID->"c351ba72-b25d-4c8a-9db3-b4645c5f592d",
+ CellID->222509296],
+Cell[2544, 68, 319, 5, 101, "GuideAbstract",ExpressionUUID->"fcb26fd6-ba62-4b72-93f4-14e8385b9fed",
+ CellID->332824747],
+Cell[CellGroupData[{
+Cell[2888, 77, 215, 2, 28, "GuideFunctionsSubsection",ExpressionUUID->"5015f295-1405-4d93-89b4-42e8c6be23f7",
+ CellID->449242739],
+Cell[3106, 81, 473, 11, 34, "GuideText",ExpressionUUID->"c8062d87-12b5-4e63-be2d-8d10dbd940f7",
+ CellID->146044324],
+Cell[3582, 94, 462, 10, 34, "GuideText",ExpressionUUID->"6b5278e5-bae9-4bb8-908f-4b8655612754",
+ CellID->275912583],
+Cell[4047, 106, 468, 10, 34, "GuideText",ExpressionUUID->"479454e0-fa8b-4449-bfa7-a313470a6e8a",
+ CellID->368635854],
+Cell[4518, 118, 466, 10, 34, "GuideText",ExpressionUUID->"f73d29c0-cfee-4844-94a2-12c5dc8b9c06",
+ CellID->531094522],
+Cell[4987, 130, 472, 10, 34, "GuideText",ExpressionUUID->"02212d60-a5a7-4f0c-88b2-4633a356a840",
+ CellID->36577452],
+Cell[5462, 142, 472, 10, 34, "GuideText",ExpressionUUID->"f36e2aeb-51bf-40ed-b7f3-45e6c18d922b",
+ CellID->168451495]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5971, 157, 239, 3, 28, "GuideFunctionsSubsection",ExpressionUUID->"08940c19-3fab-4a82-8f50-17bd1312e3b8",
+ CellID->53419384],
+Cell[6213, 162, 425, 9, 20, "GuideText",ExpressionUUID->"27aace3f-1d4b-47a0-9bb5-580e081a6f65",
+ CellID->255564448]
+}, Open  ]]
+}, Open  ]],
+Cell[6665, 175, 98, 1, 41, "FooterCell",ExpressionUUID->"1601498b-4c51-4b93-bbd5-08c8ba4eaddc",
+ CellID->289707968]
+}
+]
+*)
+

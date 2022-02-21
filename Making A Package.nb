@@ -1,0 +1,298 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12470,        290]
+NotebookOptionsPosition[     10400,        249]
+NotebookOutlinePosition[     10741,        264]
+CellTagsIndexPosition[     10698,        261]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{"Get", "[", "\"\<ApplicationMaker`\>\"", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Get", "[", "\"\<CoxeterGroups`\>\"", "]"}]}], "Input",
+ CellChangeTimes->{{3.8541291592169714`*^9, 3.8541291618715734`*^9}, {
+   3.8541292011467943`*^9, 3.8541292076986756`*^9}, {3.854133573119774*^9, 
+   3.854133575198657*^9}, {3.8541787268266983`*^9, 3.854178730886545*^9}, {
+   3.854178787523938*^9, 3.854178806230661*^9}, 3.854178837544183*^9, {
+   3.854372923017744*^9, 3.8543729352389383`*^9}},
+ CellLabel->"In[3]:=",ExpressionUUID->"92c13918-ac29-4f11-b319-4bffcbd72ed9"],
+
+Cell[BoxData[
+ RowBox[{"NewPackage", "[", 
+  RowBox[{"\"\<BasicCoxeterFunctions\>\"", ",", "\"\<CoxeterGroups\>\""}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.8541291460594378`*^9, 3.8541291500968714`*^9}, {
+   3.854133779643754*^9, 3.8541337797184134`*^9}, {3.854178748101629*^9, 
+   3.854178764106287*^9}, {3.854285249675959*^9, 3.8542852551273603`*^9}, 
+   3.854296022157728*^9},ExpressionUUID->"b679b6a4-86c1-4a94-90c0-\
+c0c365d9816a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"UpdateInit", "[", "\"\<CoxeterGroups\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.854285562811817*^9, 3.854285582263643*^9}},
+ CellLabel->"In[8]:=",ExpressionUUID->"d00ffd79-4582-4290-b1fb-2fb52b197e9a"],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\dhstr\\\\AppData\\\\Roaming\\\\Mathematica\\\
+\\Applications\\\\CoxeterGroups\\\\Kernel\\\\Init.m\"\>"], "Output",
+ CellChangeTimes->{3.854294852075729*^9, 3.8542949794099245`*^9, 
+  3.854295052798162*^9, 3.85429536818758*^9, 3.854295578544134*^9, 
+  3.8542956308622437`*^9, 3.8542957361089497`*^9, 3.854296017158451*^9, 
+  3.854296221447795*^9, 3.8543717992376175`*^9, 3.854371836327311*^9, 
+  3.8543884193032446`*^9, 3.854439410354045*^9},
+ CellLabel->"Out[8]=",ExpressionUUID->"c7a95430-890a-4556-a53a-48dfec5d9868"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NewGuide", "[", 
+  RowBox[{
+  "\"\<Pre-defined Coxeter systems\>\"", ",", "\"\<CoxeterGroups\>\""}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.8543544260655003`*^9, 3.8543544326528015`*^9}, {
+  3.854354471661912*^9, 3.854354505688946*^9}, {3.854371543920861*^9, 
+  3.8543716144310584`*^9}, {3.854375966738449*^9, 3.854375967219746*^9}, {
+  3.854381283563944*^9, 3.854381290971078*^9}},
+ CellLabel->"In[17]:=",ExpressionUUID->"f811e0c3-96f7-40f6-8bdc-0d202e9af595"],
+
+Cell[BoxData[
+ TemplateBox[{FrontEndObject[
+    LinkObject["bkv83_shm", 3, 1]],359,
+   "FrontEndObject[LinkObject[\"bkv83_shm\", 3, 1]]","359",
+   "\"Pre-defined Coxeter systems - CoxeterGroups\"",
+   "\"C:\\\\Users\\\\dhstr\\\\AppData\\\\Roaming\\\\Mathematica\\\\\
+Applications\\\\CoxeterGroups\\\\Documentation\\\\English\\\\Guides\\\\___Pre-\
+defined Coxeter systems.nb\""},
+  "NotebookObject"]], "Output",
+ CellChangeTimes->{
+  3.854354514634105*^9, 3.8543545776440926`*^9, 3.8543551651866283`*^9, 
+   3.854371550445628*^9, {3.854371582928444*^9, 3.854371620311907*^9}, 
+   3.854375968854241*^9, 3.8543812927497425`*^9, {3.854382156399331*^9, 
+   3.854382164543185*^9}},
+ CellLabel->"Out[17]=",ExpressionUUID->"47d05d33-9dde-4f9e-b667-8c5a963e200f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NewTutorial", "[", 
+  RowBox[{
+  "\"\<Defining a new Coxeter system\>\"", ",", "\"\<CoxeterGroups\>\""}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.8543716293163433`*^9, 3.854371678396819*^9}},
+ CellLabel->"In[19]:=",ExpressionUUID->"aca05462-7433-470b-a69d-1ebe73b8a758"],
+
+Cell[BoxData[
+ TemplateBox[{FrontEndObject[
+    LinkObject["bkv83_shm", 3, 1]],430,
+   "FrontEndObject[LinkObject[\"bkv83_shm\", 3, 1]]","430",
+   "\"Defining a new Coxeter system - CoxeterGroups\"",
+   "\"C:\\\\Users\\\\dhstr\\\\AppData\\\\Roaming\\\\Mathematica\\\\\
+Applications\\\\CoxeterGroups\\\\Documentation\\\\English\\\\Tutorials\\\\___\
+Defining a new Coxeter system.nb\""},
+  "NotebookObject"]], "Output",
+ CellChangeTimes->{3.854371682867544*^9, 3.8543868051364584`*^9},
+ CellLabel->"Out[19]=",ExpressionUUID->"2b200322-87fc-409c-a893-86b2052091da"]
+}, Open  ]],
+
+Cell["\<\
+Execute the following inside a piece of documentation to edit the tags\
+\>", "Text",
+ CellChangeTimes->{{3.8543753642657137`*^9, 
+  3.8543753845984483`*^9}},ExpressionUUID->"7f4d85c1-2357-4700-b901-\
+fe1598f494a7"],
+
+Cell[BoxData[{
+ RowBox[{"<<", "ApplicationMaker`"}], "\[IndentingNewLine]", 
+ RowBox[{"EditNotebookOption", "[", "\"\<TaggingRules\>\"", "]"}]}], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1622842,ExpressionUUID->"7bf8ba95-2c35-49a4-9f85-81dd6eed8a8b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Off", "[", 
+  RowBox[{"CreateReferencePages", "::", "symb"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"CreateReferencePages", "[", "\"\<CoxeterGroups\>\"", 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.854298970976266*^9, 3.8542989731965075`*^9}, {
+  3.8543717106919823`*^9, 3.854371754365862*^9}},
+ CellLabel->"In[5]:=",ExpressionUUID->"3b94c596-5c63-41f2-9b0b-346de319d373"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   StyleBox["\<\"Building reference pages for: \"\>", "MSG",
+    StripOnInput->False], "\[InvisibleSpace]", 
+   StyleBox["\<\"BasicCoxeterFunctions\"\>", "Input",
+    StripOnInput->False]}],
+  SequenceForm[
+   Style["Building reference pages for: ", "MSG"], 
+   Style["BasicCoxeterFunctions", "Input"]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.854349455051555*^9, 3.854350330653884*^9, 
+  3.8543717603254833`*^9, 3.8543718039073505`*^9, 3.8543718399674683`*^9, 
+  3.854456632066923*^9},
+ CellLabel->
+  "During evaluation of \
+In[5]:=",ExpressionUUID->"3a119ba7-b8be-4dec-a9e4-994ac0c11c36"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "StringJoin","string",
+   "\"String expected at position \\!\\(\\*RowBox[{\\\"2\\\"}]\\) in \
+\\!\\(\\*RowBox[{\\\"\\\\\\\"\[LineSeparator]\\\\\\\"\\\", \\\"<>\\\", \
+StyleBox[RowBox[{\\\"IrreducibleFactorComplement\\\", \\\"::\\\", \\\"usage\\\
+\"}], \\\"MessageName\\\"]}]\\).\"",2,6,7,21449608527884956152,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.8544566324675183`*^9},
+ CellLabel->
+  "During evaluation of \
+In[5]:=",ExpressionUUID->"0f6d7fcc-4ef5-4f30-91cc-77edce473606"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "StringJoin","string",
+   "\"String expected at position \\!\\(\\*RowBox[{\\\"2\\\"}]\\) in \
+\\!\\(\\*RowBox[{\\\"\\\\\\\"\[LineSeparator]\\\\\\\"\\\", \\\"<>\\\", \
+StyleBox[RowBox[{\\\"SymmetricEntry\\\", \\\"::\\\", \\\"usage\\\"}], \
+\\\"MessageName\\\"]}]\\).\"",2,6,8,21449608527884956152,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.8544566349142175`*^9},
+ CellLabel->
+  "During evaluation of \
+In[5]:=",ExpressionUUID->"c056820d-8db3-4643-a376-bec8f6fd53ac"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"BuildApplication", "[", "\"\<CoxeterGroups\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.854371880122511*^9, 3.8543718976859283`*^9}},
+ CellLabel->"In[7]:=",ExpressionUUID->"dea1061c-9a80-4fb0-94eb-2c0e6e50d908"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "JLink`Java","excptn",
+   "\"A Java exception occurred: \
+\\!\\(\\*RowBox[{\\\"\\\\\\\"java.lang.VerifyError: class \
+com.wolfram.documentationsearch.SynonymAnalyzer overrides final method \
+tokenStream.(Ljava/lang/String;Ljava/io/Reader;)Lorg/apache/lucene/analysis/\
+TokenStream;\\\\\\\\n\\\\\\\\tat java.lang.ClassLoader.defineClass1(Native \
+Method)\\\\\\\\n\\\\\\\\tat \
+java.lang.ClassLoader.defineClass(ClassLoader.java:763)\\\\\\\\n\\\\\\\\tat \
+java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)\\\\\\\
+\\n\\\\\\\\tat java.net.URLClassLoader.defineClass(URLClassLoader.java:468)\\\
+\\\\\\n\\\\\\\\tat java.net.URLClassLoader.access$100(URLClassLoader.java:74)\
+\\\\\\\\n\\\\\\\\tat java.net.URLClassLoader$1.run(URLClassLoader.java:369)\\\
+\\\\\\n\\\\\\\\tat java.net.URLClassLoader$1.run(URLClassLoader.java:363)\\\\\
+\\\\n\\\\\\\\tat java.security.AccessController.doPrivileged(Native Method)\\\
+\\\\\\n\\\\\\\\tat java.net.URLClassLoader.findClass(URLClassLoader.java:362)\
+\\\\\\\\n\\\\\\\\tat \
+java.lang.ClassLoader.loadClass(ClassLoader.java:424)\\\\\\\\n\\\\\\\\tat \
+java.lang.ClassLoader.loadClass(ClassLoader.java:357)\\\\\\\\n\\\\\\\\tat \
+java.lang.Class.getDeclaredConstructors0(Native Method)\\\\\\\\n\\\\\\\\tat \
+java.lang.Class.privateGetDeclaredConstructors(Class.java:2671)\\\\\\\\n\\\\\\\
+\\tat java.lang.Class.getConstructors(Class.java:1651)\\\\\\\"\\\"}]\\).\"",2,
+   7,9,21449608527884956152,"Local","JLink`Java"},
+  "MessageTemplate2"]], "Message", "MSG",
+ CellChangeTimes->{3.854372019935938*^9, 3.854375714249241*^9, 
+  3.8543757594539585`*^9, 3.854382832870944*^9, 3.8543868433182926`*^9, 
+  3.854456959172267*^9},
+ CellLabel->
+  "During evaluation of \
+In[7]:=",ExpressionUUID->"32accc77-2639-4ba4-ab09-730db37b9452"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "JLink`LoadJavaClass","fail",
+   "\"Java failed to load class \
+\\!\\(\\*RowBox[{\\\"\\\\\\\"com.wolfram.documentationsearch.\
+DocumentationIndexer\\\\\\\"\\\"}]\\).\"",2,7,10,21449608527884956152,"Local",
+   "JLink`LoadJavaClass"},
+  "MessageTemplate2"]], "Message", "MSG",
+ CellChangeTimes->{3.854372019935938*^9, 3.854375714249241*^9, 
+  3.8543757594539585`*^9, 3.854382832870944*^9, 3.8543868433182926`*^9, 
+  3.8544569592218018`*^9},
+ CellLabel->
+  "During evaluation of \
+In[7]:=",ExpressionUUID->"100bd5e5-7e5a-4e25-97b5-fcc8e01f99d0"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "JLink`KeepJavaObject","obj",
+   "\"At least one argument to KeepJavaObject was not a valid Java object.\"",
+   2,7,11,21449608527884956152,"Local","JLink`KeepJavaObject"},
+  "MessageTemplate2"]], "Message", "MSG",
+ CellChangeTimes->{3.854372019935938*^9, 3.854375714249241*^9, 
+  3.8543757594539585`*^9, 3.854382832870944*^9, 3.8543868433182926`*^9, 
+  3.854456959274171*^9},
+ CellLabel->
+  "During evaluation of \
+In[7]:=",ExpressionUUID->"d6c885e6-8417-48cc-8e1c-52cbcda9a50b"]
+}, Open  ]]
+},
+WindowSize->{682, 820},
+WindowMargins->{{-7, Automatic}, {Automatic, 0}},
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 587, 9, 48, "Input",ExpressionUUID->"92c13918-ac29-4f11-b319-4bffcbd72ed9"],
+Cell[1148, 31, 440, 8, 28, "Input",ExpressionUUID->"b679b6a4-86c1-4a94-90c0-c0c365d9816a"],
+Cell[CellGroupData[{
+Cell[1613, 43, 227, 3, 28, "Input",ExpressionUUID->"d00ffd79-4582-4290-b1fb-2fb52b197e9a"],
+Cell[1843, 48, 552, 7, 52, "Output",ExpressionUUID->"c7a95430-890a-4556-a53a-48dfec5d9868"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2432, 60, 488, 9, 28, "Input",ExpressionUUID->"f811e0c3-96f7-40f6-8bdc-0d202e9af595"],
+Cell[2923, 71, 754, 14, 51, "Output",ExpressionUUID->"47d05d33-9dde-4f9e-b667-8c5a963e200f"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3714, 90, 296, 6, 28, "Input",ExpressionUUID->"aca05462-7433-470b-a69d-1ebe73b8a758"],
+Cell[4013, 98, 562, 10, 51, "Output",ExpressionUUID->"2b200322-87fc-409c-a893-86b2052091da"]
+}, Open  ]],
+Cell[4590, 111, 224, 5, 34, "Text",ExpressionUUID->"7f4d85c1-2357-4700-b901-fe1598f494a7"],
+Cell[4817, 118, 250, 4, 48, "Input",ExpressionUUID->"7bf8ba95-2c35-49a4-9f85-81dd6eed8a8b",
+ CellID->1622842],
+Cell[CellGroupData[{
+Cell[5092, 126, 401, 8, 48, "Input",ExpressionUUID->"3b94c596-5c63-41f2-9b0b-346de319d373"],
+Cell[5496, 136, 646, 16, 22, "Print",ExpressionUUID->"3a119ba7-b8be-4dec-a9e4-994ac0c11c36"],
+Cell[6145, 154, 538, 11, 39, "Message",ExpressionUUID->"0f6d7fcc-4ef5-4f30-91cc-77edce473606"],
+Cell[6686, 167, 525, 11, 39, "Message",ExpressionUUID->"c056820d-8db3-4643-a376-bec8f6fd53ac"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7248, 183, 235, 3, 28, "Input",ExpressionUUID->"dea1061c-9a80-4fb0-94eb-2c0e6e50d908"],
+Cell[7486, 188, 1808, 30, 309, "Message",ExpressionUUID->"32accc77-2639-4ba4-ab09-730db37b9452"],
+Cell[9297, 220, 573, 13, 21, "Message",ExpressionUUID->"100bd5e5-7e5a-4e25-97b5-fcc8e01f99d0"],
+Cell[9873, 235, 511, 11, 21, "Message",ExpressionUUID->"d6c885e6-8417-48cc-8e1c-52cbcda9a50b"]
+}, Open  ]]
+}
+]
+*)
+

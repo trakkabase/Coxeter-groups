@@ -1,0 +1,317 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11727,        309]
+NotebookOptionsPosition[      8222,        228]
+NotebookOutlinePosition[      9598,        264]
+CellTagsIndexPosition[      9555,        261]
+WindowTitle->Defining a new Coxeter system - CoxeterGroups
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["COXETERGROUPS TUTORIAL", "PacletNameCell",ExpressionUUID->
+     "124526db-127c-42c1-a078-f19f7320848c"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"Related Tutorials \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"Title of tutorial 1\"\>":>
+       Documentation`HelpLookup[
+        StringJoin[
+        "paclet:", "CoxeterGroups", 
+         "/tutorial/tutorialName1"]], "\<\"Title of tutorial 2\"\>":>
+       Documentation`HelpLookup[
+        StringJoin["paclet:", "CoxeterGroups", "/tutorial/tutorialName2"]]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "3d66e614-750e-494b-a101-af3a65db7316"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"URL \[RightGuillemet]\"\>",
+        StripOnInput->
+         False], {"\<\"Go to CoxeterGroups/tutorial/Defining a new Coxeter \
+system URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL["your.website.goes.here/documentationIfAny"], None}]}], 
+       Delimiter, "\<\"Go to wolfram URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+           "http://reference.wolfram.com/mathematica/guide/Mathematica.html"],
+            None}]}], "\<\"Go to authors URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL["your.website.goes.here"], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "073ea342-a939-40a9-a2ed-2fa71cb4d395"]
+    }], "AnchorBar",ExpressionUUID->"c2e2496c-65c5-48ae-8d7e-baab98435e91"]}
+  }]], "AnchorBarGrid",
+ CellID->728213385,ExpressionUUID->"a07f2389-563e-447b-bcd0-194a671c0093"],
+
+Cell[CellGroupData[{
+
+Cell["Defining a new Coxeter system", "Title",
+ CellID->128531102,ExpressionUUID->"108ff64a-bb02-4430-ac81-543d46fff639"],
+
+Cell["\<\
+The CoxeterGroups package comes with many common or useful Coxeter systems \
+pre-defined, and many of these pre-defined systems come with large numbers of \
+group elements pre-computed, and other data about the Coxeter system \
+available. Nevertheless it can sometimes be useful to define your own Coxeter \
+system. This guide walks through how to do this.\
+\>", "Text",
+ CellID->560185061,ExpressionUUID->"1dc92742-270c-4fee-ad07-c8372ea930e6"],
+
+Cell[CellGroupData[{
+
+Cell["Defining the Coxeter matrix", "Section",
+ CellID->186244991,ExpressionUUID->"ed45051f-d11d-4740-ad79-c4e3e70e2118"],
+
+Cell["\<\
+The way the package handles Coxeter systems is by their Coxeter matrix, so to \
+start working with a Coxeter system it suffices to define a new symbol to be \
+the Coxeter matrix of the system you wish to use.\
+\>", "Text",
+ CellID->93775731,ExpressionUUID->"d5c6e0e1-c4b0-4fad-9ac5-455c86580acb"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MySys", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"1", ",", "2", ",", "3", ",", "4"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"2", ",", "1", ",", "5", ",", "6"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"3", ",", "5", ",", "1", ",", "Infinity"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"4", ",", "6", ",", "Infinity", ",", "1"}], "}"}]}], 
+   "}"}]}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->2058623809,ExpressionUUID->"79f7b646-4d56-4c55-b782-b6157e87e53e"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3", ",", "4"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "1", ",", "5", ",", "6"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "5", ",", "1", ",", "\[Infinity]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "6", ",", "\[Infinity]", ",", "1"}], "}"}]}], 
+  "}"}]], "Output",
+ CellContext->"Cell$$118130`",
+ CellLabel->"Out[3]=",
+ CellID->12449156,ExpressionUUID->"aba8ac86-2d7f-4503-8ce0-e5f352caf8aa"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "MatrixForm"}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->778194434,ExpressionUUID->"d5540be2-cc2c-4127-a0b6-66d0b487bf21"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"1", "2", "3", "4"},
+     {"2", "1", "5", "6"},
+     {"3", "5", "1", "\[Infinity]"},
+     {"4", "6", "\[Infinity]", "1"}
+    },
+    GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellContext->"Cell$$118130`",
+ CellLabel->"Out[4]//MatrixForm=",
+ CellID->442457658,ExpressionUUID->"3bf3be40-6cb3-4ee6-9c4a-6a562d996618"]
+}, Open  ]],
+
+Cell["\<\
+Note that a Coxeter matrix must be a symmetric matrix with diagonal entries \
+equal to 1, and all other entries integers greater than or equal to 2, or \
+Infinity. As a rule the functions in the package do not check this is the \
+case, but tacitly assume that their input is of this form.\
+\>", "Text",
+ CellID->449871063,ExpressionUUID->"58ea4161-2b61-4153-aaad-1cca31a90c6d"],
+
+Cell[TextData[{
+ "The next step is not essential, but highly recommended, and that is to \
+declare a name for your Coxeter system.\n",
+ Cell[BoxData[GridBox[{
+    {
+     RowBox[{
+      TemplateBox[{Cell["GroupName"],"paclet:CoxeterGroups/ref/GroupName"},
+       "RefLink",
+       BaseStyle->{"DefinitionBox", CellFrame -> 0}], "[", "M", "]"}], Cell[
+     "define a name for a Coxeter system", "TableText",ExpressionUUID->
+      "63008c97-d97c-41bb-93dd-c329a19f0127"]}
+   }]], "DefinitionBox",ExpressionUUID->
+  "d5496b64-60b5-4640-a3a5-bb15dea70db0"],
+ "\nNames for Coxeter systems. "
+}], "Text",
+ CellID->131966359,ExpressionUUID->"1f77d1b0-3c44-457c-add0-707a29c76f8d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"<<", "CoxeterGroups`"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"GroupName", "[", "MySys", "]"}], "=", "\"\<MySys\>\""}]}], "Input",
+ CellLabel->"In[13]:=",
+ CellID->8630728,ExpressionUUID->"c63024f8-9371-48e7-a677-462478f63fa0"],
+
+Cell[BoxData["\<\"MySys\"\>"], "Output",
+ CellContext->"Cell$$118130`",
+ CellLabel->"Out[14]=",
+ CellID->388532023,ExpressionUUID->"b8bdb669-42c9-4321-87ad-631c3fd5a9a9"]
+}, Open  ]],
+
+Cell["\<\
+The name must be a string containing only upper and lower case letters, \
+digits, spaces, and the characters -_,.(). It is used if elements of the \
+Coxeter group are enumerated, in which case the elements are saved to file \
+using the group name for directory naming.\
+\>", "Text",
+ CellID->23789904,ExpressionUUID->"5dbfcb2b-d28f-4f5b-829b-bbce3db0842c"],
+
+Cell["\<\
+For this reason, it is strongly recommended that the names of the pre-defined \
+Coxeter systems are not redefined.\
+\>", "Text",
+ CellID->226184495,ExpressionUUID->"a18ed821-e309-43ff-b7d3-efd68703456b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["RELATED GUIDES", "RelatedTutorialsSection",
+ CellID->134805771,
+ ApplicationMaker`DocumentationMaker`Private`WholeCellGroupOpener -> 
+ True,ExpressionUUID->"79a72bdf-2fc4-4111-9745-5c2292c6c5ba"],
+
+Cell[TextData[ButtonBox["Pre-defined Coxeter systems",
+ BaseStyle->"Link",
+ ButtonData->
+  "paclet:CoxeterGroups/guide/Pre-defined Coxeter systems"]], \
+"RelatedTutorials",
+ CellID->625953200,ExpressionUUID->"9eaa00b2-a057-4c9f-a963-d20591a3a7a8"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell",
+ CellID->170640280,ExpressionUUID->"6b7c6af6-d2e2-4281-b60b-553be4d6d3ca"]
+},
+WindowSize->{682, 820},
+WindowMargins->{{-7, Automatic}, {Automatic, 0}},
+WindowTitle->"Defining a new Coxeter system - CoxeterGroups",
+DockedCells->None,
+TaggingRules->{
+ "ModificationHighlight" -> False, 
+  "Metadata" -> {
+   "context" -> "CoxeterGroups`", 
+    "keywords" -> {
+     "defining a new coxeter system", "DEFINING A NEW COXETER SYSTEM"}, 
+    "index" -> True, "label" -> "CoxeterGroups Guide", "language" -> "en", 
+    "paclet" -> "CoxeterGroups", "status" -> "", "summary" -> 
+    "This summary was generated by \
+ApplicationMaker`DocumentationMaker`NewTutorial.", 
+    "synonyms" -> {
+     "defining a new coxeter system", "DEFINING A NEW COXETER SYSTEM"}, 
+    "title" -> "Defining a new Coxeter system", "windowTitle" -> 
+    "Defining a new Coxeter system", "type" -> "Guide", "uri" -> 
+    "CoxeterGroups/tutorial/Defining a new Coxeter system"}, 
+  "SearchTextTranslated" -> ""},
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->FrontEnd`FileName[{$RootDirectory, "C:", "Users", "dhstr", 
+   "AppData", "Roaming", "Mathematica", "Applications", "ApplicationMaker", 
+   "FrontEnd", "Stylesheets"}, "UserReference.nb", CharacterEncoding -> 
+  "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[617, 21, 1815, 40, 47, "AnchorBarGrid",ExpressionUUID->"a07f2389-563e-447b-bcd0-194a671c0093",
+ CellID->728213385],
+Cell[CellGroupData[{
+Cell[2457, 65, 121, 1, 51, "Title",ExpressionUUID->"108ff64a-bb02-4430-ac81-543d46fff639",
+ CellID->128531102],
+Cell[2581, 68, 455, 7, 110, "Text",ExpressionUUID->"1dc92742-270c-4fee-ad07-c8372ea930e6",
+ CellID->560185061],
+Cell[CellGroupData[{
+Cell[3061, 79, 121, 1, 51, "Section",ExpressionUUID->"ed45051f-d11d-4740-ad79-c4e3e70e2118",
+ CellID->186244991],
+Cell[3185, 82, 306, 5, 70, "Text",ExpressionUUID->"d5c6e0e1-c4b0-4fad-9ac5-455c86580acb",
+ CellID->93775731],
+Cell[CellGroupData[{
+Cell[3516, 91, 521, 14, 26, "Input",ExpressionUUID->"79f7b646-4d56-4c55-b782-b6157e87e53e",
+ CellID->2058623809],
+Cell[4040, 107, 520, 14, 35, "Output",ExpressionUUID->"aba8ac86-2d7f-4503-8ce0-e5f352caf8aa",
+ CellID->12449156]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4597, 126, 157, 3, 26, "Input",ExpressionUUID->"d5540be2-cc2c-4127-a0b6-66d0b487bf21",
+ CellID->778194434],
+Cell[4757, 131, 717, 20, 149, "Output",ExpressionUUID->"3bf3be40-6cb3-4ee6-9c4a-6a562d996618",
+ CellID->442457658]
+}, Open  ]],
+Cell[5489, 154, 387, 6, 90, "Text",ExpressionUUID->"58ea4161-2b61-4153-aaad-1cca31a90c6d",
+ CellID->449871063],
+Cell[5879, 162, 672, 15, 127, "Text",ExpressionUUID->"1f77d1b0-3c44-457c-add0-707a29c76f8d",
+ CellID->131966359],
+Cell[CellGroupData[{
+Cell[6576, 181, 259, 5, 43, "Input",ExpressionUUID->"c63024f8-9371-48e7-a677-462478f63fa0",
+ CellID->8630728],
+Cell[6838, 188, 170, 3, 35, "Output",ExpressionUUID->"b8bdb669-42c9-4321-87ad-631c3fd5a9a9",
+ CellID->388532023]
+}, Open  ]],
+Cell[7023, 194, 366, 6, 70, "Text",ExpressionUUID->"5dbfcb2b-d28f-4f5b-829b-bbce3db0842c",
+ CellID->23789904],
+Cell[7392, 202, 213, 4, 50, "Text",ExpressionUUID->"a18ed821-e309-43ff-b7d3-efd68703456b",
+ CellID->226184495]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7642, 211, 201, 3, 45, "RelatedTutorialsSection",ExpressionUUID->"79a72bdf-2fc4-4111-9745-5c2292c6c5ba",
+ CellID->134805771],
+Cell[7846, 216, 247, 5, 17, "RelatedTutorials",ExpressionUUID->"9eaa00b2-a057-4c9f-a963-d20591a3a7a8",
+ CellID->625953200]
+}, Open  ]]
+}, Open  ]],
+Cell[8120, 225, 98, 1, 41, "FooterCell",ExpressionUUID->"6b7c6af6-d2e2-4281-b60b-553be4d6d3ca",
+ CellID->170640280]
+}
+]
+*)
+

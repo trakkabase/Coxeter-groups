@@ -1,0 +1,219 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8082,        211]
+NotebookOptionsPosition[      5446,        146]
+NotebookOutlinePosition[      7019,        190]
+CellTagsIndexPosition[      6976,        187]
+WindowTitle->Automorphisms - CoxeterGroups
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["COXETERGROUPS GUIDE", "PacletNameCell",ExpressionUUID->
+     "87791136-1d4e-4ebc-96c1-d13458cd03d5"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"Tutorials \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"Title of tutorial 1\"\>":>
+       Documentation`HelpLookup[
+        StringJoin[
+        "paclet:", "CoxeterGroups", 
+         "/tutorial/tutorialName1"]], "\<\"Title of tutorial 2\"\>":>
+       Documentation`HelpLookup[
+        StringJoin["paclet:", "CoxeterGroups", "/tutorial/tutorialName2"]]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "b8dce5b9-c2c7-4c65-b2bb-ccd1d861cd6d"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"URL \[RightGuillemet]\"\>",
+        StripOnInput->
+         False], {"\<\"Go to CoxeterGroups/tutorial/Automorphisms URL\"\>":>
+       FrontEndExecute[{
+         NotebookLocate[{
+           URL["your.website.goes.here/documentationIfAny"], None}]}], 
+       Delimiter, "\<\"Go to wolfram URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+           "http://reference.wolfram.com/mathematica/guide/Mathematica.html"],
+            None}]}], "\<\"Go to authors URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL["your.website.goes.here"], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "5c203655-d4c6-4d13-9499-11fb43a7f51e"]
+    }], "AnchorBar",ExpressionUUID->"2265d453-a593-47c5-a34a-11ed0f9b9bc3"]}
+  }]], "AnchorBarGrid",
+ CellID->46297777,ExpressionUUID->"af017f95-0607-41ac-a482-2503c7c61c66"],
+
+Cell[CellGroupData[{
+
+Cell["Automorphisms", "GuideTitle",
+ CellID->114665997,ExpressionUUID->"86b0b763-716e-42e4-ba84-ab8e3e8c2f63"],
+
+Cell["\<\
+This is a template for a guide document. A lot of functions usually go after \
+this guide abstract. To edit the hyperlinks you can click on the cell that \
+contains the link and press cmd+E on a Mac or ctr+E on a windows system. Edit \
+the link and then revert the process by pressing the same sequence of keys.\
+\>", "GuideAbstract",
+ CellID->169208530,ExpressionUUID->"16579f0b-62ba-4113-9c63-5a5d42c4eb9d"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["Package Title \[RightGuillemet]",
+ BaseStyle->{"Link", "GuideFunctionsSubsection"},
+ ButtonData->
+  "paclet:CoxeterGroups/guide/SomeOtherGuide"]], "GuideFunctionsSubsection",
+ CellID->254570971,ExpressionUUID->"8ab713bc-3326-4459-b0f3-0a195e9fa3bc"],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FunctionName",
+  BaseStyle->"Link",
+  ButtonData->"paclet:CoxeterGroups/ref/FunctionName"]], "InlineFunctionSans",
+  ExpressionUUID->"892ef71b-f442-4121-b10d-9521784a6525"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "Description"
+}], "GuideText",
+ CellID->153245555,ExpressionUUID->"e66f849f-0b21-449f-9025-3f8c0c6081cd"],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Function1",
+  BaseStyle->"Link",
+  ButtonData->"paclet:CoxeterGroups/ref/Function1"]], "InlineFunctionSans",
+  ExpressionUUID->"b66d1658-976f-412e-a987-8730080c347a"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[TextData[ButtonBox["Function2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:CoxeterGroups/ref/Function2"]], "InlineFunctionSans",
+  ExpressionUUID->"583206d1-c5dd-4237-984e-7bbfbfbc4552"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[TextData[ButtonBox["Function3",
+  BaseStyle->"Link",
+  ButtonData->"paclet:CoxeterGroups/ref/Function3"]], "InlineFunctionSans",
+  ExpressionUUID->"7f2c4ea1-2c3e-4b82-8138-c6d24c5b6530"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[TextData[ButtonBox["...",
+  BaseStyle->"Link",
+  ButtonData->"paclet:CoxeterGroups/guide/SomeOtherGuide"]], 
+  "InlineFunctionSans",ExpressionUUID->"0e3295f6-e219-4c91-be42-1ccfbc957a1b"]
+}], "InlineGuideFunctionListing",
+ CellID->184392595,ExpressionUUID->"53ef831b-d58e-4765-be54-104a9ded375c"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["TUTORIALS", "TutorialsSection",
+ CellID->732432809,
+ ApplicationMaker`DocumentationMaker`Private`WholeCellGroupOpener -> 
+ True,ExpressionUUID->"25d915ff-cc76-4e98-8104-3d3194675855"],
+
+Cell[TextData[ButtonBox["SomeTutorial",
+ BaseStyle->"Link",
+ ButtonData->"paclet:" "/tutorial/Overview"]], "RelatedTutorials",
+ CellID->11391421,ExpressionUUID->"3207b35e-fdab-4563-baee-be63536142f4"]
+}, Open  ]],
+
+Cell[" ", "FooterCell",
+ CellID->143438025,ExpressionUUID->"90c0bb86-576a-491a-8789-237f6be57248"]
+},
+Saveable->False,
+WindowSize->{775, 705},
+WindowMargins->{{288, Automatic}, {Automatic, 54}},
+WindowTitle->"Automorphisms - CoxeterGroups",
+DockedCells->FEPrivate`FrontEndResource["FEExpressions", "HelpViewerToolbar"],
+PageHeaders->{{None, None, None}, {None, None, 
+   Cell[
+    TextData[{
+      Cell[
+       TextData[{""}], "PageHeader"], 
+      Cell[
+       TextData[{
+         CounterBox["Page"]}], "PageNumber"]}], 
+    CellMargins -> {{Inherited, -29}, {Inherited, Inherited}}]}},
+PageFooters->{{None, None, None}, {
+   Cell[
+    TextData[{""}], "PageFooter"], None, None}},
+TaggingRules->{
+ "ModificationHighlight" -> False, 
+  "Metadata" -> {
+   "context" -> "CoxeterGroups`", 
+    "keywords" -> {"automorphisms", "AUTOMORPHISMS"}, "index" -> True, 
+    "label" -> "CoxeterGroups Guide", "language" -> "en", "paclet" -> 
+    "CoxeterGroups", "status" -> "", "summary" -> 
+    "This summary was generated by \
+ApplicationMaker`DocumentationMaker`NewGuide.", 
+    "synonyms" -> {"automorphisms", "AUTOMORPHISMS"}, "title" -> 
+    "Automorphisms", "windowTitle" -> "Automorphisms", "type" -> "Guide", 
+    "uri" -> "CoxeterGroups/guide/Automorphisms", "WorkflowDockedCell" -> ""},
+   "SearchTextTranslated" -> "", "LinkTrails" -> ""},
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "Reference.nb", 
+  CharacterEncoding -> "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[601, 21, 1793, 40, 47, "AnchorBarGrid",ExpressionUUID->"af017f95-0607-41ac-a482-2503c7c61c66",
+ CellID->46297777],
+Cell[CellGroupData[{
+Cell[2419, 65, 110, 1, 66, "GuideTitle",ExpressionUUID->"86b0b763-716e-42e4-ba84-ab8e3e8c2f63",
+ CellID->114665997],
+Cell[2532, 68, 419, 6, 101, "GuideAbstract",ExpressionUUID->"16579f0b-62ba-4113-9c63-5a5d42c4eb9d",
+ CellID->169208530],
+Cell[CellGroupData[{
+Cell[2976, 78, 274, 4, 28, "GuideFunctionsSubsection",ExpressionUUID->"8ab713bc-3326-4459-b0f3-0a195e9fa3bc",
+ CellID->254570971],
+Cell[3253, 84, 375, 10, 20, "GuideText",ExpressionUUID->"e66f849f-0b21-449f-9025-3f8c0c6081cd",
+ CellID->153245555],
+Cell[3631, 96, 1257, 30, 19, "InlineGuideFunctionListing",ExpressionUUID->"53ef831b-d58e-4765-be54-104a9ded375c",
+ CellID->184392595]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4937, 132, 189, 3, 45, "TutorialsSection",ExpressionUUID->"25d915ff-cc76-4e98-8104-3d3194675855",
+ CellID->732432809],
+Cell[5129, 137, 200, 3, 17, "RelatedTutorials",ExpressionUUID->"3207b35e-fdab-4563-baee-be63536142f4",
+ CellID->11391421]
+}, Open  ]],
+Cell[5344, 143, 98, 1, 41, "FooterCell",ExpressionUUID->"90c0bb86-576a-491a-8789-237f6be57248",
+ CellID->143438025]
+}
+]
+*)
+
