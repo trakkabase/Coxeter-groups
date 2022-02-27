@@ -1,0 +1,936 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     28506,        928]
+NotebookOptionsPosition[     23876,        824]
+NotebookOutlinePosition[     25403,        863]
+CellTagsIndexPosition[     25318,        858]
+WindowTitle->ValidCharacters - CoxeterGroups`BasicCoxeterFunctions`
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["COXETERGROUPS`BASICCOXETERFUNCTIONS` SYMBOL", "PacletNameCell",
+     ExpressionUUID->"5a29d9a4-08a2-4d29-9f6a-a69b8112611a"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"Tutorials \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"Title of tutorial 1\"\>":>
+       Documentation`HelpLookup[
+        StringJoin[
+        "paclet:", "CoxeterGroups", 
+         "/tutorial/tutorialName1"]], "\<\"Title of tutorial 2\"\>":>
+       Documentation`HelpLookup[
+        StringJoin["paclet:", "CoxeterGroups", "/tutorial/tutorialName2"]]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "2e9d7247-7eb7-46f1-b119-8d5729b7322c"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"See Also \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"Symbol1\"\>":>Documentation`HelpLookup[
+        StringJoin[
+        "paclet:", "CoxeterGroups", "/ref/Symbol1"]], "\<\"Symbol2\"\>":>
+       Documentation`HelpLookup[
+        StringJoin["paclet:", "CoxeterGroups", "/ref/Symbol2"]]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "8d260e8d-663d-47a5-ac79-d26a69ffeb83"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"More About \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"Guide 1\"\>":>Documentation`HelpLookup[
+        StringJoin[
+        "paclet:", "CoxeterGroups", "/guide/Guide1"]], "\<\"Guide 2\"\>":>
+       Documentation`HelpLookup[
+        StringJoin["paclet:", "CoxeterGroups", "/guide/Guide2"]]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "15bebc30-cc27-46a5-b102-ba23c00d0e59"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"URL \[RightGuillemet]\"\>",
+        StripOnInput->
+         False], {"\<\"Go to CoxeterGroups/ref/ValidCharacters URL\"\>":>
+       FrontEndExecute[{
+         NotebookLocate[{
+           URL["your.website.goes.here/documentationIfAny"], None}]}], 
+       Delimiter, "\<\"Go to wolfram URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+           "http://reference.wolfram.com/mathematica/guide/Mathematica.html"],
+            None}]}], "\<\"Go to authors URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL["your.website.goes.here"], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "46bc9942-5582-4ed5-8820-e9c8ac8165bc"]
+    }], "AnchorBar",ExpressionUUID->"e90006f9-d520-4c71-9ff4-c481c7a84b9b"]}
+  }]], "AnchorBarGrid",
+ CellID->111244993,ExpressionUUID->"ae43fa95-0fca-403d-9dc7-05a49eacf7ad"],
+
+Cell[CellGroupData[{
+
+Cell["ValidCharacters", "ObjectName",
+ CellID->127578495,ExpressionUUID->"fd968db3-f7f1-4c75-b1a0-c807a6547631"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{
+       ButtonBox["ValidCharacters",
+        BaseStyle->"Link",
+        ButtonData->"paclet:CoxeterGroups/ref/ValidCharacters"], "[", "]"}]], 
+      "InlineFormula",ExpressionUUID->"7dfa122e-01ef-4aca-8cea-9e1efdd256a1"],
+     "\[LineSeparator]List of the allowable characters in a file name."
+    }],ExpressionUUID->"091abc3f-453b-4f78-8db6-2347fa158869"]}
+  }]], "Usage",
+ CellID->246381628,ExpressionUUID->"1feb78a2-acdb-4229-a184-805dfc9d83f9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[
+  FrameBox[
+   StyleBox[
+    RowBox[{"MORE", " ", "INFORMATION"}], "NotesFrameText"],
+   StripOnInput->False],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->
+   "Preemptive"]],ExpressionUUID->"42264c16-cee5-403f-89a4-84f226c72ea0"]], \
+"NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->271498134,
+ ApplicationMaker`DocumentationMaker`Private`WholeCellGroupOpener -> 
+ True,ExpressionUUID->"e7a6c376-0d7d-4a1a-80d1-997fefd37bac"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["ValidCharachters",
+   BaseStyle->"Link",
+   ButtonData->"paclet:CoxeterGroups/ref/ValidCharachters"]],ExpressionUUID->
+  "36b1387a-8494-4cb9-bd94-6634d646f003"],
+ " takes no input"
+}], "Notes",
+ CellID->430621498,ExpressionUUID->"72fcf1c8-94ee-45a6-823d-31819c013f1e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["EXAMPLES",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->434673501,
+ ApplicationMaker`DocumentationMaker`Private`WholeCellGroupOpener -> 
+ True,ExpressionUUID->"3d1db913-b855-474b-901c-7cc5a2c6a1fa"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "7fc254ac-e069-4e2d-bace-432387519c04"]
+}], "ExampleSection", "ExampleSection",
+ CellID->337117824,
+ ApplicationMaker`DocumentationMaker`Private`WholeCellGroupOpener -> 
+ True,ExpressionUUID->"a7097168-1f15-4694-a078-dadfbe4a0f00"],
+
+Cell["List the allowed characters in a file name", "ExampleText",
+ CellID->670909351,ExpressionUUID->"9bdd5ad5-1dba-4ff9-85b3-05f0f38b1dcc"],
+
+Cell[BoxData[
+ RowBox[{"<<", "CoxeterGroups`"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->7284560,ExpressionUUID->"fb14a74e-3fb2-4154-bea0-8ac41a8f6a5d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"InputForm", "[", "#", "]"}], "&"}], "/@", 
+  RowBox[{"ValidCharacters", "[", "]"}]}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->431948270,ExpressionUUID->"4adf7c05-c38d-4fcf-b6d4-99238d2a8c28"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   InterpretationBox[
+    StyleBox["\"\<a\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["a"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<b\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["b"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<c\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["c"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<d\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["d"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<e\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["e"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<f\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["f"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<g\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["g"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<h\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["h"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<i\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["i"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<j\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["j"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<k\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["k"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<l\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["l"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<m\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["m"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<n\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["n"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<o\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["o"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<p\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["p"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<q\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["q"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<r\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["r"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<s\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["s"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<t\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["t"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<u\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["u"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<v\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["v"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<w\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["w"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<x\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["x"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<y\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["y"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<z\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["z"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<A\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["A"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<B\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["B"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<C\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["C"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<D\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["D"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<E\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["E"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<F\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["F"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<G\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["G"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<H\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["H"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<I\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["I"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<J\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["J"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<K\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["K"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<L\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["L"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<M\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["M"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<B\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["B"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<O\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["O"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<P\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["P"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<Q\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["Q"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<R\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["R"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<S\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["S"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<T\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["T"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<U\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["U"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<V\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["V"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<W\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["W"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<X\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["X"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<Y\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["Y"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<Z\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["Z"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<0\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["0"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<1\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["1"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<2\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["2"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<3\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["3"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<4\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["4"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<5\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["5"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<6\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["6"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<7\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["7"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<8\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["8"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<9\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["9"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\< \>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm[" "],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<-\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["-"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<_\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["_"],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<,\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm[","],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<.\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["."],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<(\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm["("],
+    AutoDelete->True,
+    Editable->True], ",", 
+   InterpretationBox[
+    StyleBox["\"\<)\>\"",
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    InputForm[")"],
+    AutoDelete->True,
+    Editable->True]}], "}"}]], "Output",
+ CellContext->"Cell$$14497`",
+ CellLabel->"Out[4]=",
+ CellID->129841581,ExpressionUUID->"56fd1df8-bd1d-482e-b210-5f8a3b32e222"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["SEE ALSO",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "SeeAlsoSection",
+ CellID->296212436,
+ ApplicationMaker`DocumentationMaker`Private`WholeCellGroupOpener -> 
+ True,ExpressionUUID->"574a322f-4628-4222-8ca3-b64d08a57e3e"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  StyleBox[
+   ButtonBox["GroupName",
+    BaseStyle->"Link",
+    ButtonData->"paclet:CoxeterGroups/ref/GroupName"],
+   FontFamily->"Verdana"]], "InlineFormula",ExpressionUUID->
+  "b9682f0b-2b3b-4222-a0a3-92f9ca172deb"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[BoxData[
+  StyleBox[
+   ButtonBox["SymbolTwo",
+    BaseStyle->"Link",
+    ButtonData->"paclet:CoxeterGroups/ref/SymbolTwo"],
+   FontFamily->"Verdana"]], "InlineFormula",ExpressionUUID->
+  "3bb549f4-d4fb-419a-97e5-bd109c038e11"]
+}], "SeeAlso",
+ CellID->467564164,ExpressionUUID->"609187fb-cf97-4b24-bcce-d94ea393d75a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["TUTORIALS",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "TutorialsSection",
+ CellID->538747109,
+ ApplicationMaker`DocumentationMaker`Private`WholeCellGroupOpener -> 
+ True,ExpressionUUID->"84c68033-c0c4-4d0c-9f9d-72c7e408e7e9"],
+
+Cell[TextData[ButtonBox["Tutorial Title 1",
+ BaseStyle->"Link",
+ ButtonData->"paclet:CoxeterGroups/tutorial/tutorial1"]], "Tutorials",
+ CellID->188151838,ExpressionUUID->"1dccb30c-f70b-4540-8545-2e259f35a90d"],
+
+Cell[TextData[ButtonBox["Tutorial Title 2",
+ BaseStyle->"Link",
+ ButtonData->"paclet:CoxeterGroups/tutorial/tutorial2"]], "Tutorials",
+ CellID->237429445,ExpressionUUID->"17eae35b-24de-44f5-afcd-7218782c6da4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["MORE ABOUT",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "MoreAboutSection",
+ CellID->59202831,
+ ApplicationMaker`DocumentationMaker`Private`WholeCellGroupOpener -> 
+ True,ExpressionUUID->"24ccc3f4-3d2e-4f9f-b2f4-3d96c6835030"],
+
+Cell[TextData[ButtonBox["Title of Guide 1",
+ BaseStyle->"Link",
+ ButtonData->"paclet:CoxeterGroups/guide/Guide1"]], "MoreAbout",
+ CellID->180367794,ExpressionUUID->"d9edf271-2231-4e5f-b7d9-739abe461455"],
+
+Cell[TextData[ButtonBox["Title of Guide 2",
+ BaseStyle->"Link",
+ ButtonData->"paclet:CoxeterGroups/guide/Guide2"]], "MoreAbout",
+ CellID->89356516,ExpressionUUID->"d2315b1e-48f4-4248-961c-1e25367031be"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["RELATED LINKS",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "RelatedLinksSection",
+ CellID->38353282,
+ ApplicationMaker`DocumentationMaker`Private`WholeCellGroupOpener -> 
+ True,ExpressionUUID->"3544c38f-f662-459c-a7d0-640b55db3771"],
+
+Cell[TextData[ButtonBox["Link Title 1",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["URL.goes.here"], None}]], "RelatedLinks",
+ CellID->15335376,ExpressionUUID->"59411a85-8e1a-411e-aede-a51e5a45cd83"],
+
+Cell[TextData[ButtonBox["Link Title 2",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["URL.goes.here"], None}]], "RelatedLinks",
+ CellID->637317161,ExpressionUUID->"dc528dfb-9a87-4cc1-8511-59c0c98ff5e4"]
+}, Open  ]],
+
+Cell["Made for Mathematica 8  |  Last modified in February 2022", "History",
+ CellID->168244294,ExpressionUUID->"40224ff9-7234-4ef5-a2d3-24f3022173f3"],
+
+Cell[" ", "FooterCell",
+ CellID->42352583,ExpressionUUID->"cc433e24-257e-420a-a10e-4eb9c3e2f91d"]
+},
+WindowSize->{682, 820},
+WindowMargins->{{Automatic, -7}, {Automatic, 0}},
+WindowTitle->"ValidCharacters - CoxeterGroups`BasicCoxeterFunctions`",
+DockedCells->None,
+TaggingRules->{
+ "ModificationHighlight" -> False, 
+  "Metadata" -> {
+   "context" -> "CoxeterGroups`", 
+    "keywords" -> {"validcharacters", "VALIDCHARACTERS"}, "index" -> True, 
+    "label" -> "CoxeterGroups`BasicCoxeterFunctions` Symbol", "language" -> 
+    "en", "paclet" -> "CoxeterGroups BasicCoxeterFunctions", "status" -> "", 
+    "summary" -> "List of the allowable characters in a file name.", 
+    "synonyms" -> {"validcharacters", "VALIDCHARACTERS"}, "title" -> 
+    "ValidCharacters", "windowTitle" -> "ValidCharacters", "type" -> "Symbol",
+     "uri" -> "CoxeterGroups/ref/ValidCharacters"}, "SearchTextTranslated" -> 
+  ""},
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->FrontEnd`FileName[{$RootDirectory, "C:", "Users", "dhstr", 
+   "AppData", "Roaming", "Mathematica", "Applications", "ApplicationMaker", 
+   "FrontEnd", "Stylesheets"}, "UserReference.nb", CharacterEncoding -> 
+  "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[5485, 148, 593, 15, 45, "PrimaryExamplesSection",ExpressionUUID->"3d1db913-b855-474b-901c-7cc5a2c6a1fa",
+   CellTags->"PrimaryExamplesSection",
+   CellID->434673501]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 25120, 851}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[626, 21, 3029, 68, 47, "AnchorBarGrid",ExpressionUUID->"ae43fa95-0fca-403d-9dc7-05a49eacf7ad",
+ CellID->111244993],
+Cell[CellGroupData[{
+Cell[3680, 93, 112, 1, 51, "ObjectName",ExpressionUUID->"fd968db3-f7f1-4c75-b1a0-c807a6547631",
+ CellID->127578495],
+Cell[3795, 96, 528, 11, 82, "Usage",ExpressionUUID->"1feb78a2-acdb-4229-a184-805dfc9d83f9",
+ CellID->246381628]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4360, 112, 773, 21, 39, "NotesSection",ExpressionUUID->"e7a6c376-0d7d-4a1a-80d1-997fefd37bac",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->271498134],
+Cell[5136, 135, 312, 8, 30, "Notes",ExpressionUUID->"72fcf1c8-94ee-45a6-823d-31819c013f1e",
+ CellID->430621498]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5485, 148, 593, 15, 45, "PrimaryExamplesSection",ExpressionUUID->"3d1db913-b855-474b-901c-7cc5a2c6a1fa",
+ CellTags->"PrimaryExamplesSection",
+ CellID->434673501],
+Cell[CellGroupData[{
+Cell[6103, 167, 356, 8, 31, "ExampleSection",ExpressionUUID->"a7097168-1f15-4694-a078-dadfbe4a0f00",
+ CellID->337117824],
+Cell[6462, 177, 140, 1, 32, "ExampleText",ExpressionUUID->"9bdd5ad5-1dba-4ff9-85b3-05f0f38b1dcc",
+ CellID->670909351],
+Cell[6605, 180, 154, 3, 26, "Input",ExpressionUUID->"fb14a74e-3fb2-4154-bea0-8ac41a8f6a5d",
+ CellID->7284560],
+Cell[CellGroupData[{
+Cell[6784, 187, 240, 6, 26, "Input",ExpressionUUID->"4adf7c05-c38d-4fcf-b6d4-99238d2a8c28",
+ CellID->431948270],
+Cell[7027, 195, 12256, 488, 100, "Output",ExpressionUUID->"56fd1df8-bd1d-482e-b210-5f8a3b32e222",
+ CellID->129841581]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19344, 690, 548, 14, 45, "SeeAlsoSection",ExpressionUUID->"574a322f-4628-4222-8ca3-b64d08a57e3e",
+ CellID->296212436],
+Cell[19895, 706, 693, 20, 19, "SeeAlso",ExpressionUUID->"609187fb-cf97-4b24-bcce-d94ea393d75a",
+ CellID->467564164]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20625, 731, 551, 14, 45, "TutorialsSection",ExpressionUUID->"84c68033-c0c4-4d0c-9f9d-72c7e408e7e9",
+ CellID->538747109],
+Cell[21179, 747, 209, 3, 17, "Tutorials",ExpressionUUID->"1dccb30c-f70b-4540-8545-2e259f35a90d",
+ CellID->188151838],
+Cell[21391, 752, 209, 3, 17, "Tutorials",ExpressionUUID->"17eae35b-24de-44f5-afcd-7218782c6da4",
+ CellID->237429445]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21637, 760, 551, 14, 45, "MoreAboutSection",ExpressionUUID->"24ccc3f4-3d2e-4f9f-b2f4-3d96c6835030",
+ CellID->59202831],
+Cell[22191, 776, 203, 3, 17, "MoreAbout",ExpressionUUID->"d9edf271-2231-4e5f-b7d9-739abe461455",
+ CellID->180367794],
+Cell[22397, 781, 202, 3, 17, "MoreAbout",ExpressionUUID->"d2315b1e-48f4-4248-961c-1e25367031be",
+ CellID->89356516]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22636, 789, 557, 14, 45, "RelatedLinksSection",ExpressionUUID->"3544c38f-f662-459c-a7d0-640b55db3771",
+ CellID->38353282],
+Cell[23196, 805, 203, 4, 17, "RelatedLinks",ExpressionUUID->"59411a85-8e1a-411e-aede-a51e5a45cd83",
+ CellID->15335376],
+Cell[23402, 811, 204, 4, 17, "RelatedLinks",ExpressionUUID->"dc528dfb-9a87-4cc1-8511-59c0c98ff5e4",
+ CellID->637317161]
+}, Open  ]],
+Cell[23621, 818, 151, 1, 43, "History",ExpressionUUID->"40224ff9-7234-4ef5-a2d3-24f3022173f3",
+ CellID->168244294],
+Cell[23775, 821, 97, 1, 25, "FooterCell",ExpressionUUID->"cc433e24-257e-420a-a10e-4eb9c3e2f91d",
+ CellID->42352583]
+}
+]
+*)
+
