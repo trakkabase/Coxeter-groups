@@ -35,30 +35,34 @@ BeginPackage["CoxeterGroups`BasicCoxeterFunctions`"];
 Unprotect[
 (*Coxeter matrix and Coxeter form*)
 ValidCoxeterMatrixQ,BilinearForm, FormSignature,
+(*Diagrams*)
+CoxeterAdjacencyMatrix,CoxeterDiagram,PresentationAdjacencyMatrix,PresentationDiagram,
 (*Special Subgroups*)
-Generators, DiagramNeighbours,ConnectedComponentUnionQ,IrreducibleFactor,IrreducibleCGQ,SpecialSubgroup,ConvertToSpecialSubgroup,ConvertFromSpecialSubgroup,IrreducibleFactorComplement,IrreducibleFactors,IrreducibleSpecialSubgroups,SpecialSubgroups,SphericalSubgroups,
+Generators, IrreducibleFactor,IrreducibleCGQ,SpecialSubgroup,IrreducibleFactors,IrreducibleSpecialSubgroups,SpecialSubgroups,SphericalSubgroups,
 (*Types of Coxeter system*)
 EuclideanCGQ, SphericalCGQ,HyperbolicCGQ,EvenCGQ,RACGQ,
 (*Coxeter system data*)
 GroupSize,MaxLength,CoxeterNumber,DavisComplexDimension,
-(*Group element storage*)
-StringCharacters, ValidCharacters, ValidFileNameQ,NamedQ,ElementDirName, ElementDirExistQ,CreateElementDir,ExportElementList,LengthEnumerated,EnumeratedQ,SmoothDirName, SmoothDirExistQ,CreateSmoothDir,ExportSmoothList,SmoothEnumeratedQ,
+(*Group elements*)
+Braid,CoxeterElement,LongestElement,
 (*Examples of Coxeter matrices*)
-SymmetricEntry,TypeA,TypeB,TypeC,TypeD,E6,E7,E8,F4,G2,H3,H4,I2,TypeAE,TypeAE,TypeAE,TypeAE,EE6,EE7,EE8,FE4,GE2,TriangleCG,FreeCG,RAPolygonG,RABipartiteG,RACGroup
+TypeA,TypeB,TypeC,TypeD,E6,E7,E8,F4,G2,H3,H4,I2,TypeAE,TypeAE,TypeAE,TypeAE,EE6,EE7,EE8,FE4,GE2,TriangleCG,FreeCG,RAPolygonG,RABipartiteG,RACGroup
 ];
 ClearAll[
 (*Coxeter matrix and Coxeter form*)
 ValidCoxeterMatrixQ,BilinearForm, FormSignature,
+(*Diagrams*)
+CoxeterAdjacencyMatrix,CoxeterDiagram,PresentationAdjacencyMatrix,PresentationDiagram,
 (*Special Subgroups*)
-Generators, DiagramNeighbours,ConnectedComponentUnionQ,IrreducibleFactor,IrreducibleCGQ,SpecialSubgroup,ConvertToSpecialSubgroup,ConvertFromSpecialSubgroup,IrreducibleFactorComplement,IrreducibleFactors,IrreducibleSpecialSubgroups,SpecialSubgroups,SphericalSubgroups,
+Generators, IrreducibleFactor,IrreducibleCGQ,SpecialSubgroup,IrreducibleFactors,IrreducibleSpecialSubgroups,SpecialSubgroups,SphericalSubgroups,
 (*Types of Coxeter system*)
 EuclideanCGQ, SphericalCGQ,HyperbolicCGQ,EvenCGQ,RACGQ,
 (*Coxeter system data*)
 GroupSize,MaxLength,CoxeterNumber,DavisComplexDimension,
-(*Group element storage*)
-StringCharacters, ValidCharacters, ValidFileNameQ,NamedQ,ElementDirName, ElementDirExistQ,CreateElementDir,ExportElementList,LengthEnumerated,EnumeratedQ,SmoothDirName, SmoothDirExistQ,CreateSmoothDir,ExportSmoothList,SmoothEnumeratedQ,
+(*Group elements*)
+Braid,CoxeterElement,LongestElement,
 (*Examples of Coxeter matrices*)
-SymmetricEntry,GroupName,TypeA,TypeB,TypeC,TypeD,E6,E7,E8,F4,G2,H3,H4,I2,TypeAE,TypeAE,TypeAE,TypeAE,EE6,EE7,EE8,FE4,GE2,TriangleCG,FreeCG,RAPolygonG,RABipartiteG,RACGroup
+TypeA,TypeB,TypeC,TypeD,E6,E7,E8,F4,G2,H3,H4,I2,TypeAE,TypeAE,TypeAE,TypeAE,EE6,EE7,EE8,FE4,GE2,TriangleCG,FreeCG,RAPolygonG,RABipartiteG,RACGroup
 ];
 
 
@@ -67,10 +71,15 @@ BilinearForm::usage="BilinearForm[M] returns the bilinear form associated to the
 FormSignature::usage="FormSugnature[A] returns the signature of the form A in the form of a list {"<>ToString[Subscript["n","+"],FormatType->StandardForm]<>","<>ToString[Subscript["n","0"],FormatType->StandardForm]<>","<>ToString[Subscript["n","-"],FormatType->StandardForm]<>"}.";
 
 
+CoxeterAdjacencyMatrix::usage="CoxeterAdjacencyMatrix[M] gives the adjacency matrix for the Coxeter-Dynkin diagram for M.";
+(*Privately this function also takes in an entry of M and outputs 1 or 0*)
+CoxeterDiagram::usage="CoxeterDiagram[M] gives the Coxeter-Dynkin diagram of type M.";
+PresentationAdjacencyMatrix::usage="PresentationAdjacencyMatrix[M] gives the adjacency matrix for the presentation diagram for M.";
+(*Privately this function also takes in an entry of M and outputs 1 or 0*)
+PresentationDiagram::usage="PresentationDiagram[M] gives the presnetation diagram of type M.";
+
+
 Generators::usage="Generators[M] gives an ordered list of the Coxeter generators of the Coxeter system with matrix M, each generator being of the form \"i\" for some integer i.";
-DiagramNeighbours::usage="DiagramNeighbours[M,s] gives an ordered all generators which are adjacent to s in the Coxeter diagram of type M (including s).
-DiagramNeighbours[M,{s1,s2,...}] lists all generators which are adjacent to some s in {s1,s2,...} in the Coxeter diagram of type M (including s1, s2,...).";
-ConnectedComponentUnionQ::usage="ConnectedComponentUnionQ[M,{s1,s2,...}] returns True if {s1,s2,...} represents the set of vertices of a union of connected components of the Coxeter diagram of type M, and False otherwise.";
 IrreducibleFactor::usage="IrreducibleFactor[M,s] returns the list of all vertices in the connected component of the Coxeter diagram of type M.";(*This function privately also takes inputs of the form [M,{s1,s2,...}] but assumes a priori that {s1,s2,...} all lie in the same connected component.*)
 IrreducibleCGQ::usage="IrreducibleCGQ[M] returns True if M represents an irreducible Coxeter system, and False otherwise.";
 SpecialSubgroup::usage="SpecialSubgroup[M,{s1,s2,...}] returms the pair {N,sList}, where sList=Sort[{s1,s2,...}], and N is the Coxeter matrix of the special subgroup generated by sList.";
@@ -93,24 +102,11 @@ CoxeterNumber::usage="CoxeterNumber[M] returns the order of the Coxeter element 
 DavisComplexDimension::usage="DavisComplexDimension[M] returns the dimension of the Davis complex associated to the Coxeter system with Coxeter matrix M.";
 
 
-StringCharacters::usage="StringCharachters[str] returns a list of the unique charachters which appear in str.";
-ValidCharacters::usage="List of the allowable characters in a file name."; 
-ValidFileNameQ::usage="ValidFileNameQ[str] returns True if str contains only characters from the list ValidCharacters, and False otherwise.";
-NamedQ::usage="NamedQ[M] returns True if GroupName[M] has been defined as a String, and False otherwise.";
-ElementDirName::usage="ElementDirName[M] gives the file path for the directory containing the enumerated group emements for the Coxeteter system with matrix M.";
-ElementDirExistQ::usage="ElementDirExistsQ[M] returns True if the directory with path ElementDirName[M] exists, False otherwise.";
-CreateElementDir::usage="CreateElementDir[M] creates the directory with path ElementDirName[M].";
-ExportElementList::usage="ExportElementList[M,{k},wordList] saves the list wordList to a file in the directory with path ElementDirName[M] with name \"k.mx\".";
-LengthEnumerated::usage="LengthEnumerated[M] gives the maximum natural number such that all group elements of W(M) up to that length ahve been previously computed. If no elements have been computed it takes value -1.";
-EnumeratedQ::usage="EnumeratedQ[M,k] returens True if LengthEnumerated[M] is at most k, and False otherwise.";
-SmoothDirName::usage="SmoothDirName[M] gives the file path for the directory containing the smooth group emements for the Coxeteter system with matrix M which have been enumerated.";
-SmoothDirExistQ::usage="SmoothDirExistsQ[M] returns True if the directory with path SmoothDirName[M] exists, False otherwise.";
-CreateSmoothDir::usage="CreateSmoothDir[M] creates the directory with path SmoothDirName[M].";
-ExportSmoothList::usage="ExportSmmothList[M,{k},wordList] saves the list wordList to a file in the directory with path SmoothDirName[M] with name \"k.mx\".";
-SmoothEnumeratedQ::usage="SmoothEnumeratedQ[M,{k}] returens True if there is a file in the directory SmoothDirName[M] with mane \"k.mx\", and False otherwise.";
+Braid::usage="Braid[n,i,j] gives the word ijiji... of length n.";
+CoxeterElement::usage="CoxeterElement[M] gives a Coxeter elemenet of the COxeter system with Coxeter matrix M.";
+LongestElement::usage="LongestElement[M] gives the unique element of longest length in M (if M is spherical).";
 
 
-GroupName::usage="GroupName[M] returns the name of the Coxeter system with matric M as a string. This is used for file naming when storing enumerated elements.";
 TypeA::usage="TypeA[n] returns the Coxeter matrix of type "<>ToString[Subscript["A","n"],FormatType->StandardForm]<>".";
 TypeB::usage="TypeB[n] returns the Coxeter matrix of type "<>ToString[Subscript["B","n"],FormatType->StandardForm]<>".";
 TypeC::usage="TypeC[n] returns the Coxeter matrix of type "<>ToString[Subscript["C","n"],FormatType->StandardForm]<>".";
@@ -144,9 +140,13 @@ BilinearForm::argerr="One matrix argument expected.";
 FormSignature::argerr="One matrix argument expected.";
 
 
+CoxeterAdjacencyMatrix::argerr="One matrix argument expected.";
+CoxeterDiagram::argerr="One matrix argument expected.";
+PresentationAdjacencyMatrix::argerr="One matrix argument expected.";
+PresentationDiagram::argerr="One matrix argument expected.";
+
+
 Generators::argerr="One matrix argument expected.";
-DiagramNeighbours::argerr="Two arguments expected.";
-ConnectedComponentUnionQ::argerr="Two arguments expected.";
 IrreducibleFactor::argerr="Two arguments expected.";
 IrreducibleCGQ::argerr="One matrix argument expected.";
 SpecialSubgroup::argerr="Two arguments expected.";
@@ -169,26 +169,11 @@ CoxeterNumber::argerr="One matrix argument expected.";
 DavisComplexDimension::argerr="One matrix argument expected.";
 
 
-StringCharacters::argerr="One string argument expected.";
-ValidFileNameQ::argerr="One string argument expected.";
-ValidCharacters::argerr="No arguments expected.";
-NamedQ::argerr="One matrix argument expected.";
-ElementDirName::argerr="One matrix argument expected.";
-ElementDirExistQ::argerr="One matrix argument expected.";
-CreateElementDir::argerr="One matrix argument expected.";
-ExportElementList::argerr="Three arguments expected.";
-LengthEnumerated::argerr="One matrix argument expected.";
-EnumeratedQ::argerr="Two arguments expected.";
-SmoothDirName::argerr="One matrix argument expected.";
-SmoothDirExistQ::argerr="One matrix argument expected.";
-CreateSmoothDir::argerr="One matrix argument expected.";
-ExportSmoothList::argerr="Three arguments expected.";
-SmoothEnumeratedQ::argerr="Two arguments expected.";
+Braid::argerr="Three arguments expected.";
+CoxeterElement::argerr="One matrix argument expected.";
+LongestElement::argerr="One matrix argument expected.";LongestElement::notdefined="The longest element is only well defined if the Coxeter system is spherical.";
 
 
-GroupName::argerr="One matrix argument expected.";
-GroupName::undefined="You must declare a name for the group `1` as a string: groupName[`1`]=\"name\".";
-GroupName::invalidGroupName="A the groupName must be a string containing the following characters only: upper and lower case Roman letters, Arabic numerals, spaces, or any of the following -_,.()";
 TypeA::argerr="One number expected.";
 TypeB::argerr="One number expected.";
 TypeC::argerr="One number expected.";
@@ -209,6 +194,24 @@ RACGroup::argtype="Argument must be a symmetric matrix of 1's and 0's.";
 Begin["`Private`"];
 
 
+(*Unprotect[
+(*Diagrams*)
+CoxeterEdges,CoxeterEdgeLabels,PresentationEdges,PresentationEdgeLabels,
+(*Special Subgroups*)
+DiagramNeighbours,ConnectedComponentUnionQ,ConvertToSpecialSubgroup,ConvertFromSpecialSubgroup,IrreducibleFactorComplement,
+(*Examples of Coxeter matrices*)
+SymmetricEntry
+];
+ClearAll[
+(*Diagrams*)
+CoxeterEdges,CoxeterEdgeLabels,PresentationEdges,PresentationEdgeLabels,
+(*Special Subgroups*)
+DiagramNeighbours,ConnectedComponentUnionQ,ConvertToSpecialSubgroup,ConvertFromSpecialSubgroup,IrreducibleFactorComplement,
+(*Examples of Coxeter matrices*)
+SymmetricEntry
+];*)
+
+
 ValidCoxeterMatrixQ[args___]:=(Message[ValidCoxeterMatrixQ::argerr];$Failed)
 BilinearForm[args___]:=(Message[BilinearForm::argerr];$Failed)
 FormSignature[args___]:=(Message[FormSignature::argerr];$Failed)
@@ -223,9 +226,39 @@ BilinearForm[M_]:=Table[Table[-Cos[Pi/M[[i]][[j]]],{j,Length[M]}],{i,Length[M]}]
 FormSignature[A_]:={Length[Select[Chop[Eigenvalues[A]],#>0&]],Length[Select[Chop[Eigenvalues[A]],#==0&]],Length[Select[Chop[Eigenvalues[A]],#<0&]]}
 
 
+CoxeterAdjacencyMatrix[args___]:=(Message[CoxeterAdjacencyMatrix::argerr];$Failed)
+CoxeterDiagram[args___]:=(Message[CoxeterDiagram::argerr];$Failed)
+PresentationAdjacencyMatrix[args___]:=(Message[PresentationAdjacencyMatrix::argerr];$Failed)
+PresentationDiagram[args___]:=(Message[PresentationDiagram::argerr];$Failed)
+
+
+CoxeterAdjacencyMatrix[m_]:=If[m==1||m==2,0,1]
+CoxeterAdjacencyMatrix[M_List]:=CoxeterAdjacencyMatrix[#]&/@ M
+
+
+CoxeterEdges[M_]:=Select[Subsets[ToExpression[#]&/@Generators[M],{2}],ToExpression[#[[1]]]<ToExpression[#[[2]]]&& CoxeterAdjacencyMatrix[M[[#[[1]]]][[#[[2]]]]]==1&]
+
+
+CoxeterEdgeLabels[M_]:=#[[1]]\[UndirectedEdge] #[[2]]-> M[[#[[1]]]][[#[[2]]]]&/@CoxeterEdges[M]
+
+
+CoxeterDiagram[M_]:=AdjacencyGraph[CoxeterAdjacencyMatrix[M],VertexLabels-> Table[i->Generators[M][[i]],{i,1,Length[M]}],EdgeLabels-> CoxeterEdgeLabels[M]]
+
+
+PresentationAdjacencyMatrix[m_]:=If[m==1||m==Infinity,0,1]
+PresentationAdjacencyMatrix[M_List]:=PresentationAdjacencyMatrix[#]&/@ M
+
+
+PresentationEdges[M_]:=Select[Subsets[ToExpression[#]&/@Generators[M],{2}],#[[1]]<#[[2]]&& PresentationAdjacencyMatrix[M[[#[[1]]]][[#[[2]]]]]==1&]
+
+
+PresentationEdgeLabels[M_]:=#[[1]]\[UndirectedEdge] #[[2]]-> M[[#[[1]]]][[#[[2]]]]&/@PresentationEdges[M]
+
+
+PresentationDiagram[M_]:=AdjacencyGraph[PresentationAdjacencyMatrix[M],VertexLabels->Table[i->Generators[M][[i]],{i,1,Length[M]}],EdgeLabels-> PresentationEdgeLabels[M]]
+
+
 Generators[args___]:=(Message[Generators::argerr];$Failed)
-DiagramNeighbours[args___]:=(Message[DiagramNeighbours::argerr];$Failed)
-ConnectedComponentUnionQ[args___]:=(Message[ConnectedComponentUnionQ::argerr];$Failed)
 IrreducibleFactor[args___]:=(Message[IrreducibleFactor::argerr];$Failed)
 IrreducibleCGQ[args___]:=(Message[IrreducibleCGQ::argerr];$Failed)
 SpecialSubgroup[args___]:=(Message[SpecialSubgroup::argerr];$Failed)
@@ -236,7 +269,7 @@ SphericalSubgroups[args___]:=(Message[SphericalSubgroups::argerr];$Failed)
 
 
 (* ::Input::Initialization:: *)
-Generators[M_]:=Table[ToString[i],{i,1,Length[M]}]
+Generators[M_]:=ToString[#]&/@Range[Length[M]]
 
 
 (* ::Input::Initialization:: *)
@@ -380,94 +413,23 @@ CoxeterNumber[M_]:=Fold[LCM,CoxeterNumber[#[[1]]]&/@IrreducibleSpecialSubgroups[
 DavisComplexDimension[M_]:=Max[Length[#[[1]]]&/@SphericalSubgroups[M]]
 
 
-StringCharacters[args___]:=(Message[StringCharacters::argerr];$Failed)
-ValidCharacters[args___]:=(Message[ValidCharacters::argerr];$Failed)
-ValidFileNameQ[args___]:=(Message[ValidFileNameQ::argerr];$Failed)
-NamedQ[args___]:=(Message[NamedQ::argerr];$Failed)
-ElementDirName[args___]:=(Message[ElementDirName::argerr];$Failed)
-ElementDirExistQ[args___]:=(Message[ElementDirExistQ::argerr];$Failed)
-CreateElementDir[args___]:=(Message[CreateElementDir::argerr];$Failed)
-ExportElementList[args___]:=(Message[ExportElementList::argerr];$Failed)
-LengthEnumerated[args___]:=(Message[LengthEnumerated::argerr];$Failed)
-EnumeratedQ[args___]:=(Message[EnumeratedQ::argerr];$Failed)
-SmoothDirName[args___]:=(Message[SmoothDirName::argerr];$Failed)
-SmoothDirExistQ[args___]:=(Message[SmoothDirExistQ::argerr];$Failed)
-CreateSmoothDir[args___]:=(Message[CreateSmoothDir::argerr];$Failed)
-ExportSmoothList[args___]:=(Message[ExportSmoothList::argerr];$Failed)
-SmoothEnumeratedQ[args___]:=(Message[SmoothEnumeratedQ::argerr];$Failed)
+Braid[args___]:=(Message[Braid::argerr];$Failed)
+CoxeterElement[args___]:=(Message[CoxeterElement::argerr];$Failed)
+LongestElement[args___]:=(Message[LongestElement::argerr];$Failed)
 
 
-StringCharacters[name_]:=DeleteDuplicates[Table[StringTake[name,{i}],{i,1,StringLength[name]}]]
+Braid[n_,i_,j_]:=Fold[StringJoin,Take[Flatten[Table[{i,j},{k,n}]],n] ]
 
 
-ValidCharacters[]:={"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","B","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"," ","-","_",",",".","(",")"}
+(* ::Input::Initialization:: *)
+CoxeterElement[M_]:=Fold[StringJoin,Generators[M]]
 
 
-ValidFileNameQ[name_]:=If[SubsetQ[ValidCharacters[],StringCharacters[name]],True,
-Module[{},
-Message[GroupName::invalidGroupName];
-False
-]
-]
-
-
-NamedQ[M_]:=If[StringQ[GroupName[M]],True,
-Module[{},
-Message[GroupName::undefined,M];
-False
-]
-]
-
-
-ElementDirName[M_]:=FileNameJoin[{$UserBaseDirectory,"Applications","CoxeterGroups","GroupData","GroupElements",GroupName[M]}]/;NamedQ[M]&&ValidFileNameQ[GroupName[M]]
-
-
-ElementDirExistQ[M_]:=DirectoryQ[ElementDirName[M]]
-
-
-CreateElementDir[M_]:=CreateDirectory[ElementDirName[M]]
-
-
-ExportElementList[M_,{k_},wordList_]:=Module[{},
-If[Not[ElementDirExistQ[M]],CreateElementDir[M],Null];
-Export[FileNameJoin[{ElementDirName[M],"0.mx"}],{""}];
-Export[FileNameJoin[{ElementDirName[M],"1.mx"}],Generators[M]];
-Export[FileNameJoin[{ElementDirName[M],"2.mx"}],wordList]
-]/;k==2
-ExportElementList[M_,{k_},wordList_]:=
-Export[FileNameJoin[{ElementDirName[M],ToString[k]<>".mx"}],wordList]/;k>=3
-
-
-LengthEnumerated[M_]:=If[
-NamedQ[M],
-If[
-ElementDirExistQ[M],
-Max[ToExpression[StringDrop[FileNameTake[#,-1],-3]]&/@FileNames[All,ElementDirName[M]]],
--1
-],
--1
-]
-
-
-EnumeratedQ[M_,k_]:=k<=LengthEnumerated[M]
-
-
-SmoothDirName[M_]:=FileNameJoin[{$UserBaseDirectory,"Applications","CoxeterGroups","GroupData","SmoothElements",GroupName[M]}]/;NamedQ[M]&&ValidFileNameQ[GroupName[M]]
-
-
-SmoothDirExistQ[M_]:=DirectoryQ[SmoothDirName[M]]
-
-
-CreateSmoothDir[M_]:=CreateDirectory[SmoothDirName[M]]
-
-
-ExportSmoothList[M_,{k_},wordList_]:=Module[{},
-If[Not[SmoothDirExistQ[M]],CreateSmoothDir[M],Null];
-Export[FileNameJoin[{SmoothDirName[M],ToString[k]<>".mx"}],wordList]
-]
-
-
-SmoothEnumeratedQ[M_,{k_}]:=FileExistsQ[FileNameJoin[{SmoothDirName[M],ToString[k]<>".mx"}]]
+(* ::Input::Initialization:: *)
+LongestElement[M_]:=Fold[StringJoin,Table[CoxeterElement[M],{i,1,CoxeterNumber[M]/2}]]/;EvenQ[CoxeterNumber[M]]&&IrreducibleCGQ[M]
+LongestElement[M_]:=Braid[M[[1]][[2]],Generators[M][[1]],Generators[M][[2]]]/;Length[M]==2&&M[[1]][[2]]<Infinity
+LongestElement[M_]:=Fold[StringJoin,StringReplace[LongestElement[#[[1]]],Table[ToString[i]->#[[2]][[i]],{i,1,Length[#[[1]]]}]]&/@IrreducibleSpecialSubgroups[M]]/;!IrreducibleCGQ[M]&&SphericalCGQ[M]
+LongestElement[M_]:=(Message[LongestElement::notdefined];$Failed)/;!SphericalCGQ[M]
 
 
 TypeA[args___]:=(Message[TypeA::argerr];$Failed)
@@ -491,101 +453,79 @@ SymmetricEntry[i_,j_]:=If[i==j,1,If[Abs[i-j]==1,3,2]]
 
 
 TypeA[n_]:=Table[SymmetricEntry[i,j],{i,1,n},{j,1,n}]
-GroupName[M_]:="A_"<>ToString[Length[M]]/;M==TypeA[Length[M]]
 
 
 TypeB[n_]:=Table[If[Or[i==n&&j==n-1,i==n-1&&j==n],4,SymmetricEntry[i,j]],{i,1,n},{j,1,n}]
-GroupName[M_]:="B_"<>ToString[Length[M]]/;M==TypeB[Length[M]]
 
 
 TypeC[n_]:=TypeB[n]
 
 
 TypeD[n_]:=Table[If[Or[i==n&&j==n-2,i==n-2&&j==n],3,If[Or[i==n&&j==n-1,i==n-1&&j==n],2,SymmetricEntry[i,j]]],{i,1,n},{j,1,n}]
-GroupName[M_]:="D_"<>ToString[Length[M]]/;M==TypeD[Length[M]]
 
 
 E6={{1,3,2,2,2,2},{3,1,3,2,2,2},{2,3,1,3,2,3},{2,2,3,1,3,2},{2,2,2,3,1,2},{2,2,3,2,2,1}};
-GroupName[E6]="E_6";
 
 
 E7={{1,3,2,2,2,2,2},{3,1,3,2,2,2,2},{2,3,1,3,2,2,3},{2,2,3,1,3,2,2},{2,2,2,3,1,3,2},{2,2,2,2,3,1,2},{2,2,3,2,2,2,1}};
-GroupName[E7]="E_7";
 
 
 E8={{1,3,2,2,2,2,2,2},{3,1,3,2,2,2,2,2},{2,3,1,3,2,2,2,3},{2,2,3,1,3,2,2,2},{2,2,2,3,1,3,2,2},{2,2,2,2,3,1,3,2},{2,2,2,2,2,3,1,2},{2,2,3,2,2,2,2,1}};
-GroupName[E8]="E_8";
 
 
 F4={{1,3,2,2},{3,1,4,2},{2,4,1,3},{2,2,3,1}};
 
 
 G2={{1,6},{6,1}};
-GroupName[F4]="F_4";
 
 
 H3={{1,3,2},{3,1,5},{2,5,1}};
-GroupName[H3]="H_3";
 
 
 H4={{1,3,2,2},{3,1,3,2},{2,3,1,5},{2,2,5,1}};
-GroupName[H4]="H_4";
 
 
 I2[m_]:={{1,m},{m,1}}
-GroupName[M_]:="I_2("<>ToString[M[[1]][[2]]]<>")"/;Length[M]==2&&!MemberQ[{I2[3],I2[4],I2[6]},M]&&ValidCoxeterMatrixQ[M]
 
 
 TypeAE[1]={{1,Infinity},{Infinity,1}};
 TypeAE[n_]:=TypeA[n+1]+Table[Table[If[Or[And[i==1,j==n+1],And[i==n+1,j==1]],1,0],{i,1,n+1}],{j,1,n+1}]/;n>1
-GroupName[M_]:="AE_"<>ToString[Length[M]-1]/;M==TypeAE[Length[M]-1]
 
 
 TypeBE[2]={{1,4,2},{4,1,4},{2,4,1}};
-GroupName[TypeBE[2]]="BE_2";
 
 
 TypeBE[n_]:=Table[If[And[i<n+1,j<n+1],TypeB[n][[i]][[j]],If[And[i==n+1,j==n+1],1,If[Or[i==2,j==2],3,2]]],{i,1,n+1},{j,1,n+1}]/;n>2
-GroupName[M_]:="BE_"<>ToString[Length[M]-1]/;M==TypeBE[Length[M]-1]
 
 
 TypeCE[n_]:=TypeB[n+1]+Table[If[Or[And[i==1,j==2],And[i==2,j==1]],1,0],{i,1,n+1},{j,1,n+1}]/;n>2
-GroupName[M_]:="CE_"<>ToString[Length[M]-1]/;M==TypeCE[Length[M]-1]
 
 
 TypeDE[n_]:=TypeD[n+1]+Table[If[Or[And[i==1,j==2],And[i==2,j==1]],-1,If[Or[And[i==1,j==3],And[i==3,j==1]],1,0]],{i,1,n+1},{j,1,n+1}]/;n>3
-GroupName[M_]:="DE_"<>ToString[Length[M]-1]/;M==TypeDE[Length[M]-1]
 
 
 EE6=Table[If[And[i<7,j<7],E6[[i]][[j]],If[Or[And[i==7,j==7]],1,If[Or[i==6,j==6],3,2]]],{i,1,7},{j,1,7}];
-GroupName[EE6]="EE_6";
 
 
 EE7={{1,3,2,2,2,2,2,2},{3,1,3,2,2,2,2,2},{2,3,1,3,2,2,2,2},{2,2,3,1,3,2,2,3},{2,2,2,3,1,3,2,2},{2,2,2,2,3,1,3,2},{2,2,2,2,2,3,1,2},{2,2,2,3,2,2,2,1}};
-GroupName[EE7]="EE_7";
 
 
 EE8={{1,3,2,2,2,2,2,2,2},{3,1,3,2,2,2,2,2,2},{2,3,1,3,2,2,2,2,3},{2,2,3,1,3,2,2,2,2},{2,2,2,3,1,3,2,2,2},{2,2,2,2,3,1,3,2,2},{2,2,2,2,2,3,1,3,2},{2,2,2,2,2,2,3,1,2},{2,2,3,2,2,2,2,2,1}};
-GroupName[EE8]="EE_8";
 
 
 FE4={{1,3,2,2,2},{3,1,3,2,2},{2,3,1,4,2},{2,2,4,1,3},{2,2,2,3,1}};
-GroupName[FE4]="FE_4";
 
 
 GE2={{1,3,2},{3,1,6},{2,6,1}};
-GroupName[GE2]="GE_2";
 
 
 TriangleCG[p_,q_,r_]:={{1,p,r},{p,1,q},{r,q,1}};
-GroupName[M_]:="TriangleCG("<>ToString[M[[1]][[2]]]<>","<>ToString[M[[1]][[3]]]<>","<>ToString[M[[2]][[3]]]<>")"/;Length[M]==3&&HyperbolicCGQ[M]&&ValidCoxeterMatrixQ[M]
 
 
 FreeCG[n_]:=Table[Table[
 If[i==j,1,Infinity],
 {i,1,n}],
 {j,1,n}]
-GroupName[M_]:="FreeCG_"<>ToString[Length[M]]/;M==FreeCG[Length[M]]&&Length[M]>1
 
 
 RAPolygonG[n_]:=Table[
@@ -593,39 +533,46 @@ Permute[
 Join[{1,2},Table[Infinity,{i,1,n-3}],{2}],
 PermutationPower[Cycles[{Table[k,{k,1,n}]}],j-1]],
 {j,1,n}]
-GroupName[M_]:="RAPolygonG_"<>ToString[Length[M]]/;M==RAPolygonG[Length[M]]&&Length[M]>=4
 
 
 RABipartiteG[m_,n_]:=Table[Table[
 If[i==j,1,If[(i<=n&&j<=n)||(i>n&&j>n),Infinity,2]],
 {i,1,n+m}],
 {j,1,n+m}]
-GroupName[M_]:=Module[{m,n},
-n=Length[Select[M[[1]],#==2&]];
-m=Length[M]-n;
-"RABipartiteG_("<>ToString[n]<>","<>ToString[m]<>")"/;M==RABipartiteG[n,m]&&Length[M]>3
-]
 
 
 (* ::Input::Initialization:: *)
 RACGroup[A_]:=Table[Table[If[i==j,1,If[A[[i]][[j]]==1,2,Infinity]],{i,1,Length[A]}],{j,1,Length[A]}]/;MatrixQ[A]&&SubsetQ[{0,1},Flatten[A]]&&SymmetricMatrixQ[A]
 
 
+(*Protect[
+(*Diagrams*)
+CoxeterEdges,CoxeterEdgeLabels,PresentationEdges,PresentationEdgeLabels,
+(*Special Subgroups*)
+DiagramNeighbours,ConnectedComponentUnionQ,ConvertToSpecialSubgroup,ConvertFromSpecialSubgroup,IrreducibleFactorComplement, 
+(*Examples of Coxeter matrices*)
+SymmetricEntry
+];*)
+
+
 End[];
 
 
-Protect[(*Coxeter matrix and Coxeter form*)
+Protect[
+(*Coxeter matrix and Coxeter form*)
 ValidCoxeterMatrixQ,BilinearForm, FormSignature,
+(*Diagrams*)
+CoxeterAdjacencyMatrix,CoxeterDiagram,PresentationAdjacencyMatrix,PresentationDiagram,
 (*Special Subgroups*)
-Generators, DiagramNeighbours,ConnectedComponentUnionQ,IrreducibleFactor,IrreducibleCGQ,SpecialSubgroup,ConvertToSpecialSubgroup,ConvertFromSpecialSubgroup,IrreducibleFactorComplement,IrreducibleFactors,IrreducibleSpecialSubgroups,SpecialSubgroups,SphericalSubgroups,
+Generators, IrreducibleFactor,IrreducibleCGQ,SpecialSubgroup,IrreducibleFactors,IrreducibleSpecialSubgroups,SpecialSubgroups,SphericalSubgroups,
 (*Types of Coxeter system*)
 EuclideanCGQ, SphericalCGQ,HyperbolicCGQ,EvenCGQ,RACGQ,
 (*Coxeter system data*)
 GroupSize,MaxLength,CoxeterNumber,DavisComplexDimension,
-(*Group element storage*)
-StringCharacters, ValidCharacters, ValidFileNameQ,NamedQ,ElementDirName, ElementDirExistQ,CreateElementDir,ExportElementList,LengthEnumerated,EnumeratedQ,SmoothDirName, SmoothDirExistQ,CreateSmoothDir,ExportSmoothList,SmoothEnumeratedQ,
+(*Group elements*)
+Braid,CoxeterElement,LongestElement,
 (*Examples of Coxeter matrices*)
-SymmetricEntry,TypeA,TypeB,TypeC,TypeD,E6,E7,E8,F4,G2,H3,H4,I2,TypeAE,TypeAE,TypeAE,TypeAE,EE6,EE7,EE8,FE4,GE2,TriangleCG,FreeCG,RAPolygonG,RABipartiteG,RACGroup
+TypeA,TypeB,TypeC,TypeD,E6,E7,E8,F4,G2,H3,H4,I2,TypeAE,TypeAE,TypeAE,TypeAE,EE6,EE7,EE8,FE4,GE2,TriangleCG,FreeCG,RAPolygonG,RABipartiteG,RACGroup
 ];
 
 
