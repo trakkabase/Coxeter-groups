@@ -37,8 +37,10 @@ Unprotect[
 ValidCoxeterMatrixQ,BilinearForm, FormSignature,
 (*Diagrams*)
 CoxeterAdjacencyMatrix,CoxeterDiagram,PresentationAdjacencyMatrix,PresentationDiagram,
+(*Generators and word manipulations*)
+Generators,GeneratorQ,GeneratorIndex,GeneratorSort,CoxeterWordRewrite,DisplayGenerator,DisplayWord,WordLength,WordInverse,WordTake,WordDrop,WordSymbols,WordPalindromeQ,CentralGenerator,ConjugatingElement,
 (*Special Subgroups*)
-Generators, IrreducibleFactor,IrreducibleCGQ,SpecialSubgroup,IrreducibleFactors,IrreducibleSpecialSubgroups,SpecialSubgroups,SphericalSubgroups,
+IrreducibleFactor,IrreducibleCGQ,SpecialSubgroup,ConvertToSpecialSubgroup,ConvertFromSpecialSubgroup,IrreducibleFactors,IrreducibleSpecialSubgroups,SpecialSubgroups,SphericalSubgroups,
 (*Types of Coxeter system*)
 EuclideanCGQ, SphericalCGQ,HyperbolicCGQ,EvenCGQ,RACGQ,
 (*Coxeter system data*)
@@ -53,8 +55,10 @@ ClearAll[
 ValidCoxeterMatrixQ,BilinearForm, FormSignature,
 (*Diagrams*)
 CoxeterAdjacencyMatrix,CoxeterDiagram,PresentationAdjacencyMatrix,PresentationDiagram,
+(*Generators and word manipulations*)
+Generators,GeneratorQ,GeneratorIndex,GeneratorSort,CoxeterWordRewrite,DisplayGenerator,DisplayWord,WordLength,WordInverse,WordTake,WordDrop,WordSymbols,WordPalindromeQ,CentralGenerator,ConjugatingElement,
 (*Special Subgroups*)
-Generators, IrreducibleFactor,IrreducibleCGQ,SpecialSubgroup,IrreducibleFactors,IrreducibleSpecialSubgroups,SpecialSubgroups,SphericalSubgroups,
+IrreducibleFactor,IrreducibleCGQ,SpecialSubgroup,ConvertToSpecialSubgroup,ConvertFromSpecialSubgroup,IrreducibleFactors,IrreducibleSpecialSubgroups,SpecialSubgroups,SphericalSubgroups,
 (*Types of Coxeter system*)
 EuclideanCGQ, SphericalCGQ,HyperbolicCGQ,EvenCGQ,RACGQ,
 (*Coxeter system data*)
@@ -79,10 +83,37 @@ PresentationAdjacencyMatrix::usage="PresentationAdjacencyMatrix[M] gives the adj
 PresentationDiagram::usage="PresentationDiagram[M] gives the presnetation diagram of type M.";
 
 
-Generators::usage="Generators[M] gives an ordered list of the Coxeter generators of the Coxeter system with matrix M, each generator being of the form \"i\" for some integer i.";
+Generators::usage="Generators[M] gives an ordered list of the Coxeter generators of the Coxeter system with matrix M, each generator being of the form \"si\" for some integer i.";
+GeneratorQ::usage="GeneratorQ[\"word\"] returns True if \"word\" is a single s-symble, eg \"s123\", and False otherwise.";
+GeneratorIndex::usage="GeneratorIndex[s] returns the integer index of the generators s.
+GeneratorIndex[sList] returns a list of the integer indices of the generators in sList.";
+GeneratorSort::usage="GeneratorSort[sList] sorts the list of generator sList by their indices."
+CoxeterWordRewrite::usage="CoxeterWordRewrite[w, rules] rewrites the word w using the rules.";
+DisplayGenerator::usage="DisplayGenerator[s] outputs the generator s in a human-friendly form using subscripts.";
+DisplayWord::usage="DisplayWord[w] outputs the word w in a human-friendly form using subscripts.";
+WordLength::usage="WordLength[w] gives the number of generators appearing in the word w.";
+WordInverse::usage="WordInverse[w] gives the word resulting from reversing the order of the generators in w.";
+WordTake::usage="WordTake[\"word\", n] returns the first n s-symbols from \"word\".
+WordTake[\"word\", -n] returns the last n s-symbols from \"word\".
+WordTake[\"word\", {n}] returns the n-th s-symbol from \"word\".
+WordTake[\"word\", {m, n}] returns the m-th through n-th s-symbols from \"word\".";
+WordDrop::usage="WordDrop[\"word\", n] returns \"word\" with the first n s-symbols removed.
+WordDrop[\"word\", -n] returns \"word\" with the last n s-symbols removed.
+WordDrop[\"word\", {n}] returns \"word\" with the n-th s-symbol removed.
+WordDrop[\"word\", {m, n}] returns \"word\" with the m-th through n-th s-symbols removed.";".";
+WordSymbols::usage="WordSymbols[\"word\"] returns an ordered list of all distinct s-symbols appearing in \"word\".";
+WordPalindromeQ::usage="WordPalindromeQ[\"word\"] returns True if WordInverse[\"word\"] is identical to \"word\", and False otherwise.";
+CentralGenerator::usage="CentralGenerator[\"word\"] returns the middle s-symbol in \"word\" if it is palindromic and represents a reflection.";
+ConjugatingElement::usage="CentralGenerator[\"word\"] returns the subword of \"word\" such that \"word\" is the conjugate of some generator by that subword.";
+
+
 IrreducibleFactor::usage="IrreducibleFactor[M,s] returns the list of all vertices in the connected component of the Coxeter diagram of type M.";(*This function privately also takes inputs of the form [M,{s1,s2,...}] but assumes a priori that {s1,s2,...} all lie in the same connected component.*)
 IrreducibleCGQ::usage="IrreducibleCGQ[M] returns True if M represents an irreducible Coxeter system, and False otherwise.";
 SpecialSubgroup::usage="SpecialSubgroup[M,{s1,s2,...}] returms the pair {N,sList}, where sList=Sort[{s1,s2,...}], and N is the Coxeter matrix of the special subgroup generated by sList.";
+ConvertToSpecialSubgroup::usage="ConvertToSpecialSubgroup[M,{N,sList},w] rewrites the word w which is an element of the special subgroup W(N) of W(M), which is expressed in the generators of W(M), as a word in the generators {\"s1\",...,\"sLength[N]\"} which have been identified with the elements of sList.
+ConvertToSpecialSubgroup[M,{N,sList},wList] rewrites each element in wList in terms of the new generators of W(N).";
+ConvertFromSpecialSubgroup::usage="ConvertFromSpecialSubgroup[M,{N,sList},w] applies the inverse operation to ConvertToSpecialSubgroup[M,{N,sList},w].
+ConvertFromSpecialSubgroup[M,{N,sList},wList] applies the inverse operation to ConvertToSpecialSubgroup[M,{N,sList},wList].";
 IrreducibleFactors::usage="IrreducibleFactors[M] returs a list of the sets of generators in each irreducible special subgroup of W(M).";
 IrreducibleSpecialSubgroups::usage="IrreducibleSpecialSubgroups[M] returns a list of all the irreducible special subgroups of W(M), each in the form {N,sList} where N is the Coxeter matrix, and sList is the list of generators for W(N).";
 SpecialSubgroups::usage="SpecialSubgroups[M] returns a list of all non-trivial special subgroups of the Coxeter system with the Coxeter matrix M.";
@@ -103,7 +134,7 @@ DavisComplexDimension::usage="DavisComplexDimension[M] returns the dimension of 
 
 
 Braid::usage="Braid[n,i,j] gives the word ijiji... of length n.";
-CoxeterElement::usage="CoxeterElement[M] gives a Coxeter elemenet of the COxeter system with Coxeter matrix M.";
+CoxeterElement::usage="CoxeterElement[M] gives a Coxeter elemenet of the Coxeter system with Coxeter matrix M.";
 LongestElement::usage="LongestElement[M] gives the unique element of longest length in M (if M is spherical).";
 
 
@@ -147,9 +178,29 @@ PresentationDiagram::argerr="One matrix argument expected.";
 
 
 Generators::argerr="One matrix argument expected.";
+GeneratorQ::argerr="One string argument expected.";
+GeneratorIndex::argerr="One argument expected.";
+GeneratorSort::argerr="One list argument expected.";
+CoxeterWordRewrite::argerr="Two arguments expected.";
+DisplayGenerator::argerr="One argument expected.";
+DisplayWord::argerr="One argument expected.";
+WordLength::argerr="One string argument expected.";
+WordInverse::argerr="One string argument expected."
+WordTake::argerr="Two arguments expected.";
+WordDrop::argerr="Two arguments expected.";
+WordSymbols::argerr="One string argument expected."
+WordPalindromeQ::argerr="One string argument expected.";
+CentralGenerator::argerr="One string argument expected.";
+CentralGenerator::notpalindromic="The input must be a palindromic word.";
+ConjugatingElement::argerr="One string argument expected.";
+ConjugatingElement::notpalindromic="The input must be a palindromic word.";
+
+
 IrreducibleFactor::argerr="Two arguments expected.";
 IrreducibleCGQ::argerr="One matrix argument expected.";
 SpecialSubgroup::argerr="Two arguments expected.";
+ConvertToSpecialSubgroup::argerr="Three arguments expected.";
+ConvertFromSpecialSubgroup::argerr="Three arguments expected.";
 IrreducibleFactors::argerr="One matrix argument expected.";
 IrreducibleSpecialSubgroups::argerr="One matrix argument expected.";
 SpecialSubgroups::argerr="One matrix argument expected.";
@@ -194,24 +245,6 @@ RACGroup::argtype="Argument must be a symmetric matrix of 1's and 0's.";
 Begin["`Private`"];
 
 
-(*Unprotect[
-(*Diagrams*)
-CoxeterEdges,CoxeterEdgeLabels,PresentationEdges,PresentationEdgeLabels,
-(*Special Subgroups*)
-DiagramNeighbours,ConnectedComponentUnionQ,ConvertToSpecialSubgroup,ConvertFromSpecialSubgroup,IrreducibleFactorComplement,
-(*Examples of Coxeter matrices*)
-SymmetricEntry
-];
-ClearAll[
-(*Diagrams*)
-CoxeterEdges,CoxeterEdgeLabels,PresentationEdges,PresentationEdgeLabels,
-(*Special Subgroups*)
-DiagramNeighbours,ConnectedComponentUnionQ,ConvertToSpecialSubgroup,ConvertFromSpecialSubgroup,IrreducibleFactorComplement,
-(*Examples of Coxeter matrices*)
-SymmetricEntry
-];*)
-
-
 ValidCoxeterMatrixQ[args___]:=(Message[ValidCoxeterMatrixQ::argerr];$Failed)
 BilinearForm[args___]:=(Message[BilinearForm::argerr];$Failed)
 FormSignature[args___]:=(Message[FormSignature::argerr];$Failed)
@@ -236,32 +269,112 @@ CoxeterAdjacencyMatrix[m_]:=If[m==1||m==2,0,1]
 CoxeterAdjacencyMatrix[M_List]:=CoxeterAdjacencyMatrix[#]&/@ M
 
 
-CoxeterEdges[M_]:=Select[Subsets[ToExpression[#]&/@Generators[M],{2}],ToExpression[#[[1]]]<ToExpression[#[[2]]]&& CoxeterAdjacencyMatrix[M[[#[[1]]]][[#[[2]]]]]==1&]
+CoxeterEdges[M_]:=Select[Subsets[GeneratorIndex[#]&/@Generators[M],{2}],#[[1]]<#[[2]]&& CoxeterAdjacencyMatrix[M[[#[[1]]]][[#[[2]]]]]==1&]
 
 
 CoxeterEdgeLabels[M_]:=#[[1]]\[UndirectedEdge] #[[2]]-> M[[#[[1]]]][[#[[2]]]]&/@CoxeterEdges[M]
 
 
-CoxeterDiagram[M_]:=AdjacencyGraph[CoxeterAdjacencyMatrix[M],VertexLabels-> Table[i->Generators[M][[i]],{i,1,Length[M]}],EdgeLabels-> CoxeterEdgeLabels[M]]
+CoxeterDiagram[M_]:=AdjacencyGraph[CoxeterAdjacencyMatrix[M],VertexLabels-> Table[i->DisplayGenerator[Generators[M][[i]]],{i,1,Length[M]}],EdgeLabels-> CoxeterEdgeLabels[M]]
 
 
 PresentationAdjacencyMatrix[m_]:=If[m==1||m==Infinity,0,1]
 PresentationAdjacencyMatrix[M_List]:=PresentationAdjacencyMatrix[#]&/@ M
 
 
-PresentationEdges[M_]:=Select[Subsets[ToExpression[#]&/@Generators[M],{2}],#[[1]]<#[[2]]&& PresentationAdjacencyMatrix[M[[#[[1]]]][[#[[2]]]]]==1&]
+PresentationEdges[M_]:=Select[Subsets[GeneratorIndex[#]&/@Generators[M],{2}],#[[1]]<#[[2]]&& PresentationAdjacencyMatrix[M[[#[[1]]]][[#[[2]]]]]==1&]
 
 
 PresentationEdgeLabels[M_]:=#[[1]]\[UndirectedEdge] #[[2]]-> M[[#[[1]]]][[#[[2]]]]&/@PresentationEdges[M]
 
 
-PresentationDiagram[M_]:=AdjacencyGraph[PresentationAdjacencyMatrix[M],VertexLabels->Table[i->Generators[M][[i]],{i,1,Length[M]}],EdgeLabels-> PresentationEdgeLabels[M]]
+PresentationDiagram[M_]:=AdjacencyGraph[PresentationAdjacencyMatrix[M],VertexLabels->Table[i->DisplayGenerator[Generators[M][[i]]],{i,1,Length[M]}],EdgeLabels-> PresentationEdgeLabels[M]]
 
 
 Generators[args___]:=(Message[Generators::argerr];$Failed)
+GeneratorQ[args___]:=(Message[GeneratorQ::argerr];$Failed)
+GeneratorIndex[args___]:=(Message[GeneratorIndex::argerr];$Failed)
+GeneratorSort[args___]:=(Message[GeneratorSort::argerr];$Failed)
+CoxeterWordRewrite[args___]:=(Message[CoxeterWordRewrite::argerr];$Failed)
+DisplayGenerator[args___]:=(Message[DisplayGenerator::argerr];$Failed)
+DisplayWord[args___]:=(Message[DisplayWord::argerr];$Failed)
+WordLength[args___]:=(Message[WordLength::argerr];$Failed)
+WordInverse[args___]:=(Message[WordInverse::argerr];$Failed)
+WordTake[args___]:=(Message[WordTake::argerr];$Failed)
+WordDrop[args___]:=(Message[WordDrop::argerr];$Failed)
+WordSymbols[args___]:=(Message[WordSymbols::argerr];$Failed)
+WordPalindromeQ[args___]:=(Message[WordPalindromeQ::argerr];$Failed)
+CentralGenerator[args___]:=(Message[CentralGenerator::argerr];$Failed)
+ConjugatingElement[args___]:=(Message[ConjugatingElement::argerr];$Failed)
+
+
+(* ::Input::Initialization:: *)
+Generators[M_]:="s"<>ToString[#]&/@Range[Length[M]]
+
+
+GeneratorQ[w_]:=StringMatchQ[w,"s"~~x__/;!StringContainsQ[x,"s"]]
+
+
+GeneratorIndex[s_String]:=ToExpression[StringDrop[s,1]]
+GeneratorIndex[sList_List]:=GeneratorIndex[#]&/@sList
+
+
+GeneratorSort[sList_]:=Sort[sList,GeneratorIndex[#1]<GeneratorIndex[#2]&]
+
+
+CoxeterWordRewrite[w_,rules_]:=Module[{newRules,newWord,replacement},
+newRules=KeyValueMap[#1<>"s"->#2<>"s"&,Association[rules]];
+newWord=StringDrop[StringReplace[w,"s"->"ss"]<>"s",1];
+replacement=StringReplace[newWord,newRules];
+StringDrop[StringReplace[replacement,"ss"->"s"],-1]
+]
+
+
+DisplayGenerator[s_]:=ToString[Subscript["s",StringDrop[s,1]],StandardForm]
+
+
+DisplayWord[w_]:=Fold[StringJoin,DisplayGenerator["s"<>#]&/@StringSplit[StringDrop[w,1],"s"]]
+
+
+WordLength[w_]:=StringCount[w,"s"]
+
+
+WordToList[w_]:="s"<>#&/@StringSplit[StringDrop[w,1],"s"]
+
+
+WordTake[w_,0]:=""
+WordTake[w_,k_]:=Fold[StringJoin,Take[WordToList[w],k]]/;!k==0
+WordTake[w_,{k_}]:=WordToList[w][[k]]
+WordTake[w_,{m_,n_}]:=Fold[StringJoin,Take[WordToList[w],{m,n}]]
+
+
+WordDrop[w_,k_]:=Fold[StringJoin,Drop[WordToList[w],k]]
+
+
+WordInverse[w_]:=Fold[StringJoin,Reverse[WordToList[w]]]
+
+
+WordSymbols[w_]:=GeneratorSort[DeleteDuplicates[WordToList[w]]]
+
+
+WordPalindromeQ[w_]:=PalindromeQ[WordToList[w]]
+
+
+(* ::Input::Initialization:: *)
+CentralGenerator[w_String]:=WordTake[w,{(WordLength[w]+1)/2}]/;WordPalindromeQ[w]&&OddQ[WordLength[w]]
+CentralGenerator[w_]:=(Message[CentralGenerator::notpalindromic];$Failed)/;!WordPalindromeQ[w]||!OddQ[WordLength[w]]
+
+
+(* ::Input::Initialization:: *)
+ConjugatingElement[w_String]:=WordTake[w,(WordLength[w]-1)/2]/;WordPalindromeQ[w]&&OddQ[WordLength[w]]
+ConjugatingElement[w_]:=(Message[ConjugatingElement::notpalindromic];$Failed)/;!WordPalindromeQ[w]||!OddQ[WordLength[w]]
+
+
 IrreducibleFactor[args___]:=(Message[IrreducibleFactor::argerr];$Failed)
 IrreducibleCGQ[args___]:=(Message[IrreducibleCGQ::argerr];$Failed)
 SpecialSubgroup[args___]:=(Message[SpecialSubgroup::argerr];$Failed)
+ConvertToSpecialSubgroup[args___]:=(Message[ConvertToSpecialSubgroup::argerr];$Failed)
+ConvertFromSpecialSubgroup[args___]:=(Message[ConvertFromSpecialSubgroup::argerr];$Failed)
 IrreducibleFactors[args___]:=(Message[IrreducibleFactors::argerr];$Failed)
 IrreducibleSpecialSubgroups[args___]:=(Message[IrreducibleSpecialSubgroups::argerr];$Failed)
 SpecialSubgroups[args___]:=(Message[SpecialSubgroups::argerr];$Failed)
@@ -269,11 +382,7 @@ SphericalSubgroups[args___]:=(Message[SphericalSubgroups::argerr];$Failed)
 
 
 (* ::Input::Initialization:: *)
-Generators[M_]:=ToString[#]&/@Range[Length[M]]
-
-
-(* ::Input::Initialization:: *)
-DiagramNeighbours[M_,s_String]:=Sort[Select[Generators[M],Not[M[[ToExpression[s]]][[ToExpression[#]]]==2]&]]
+DiagramNeighbours[M_,s_String]:=Sort[Select[Generators[M],Not[M[[GeneratorIndex[s]]][[GeneratorIndex[#]]]==2]&]]
 DiagramNeighbours[M_,sList_List]:=Sort[DeleteDuplicates[Flatten[Join[DiagramNeighbours[M,#]&/@sList]]]]
 
 
@@ -287,22 +396,21 @@ IrreducibleFactor[M_,sList_List]:=If[ConnectedComponentUnionQ[M,sList],sList,Irr
 
 
 (* ::Input::Initialization:: *)
-IrreducibleCGQ[M_]:=IrreducibleFactor[M,"1"]==Generators[M]
+IrreducibleCGQ[M_]:=IrreducibleFactor[M,"s1"]==Generators[M]
 
 
 (* ::Input::Initialization:: *)
-SpecialSubgroup[M_,sList_List]:={Join[M[[#]]&/@ToExpression[Sort[sList]]][[All,#]]&/@ToExpression[Sort[sList]],Sort[sList]}
+SpecialSubgroup[M_,sList_List]:={Join[M[[#]]&/@GeneratorIndex[GeneratorSort[sList]]][[All,#]]&/@GeneratorIndex[GeneratorSort[sList]],GeneratorSort[sList]}
 
 
 (* ::Input::Initialization:: *)
-ConvertToSpecialSubgroup[M_,{N_,sList_List},w_String]:=StringReplace[w,Table[sList[[i]]->ToString[i],{i,1,Length[sList]}]]
+ConvertToSpecialSubgroup[M_,{N_,sList_List},w_String]:=CoxeterWordRewrite[w,Table[GeneratorSort[sList][[i]]->"s"<>ToString[i],{i,1,Length[GeneratorSort[sList]]}]]
 ConvertToSpecialSubgroup[M_,{N_,sList_List},wList_List]:=ConvertToSpecialSubgroup[M,{N,sList},#]&/@wList
-(*Private function: ConvertToSpecialSubgroup[M,{N,sList},w] rewrites the word w which is an element of the special subgroup W(N) of W(M), which is expressed in the generators of W(M), as a word in the generators {\"1\",...,\"Length[N]\"} which have been identified with the slements of sList.
-ConvertToSpecialSubgroup[M,{N,sList},wList] rewrites each element in wList in terms of the new generators of W(N).*)
 
 
 (* ::Input::Initialization:: *)
-ConvertFromSpecialSubgroup[M_,{N_,sList_List},w_String]:=StringReplace[w,Table[ToString[i]-> sList[[i]],{i,1,Length[sList]}]]
+ConvertFromSpecialSubgroup[M_,{N_,sList_List},w_String]:=
+CoxeterWordRewrite[w,Table["s"<>ToString[i]-> sList[[i]],{i,1,Length[sList]}]]
 ConvertFromSpecialSubgroup[M_,{N_,sList_List},wList_List]:=ConvertFromSpecialSubgroup[M,{N,sList},#]&/@wList
 (*Private function: ConvertFromSpecialSubgroup[M,{N,sList},w] applies the inverse operation to ConvertToSpecialSubgroup[M,{N,sList},w].
 ConvertFromSpecialSubgroup[M,{N,sList},wList] applies the inverse operation to ConvertToSpecialSubgroup[M,{N,sList},wList].*)
@@ -315,9 +423,9 @@ IrreducibleFactorComplement[M_,s_]:=SpecialSubgroup[M,Complement[Generators[M],I
 
 (* ::Input::Initialization:: *)
 IrreducibleFactors[M_]:=If[IrreducibleCGQ[M],{Generators[M]},
-Join[{IrreducibleFactor[M,"1"]},
-ConvertFromSpecialSubgroup[M,IrreducibleFactorComplement[M,"1"],#
-]&/@IrreducibleFactors[IrreducibleFactorComplement[M,"1"][[1]]]
+Join[{IrreducibleFactor[M,"s1"]},
+ConvertFromSpecialSubgroup[M,IrreducibleFactorComplement[M,"s1"],#
+]&/@IrreducibleFactors[IrreducibleFactorComplement[M,"s1"][[1]]]
 ]
 ]
 
@@ -428,7 +536,7 @@ CoxeterElement[M_]:=Fold[StringJoin,Generators[M]]
 (* ::Input::Initialization:: *)
 LongestElement[M_]:=Fold[StringJoin,Table[CoxeterElement[M],{i,1,CoxeterNumber[M]/2}]]/;EvenQ[CoxeterNumber[M]]&&IrreducibleCGQ[M]
 LongestElement[M_]:=Braid[M[[1]][[2]],Generators[M][[1]],Generators[M][[2]]]/;Length[M]==2&&M[[1]][[2]]<Infinity
-LongestElement[M_]:=Fold[StringJoin,StringReplace[LongestElement[#[[1]]],Table[ToString[i]->#[[2]][[i]],{i,1,Length[#[[1]]]}]]&/@IrreducibleSpecialSubgroups[M]]/;!IrreducibleCGQ[M]&&SphericalCGQ[M]
+LongestElement[M_]:=Fold[StringJoin,CoxeterWordRewrite[LongestElement[#[[1]]],Table["s"<>ToString[i]->#[[2]][[i]],{i,1,Length[#[[1]]]}]]&/@IrreducibleSpecialSubgroups[M]]/;!IrreducibleCGQ[M]&&SphericalCGQ[M]
 LongestElement[M_]:=(Message[LongestElement::notdefined];$Failed)/;!SphericalCGQ[M]
 
 
@@ -519,7 +627,10 @@ FE4={{1,3,2,2,2},{3,1,3,2,2},{2,3,1,4,2},{2,2,4,1,3},{2,2,2,3,1}};
 GE2={{1,3,2},{3,1,6},{2,6,1}};
 
 
-TriangleCG[p_,q_,r_]:={{1,p,r},{p,1,q},{r,q,1}};
+TriangleCG[p_,q_,r_]:=Module[{min,mid,max},
+{min,mid,max}=Sort[{p,q,r}];
+{{1,mid,min},{mid,1,max},{min,max,1}}
+]
 
 
 FreeCG[n_]:=Table[Table[
@@ -538,21 +649,12 @@ PermutationPower[Cycles[{Table[k,{k,1,n}]}],j-1]],
 RABipartiteG[m_,n_]:=Table[Table[
 If[i==j,1,If[(i<=n&&j<=n)||(i>n&&j>n),Infinity,2]],
 {i,1,n+m}],
-{j,1,n+m}]
+{j,1,n+m}]/;m<=n
+RABipartiteG[m_,n_]:=RABipartiteG[n,m]/;m>n
 
 
 (* ::Input::Initialization:: *)
 RACGroup[A_]:=Table[Table[If[i==j,1,If[A[[i]][[j]]==1,2,Infinity]],{i,1,Length[A]}],{j,1,Length[A]}]/;MatrixQ[A]&&SubsetQ[{0,1},Flatten[A]]&&SymmetricMatrixQ[A]
-
-
-(*Protect[
-(*Diagrams*)
-CoxeterEdges,CoxeterEdgeLabels,PresentationEdges,PresentationEdgeLabels,
-(*Special Subgroups*)
-DiagramNeighbours,ConnectedComponentUnionQ,ConvertToSpecialSubgroup,ConvertFromSpecialSubgroup,IrreducibleFactorComplement, 
-(*Examples of Coxeter matrices*)
-SymmetricEntry
-];*)
 
 
 End[];
@@ -563,8 +665,10 @@ Protect[
 ValidCoxeterMatrixQ,BilinearForm, FormSignature,
 (*Diagrams*)
 CoxeterAdjacencyMatrix,CoxeterDiagram,PresentationAdjacencyMatrix,PresentationDiagram,
+(*Generators and word manipulations*)
+Generators,GeneratorQ,GeneratorIndex,GeneratorSort,CoxeterWordRewrite,DisplayGenerator,DisplayWord,WordLength,WordInverse,WordTake,WordDrop,WordSymbols,WordPalindromeQ,CentralGenerator,ConjugatingElement,
 (*Special Subgroups*)
-Generators, IrreducibleFactor,IrreducibleCGQ,SpecialSubgroup,IrreducibleFactors,IrreducibleSpecialSubgroups,SpecialSubgroups,SphericalSubgroups,
+IrreducibleFactor,IrreducibleCGQ,SpecialSubgroup,ConvertToSpecialSubgroup,ConvertFromSpecialSubgroup,IrreducibleFactors,IrreducibleSpecialSubgroups,SpecialSubgroups,SphericalSubgroups,
 (*Types of Coxeter system*)
 EuclideanCGQ, SphericalCGQ,HyperbolicCGQ,EvenCGQ,RACGQ,
 (*Coxeter system data*)
@@ -577,3 +681,6 @@ TypeA,TypeB,TypeC,TypeD,E6,E7,E8,F4,G2,H3,H4,I2,TypeAE,TypeAE,TypeAE,TypeAE,EE6,
 
 
 EndPackage[];
+
+
+

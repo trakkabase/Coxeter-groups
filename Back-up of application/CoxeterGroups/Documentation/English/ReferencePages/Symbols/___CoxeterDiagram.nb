@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     23776,        607]
-NotebookOptionsPosition[     18874,        496]
-NotebookOutlinePosition[     20412,        536]
-CellTagsIndexPosition[     20327,        531]
+NotebookDataLength[     25136,        625]
+NotebookOptionsPosition[     20233,        514]
+NotebookOutlinePosition[     21771,        554]
+CellTagsIndexPosition[     21686,        549]
 WindowTitle->CoxeterDiagram - CoxeterGroups`BasicCoxeterFunctions`
 WindowFrame->Normal*)
 
@@ -182,7 +182,7 @@ Cell["Display the Coxeter-Dynkin diagram for a Coxeter system", "ExampleText",
 
 Cell[BoxData[
  RowBox[{"<<", "CoxeterGroups`"}]], "Input",
- CellLabel->"In[1]:=",
+ CellLabel->"In[2]:=",
  CellID->489445096,ExpressionUUID->"8c63569d-2fd8-434b-a15a-c27ea81c5328"],
 
 Cell[CellGroupData[{
@@ -190,7 +190,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"CoxeterDiagram", "[", 
   RowBox[{"TypeBE", "[", "6", "]"}], "]"}]], "Input",
- CellLabel->"In[6]:=",
+ CellLabel->"In[3]:=",
  CellID->650227709,ExpressionUUID->"3fdeb128-a4fa-4256-aff6-1cc702f7cfc0"],
 
 Cell[BoxData[
@@ -207,8 +207,13 @@ Cell[BoxData[
          UndirectedEdge[5, 6] -> 4, UndirectedEdge[1, 2] -> 3, 
          UndirectedEdge[4, 5] -> 3, UndirectedEdge[2, 3] -> 3}, 
        VertexLabels -> {
-        6 -> "6", 3 -> "3", 5 -> "5", 7 -> "7", 4 -> "4", 2 -> "2", 1 -> 
-         "1"}}]]}, 
+        6 -> "\!\(\*SubscriptBox[\"\\\"s\\\"\", \"\\\"6\\\"\"]\)", 3 -> 
+         "\!\(\*SubscriptBox[\"\\\"s\\\"\", \"\\\"3\\\"\"]\)", 5 -> 
+         "\!\(\*SubscriptBox[\"\\\"s\\\"\", \"\\\"5\\\"\"]\)", 7 -> 
+         "\!\(\*SubscriptBox[\"\\\"s\\\"\", \"\\\"7\\\"\"]\)", 4 -> 
+         "\!\(\*SubscriptBox[\"\\\"s\\\"\", \"\\\"4\\\"\"]\)", 2 -> 
+         "\!\(\*SubscriptBox[\"\\\"s\\\"\", \"\\\"2\\\"\"]\)", 1 -> 
+         "\!\(\*SubscriptBox[\"\\\"s\\\"\", \"\\\"1\\\"\"]\)"}}]]}, 
     TagBox[GraphicsGroupBox[{
        {Hue[0.6, 0.7, 0.5], Opacity[
         0.7], {LineBox[{{0., 0.8870655251454875}, {0.4435327625727437, 
@@ -239,42 +244,49 @@ Cell[BoxData[
           BaseStyle->"Graphics"]}}, 
        {Hue[0.6, 0.2, 0.8], EdgeForm[{GrayLevel[0], Opacity[
         0.7]}], {DiskBox[{0., 0.8870655251454875}, 0.027759551950946065], 
-         InsetBox["\<\"1\"\>", 
+         InsetBox["\<\"\\!\\(\\*SubscriptBox[\\\"\\\\\\\"s\\\\\\\"\\\", \
+\\\"\\\\\\\"1\\\\\\\"\\\"]\\)\"\>", 
           Offset[{2, 2}, {0.027759551950946065, 0.9148250770964336}], 
           ImageScaled[{0, 0}],
           BaseStyle->"Graphics"]}, {
          DiskBox[{0.4435327625727437, 1.774131050290975}, 
           0.027759551950946065], 
-         InsetBox["\<\"2\"\>", 
+         InsetBox["\<\"\\!\\(\\*SubscriptBox[\\\"\\\\\\\"s\\\\\\\"\\\", \
+\\\"\\\\\\\"2\\\\\\\"\\\"]\\)\"\>", 
           Offset[{2, 2}, {0.4712923145236898, 1.8018906022419212}], 
           ImageScaled[{0, 0}],
           BaseStyle->"Graphics"]}, {
          DiskBox[{1.1088319064318592, 2.6611965754364624}, 
           0.027759551950946065], 
-         InsetBox["\<\"3\"\>", 
+         InsetBox["\<\"\\!\\(\\*SubscriptBox[\\\"\\\\\\\"s\\\\\\\"\\\", \
+\\\"\\\\\\\"3\\\\\\\"\\\"]\\)\"\>", 
           Offset[{2, 2}, {1.1365914583828054, 2.6889561273874083}], 
           ImageScaled[{0, 0}],
           BaseStyle->"Graphics"]}, {
          DiskBox[{1.7741310502909748, 1.774131050290975}, 
           0.027759551950946065], 
-         InsetBox["\<\"4\"\>", 
+         InsetBox["\<\"\\!\\(\\*SubscriptBox[\\\"\\\\\\\"s\\\\\\\"\\\", \
+\\\"\\\\\\\"4\\\\\\\"\\\"]\\)\"\>", 
           Offset[{2, 2}, {1.801890602241921, 1.8018906022419212}], 
           ImageScaled[{0, 0}],
           BaseStyle->"Graphics"]}, {
          DiskBox[{1.7741310502909748, 0.8870655251454875}, 
           0.027759551950946065], 
-         InsetBox["\<\"5\"\>", 
+         InsetBox["\<\"\\!\\(\\*SubscriptBox[\\\"\\\\\\\"s\\\\\\\"\\\", \
+\\\"\\\\\\\"5\\\\\\\"\\\"]\\)\"\>", 
           Offset[{2, 2}, {1.801890602241921, 0.9148250770964336}], 
           ImageScaled[{0, 0}],
           BaseStyle->"Graphics"]}, {
          DiskBox[{1.7741310502909748, 0.}, 0.027759551950946065], 
-         InsetBox["\<\"6\"\>", 
+         InsetBox["\<\"\\!\\(\\*SubscriptBox[\\\"\\\\\\\"s\\\\\\\"\\\", \
+\\\"\\\\\\\"6\\\\\\\"\\\"]\\)\"\>", 
           Offset[{2, 2}, {1.801890602241921, 0.027759551950946065}], 
           ImageScaled[{0, 0}],
           BaseStyle->"Graphics"]}, {
          DiskBox[{0.8870655251454874, 0.8870655251454875}, 
           0.027759551950946065], 
-         InsetBox["\<\"7\"\>", 
+         InsetBox["\<\"\\!\\(\\*SubscriptBox[\\\"\\\\\\\"s\\\\\\\"\\\", \
+\\\"\\\\\\\"7\\\\\\\"\\\"]\\)\"\>", 
           Offset[{2, 2}, {0.9148250770964335, 0.9148250770964336}], 
           ImageScaled[{0, 0}],
           BaseStyle->"Graphics"]}}}],
@@ -285,8 +297,8 @@ Cell[BoxData[
   FormatType->TraditionalForm,
   FrameTicks->None]], "Output",
  CellContext->"Cell$$121668`",
- CellLabel->"Out[6]=",
- CellID->530526963,ExpressionUUID->"6432e7b4-0b53-429e-b37b-82f42303514b"]
+ CellLabel->"Out[3]=",
+ CellID->408454663,ExpressionUUID->"9a9f704a-9c30-4ab2-83a0-c2c08f1fb0b4"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -295,7 +307,7 @@ Cell[BoxData[
  RowBox[{"CoxeterDiagram", "[", 
   RowBox[{"TriangleCG", "[", 
    RowBox[{"3", ",", "4", ",", "7"}], "]"}], "]"}]], "Input",
- CellLabel->"In[8]:=",
+ CellLabel->"In[4]:=",
  CellID->78595811,ExpressionUUID->"4a02d85d-021c-4e69-881b-af4bcc438cb3"],
 
 Cell[BoxData[
@@ -307,41 +319,47 @@ Cell[BoxData[
        Automatic, {3, 3}, 0, {
         1, {{0, 2, 4, 6}, {{2}, {3}, {1}, {3}, {1}, {2}}}, Pattern}]}, {
       EdgeLabels -> {
-        UndirectedEdge[1, 2] -> 3, UndirectedEdge[2, 3] -> 4, 
-         UndirectedEdge[1, 3] -> 7}, 
-       VertexLabels -> {3 -> "3", 2 -> "2", 1 -> "1"}}]]}, 
+        UndirectedEdge[1, 2] -> 4, UndirectedEdge[2, 3] -> 7, 
+         UndirectedEdge[1, 3] -> 3}, 
+       VertexLabels -> {
+        3 -> "\!\(\*SubscriptBox[\"\\\"s\\\"\", \"\\\"3\\\"\"]\)", 2 -> 
+         "\!\(\*SubscriptBox[\"\\\"s\\\"\", \"\\\"2\\\"\"]\)", 1 -> 
+         "\!\(\*SubscriptBox[\"\\\"s\\\"\", \"\\\"1\\\"\"]\)"}}]]}, 
     TagBox[GraphicsGroupBox[{
        {Hue[0.6, 0.7, 0.5], Opacity[
         0.7], {LineBox[{{-0.8660254037844384, -0.49999999999999933`}, {
           1.8369701987210297`*^-16, 1.}}], 
-         InsetBox["3", {-0.4330127018922191, 0.25000000000000033}, 
+         InsetBox["4", {-0.4330127018922191, 0.25000000000000033}, 
           ImageScaled[{0.5, 0.5}],
           BaseStyle->"Graphics"]}, {
          LineBox[{{-0.8660254037844384, -0.49999999999999933`}, {
           0.8660254037844389, -0.5000000000000012}}], 
-         InsetBox["7", {2.7755575615628914*^-16, -0.5000000000000002}, 
+         InsetBox["3", {2.7755575615628914*^-16, -0.5000000000000002}, 
           ImageScaled[{0.5, 0.5}],
           BaseStyle->"Graphics"]}, {
          LineBox[{{1.8369701987210297`*^-16, 1.}, {
           0.8660254037844389, -0.5000000000000012}}], 
-         InsetBox["4", {0.4330127018922196, 0.2499999999999994}, ImageScaled[{0.5, 0.5}],
+         InsetBox["7", {0.4330127018922196, 0.2499999999999994}, ImageScaled[{0.5, 0.5}],
           BaseStyle->"Graphics"]}}, 
        {Hue[0.6, 0.2, 0.8], EdgeForm[{GrayLevel[0], Opacity[
         0.7]}], {
          DiskBox[{-0.8660254037844384, -0.49999999999999933}, 
           0.020399597244776385], 
-         InsetBox["\<\"1\"\>", 
+         InsetBox["\<\"\\!\\(\\*SubscriptBox[\\\"\\\\\\\"s\\\\\\\"\\\", \
+\\\"\\\\\\\"1\\\\\\\"\\\"]\\)\"\>", 
           Offset[{2, 2}, {-0.845625806539662, -0.479600402755223}], 
           ImageScaled[{0, 0}],
           BaseStyle->"Graphics"]}, {
          DiskBox[{1.8369701987210297*^-16, 1.}, 0.020399597244776385], 
-         InsetBox["\<\"2\"\>", 
+         InsetBox["\<\"\\!\\(\\*SubscriptBox[\\\"\\\\\\\"s\\\\\\\"\\\", \
+\\\"\\\\\\\"2\\\\\\\"\\\"]\\)\"\>", 
           Offset[{2, 2}, {0.02039959724477657, 1.0203995972447764}], 
           ImageScaled[{0, 0}],
           BaseStyle->"Graphics"]}, {
          DiskBox[{0.8660254037844389, -0.5000000000000012}, 
           0.020399597244776385], 
-         InsetBox["\<\"3\"\>", 
+         InsetBox["\<\"\\!\\(\\*SubscriptBox[\\\"\\\\\\\"s\\\\\\\"\\\", \
+\\\"\\\\\\\"3\\\\\\\"\\\"]\\)\"\>", 
           Offset[{2, 2}, {0.8864250010292153, -0.47960040275522486}], 
           ImageScaled[{0, 0}],
           BaseStyle->"Graphics"]}}}],
@@ -352,8 +370,8 @@ Cell[BoxData[
   FormatType->TraditionalForm,
   FrameTicks->None]], "Output",
  CellContext->"Cell$$121668`",
- CellLabel->"Out[8]=",
- CellID->565328929,ExpressionUUID->"fd8e5ba7-c4b2-4955-89f2-5c875aa9b6c4"]
+ CellLabel->"Out[4]=",
+ CellID->693160444,ExpressionUUID->"46510f11-939b-4023-8623-538e4ad0641f"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -530,7 +548,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 20130, 524}
+ {"PrimaryExamplesSection", 21489, 542}
  }
 *)
 (*NotebookFileOutline
@@ -564,50 +582,50 @@ Cell[6651, 182, 156, 3, 26, "Input",ExpressionUUID->"8c63569d-2fd8-434b-a15a-c27
 Cell[CellGroupData[{
 Cell[6832, 189, 198, 4, 26, "Input",ExpressionUUID->"3fdeb128-a4fa-4256-aff6-1cc702f7cfc0",
  CellID->650227709],
-Cell[7033, 195, 4426, 93, 237, "Output",ExpressionUUID->"6432e7b4-0b53-429e-b37b-82f42303514b",
- CellID->530526963]
+Cell[7033, 195, 5372, 105, 237, "Output",ExpressionUUID->"9a9f704a-9c30-4ab2-83a0-c2c08f1fb0b4",
+ CellID->408454663]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11496, 293, 235, 5, 26, "Input",ExpressionUUID->"4a02d85d-021c-4e69-881b-af4bcc438cb3",
+Cell[12442, 305, 235, 5, 26, "Input",ExpressionUUID->"4a02d85d-021c-4e69-881b-af4bcc438cb3",
  CellID->78595811],
-Cell[11734, 300, 2501, 55, 187, "Output",ExpressionUUID->"fd8e5ba7-c4b2-4955-89f2-5c875aa9b6c4",
- CellID->565328929]
+Cell[12680, 312, 2914, 61, 184, "Output",ExpressionUUID->"46510f11-939b-4023-8623-538e4ad0641f",
+ CellID->693160444]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14296, 362, 548, 14, 45, "SeeAlsoSection",ExpressionUUID->"6cf63c0c-33c1-49f9-b004-5ed46c78a27a",
+Cell[15655, 380, 548, 14, 45, "SeeAlsoSection",ExpressionUUID->"6cf63c0c-33c1-49f9-b004-5ed46c78a27a",
  CellID->536136595],
-Cell[14847, 378, 739, 20, 19, "SeeAlso",ExpressionUUID->"f805016b-6a0b-492a-849e-c1e337b4a287",
+Cell[16206, 396, 739, 20, 19, "SeeAlso",ExpressionUUID->"f805016b-6a0b-492a-849e-c1e337b4a287",
  CellID->122207512]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15623, 403, 550, 14, 45, "TutorialsSection",ExpressionUUID->"371de606-6420-4544-aef9-c8eefd4ff1ec",
+Cell[16982, 421, 550, 14, 45, "TutorialsSection",ExpressionUUID->"371de606-6420-4544-aef9-c8eefd4ff1ec",
  CellID->67399556],
-Cell[16176, 419, 208, 3, 17, "Tutorials",ExpressionUUID->"ed66367b-d5a5-4ad6-9402-156a10d76579",
+Cell[17535, 437, 208, 3, 17, "Tutorials",ExpressionUUID->"ed66367b-d5a5-4ad6-9402-156a10d76579",
  CellID->75756609],
-Cell[16387, 424, 209, 3, 17, "Tutorials",ExpressionUUID->"1c816489-24ca-4476-8d0e-0c221e82aea2",
+Cell[17746, 442, 209, 3, 17, "Tutorials",ExpressionUUID->"1c816489-24ca-4476-8d0e-0c221e82aea2",
  CellID->616840842]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16633, 432, 552, 14, 45, "MoreAboutSection",ExpressionUUID->"0f9aebf0-b2f2-4d8f-a6f8-f7c183ce29b7",
+Cell[17992, 450, 552, 14, 45, "MoreAboutSection",ExpressionUUID->"0f9aebf0-b2f2-4d8f-a6f8-f7c183ce29b7",
  CellID->332470378],
-Cell[17188, 448, 203, 3, 17, "MoreAbout",ExpressionUUID->"73e2a429-653d-4ee9-a256-f0b30c588d82",
+Cell[18547, 466, 203, 3, 17, "MoreAbout",ExpressionUUID->"73e2a429-653d-4ee9-a256-f0b30c588d82",
  CellID->199887948],
-Cell[17394, 453, 203, 3, 17, "MoreAbout",ExpressionUUID->"100a8a85-b365-447c-a831-fb410ddf28da",
+Cell[18753, 471, 203, 3, 17, "MoreAbout",ExpressionUUID->"100a8a85-b365-447c-a831-fb410ddf28da",
  CellID->162211886]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17634, 461, 557, 14, 45, "RelatedLinksSection",ExpressionUUID->"53d5edbb-d871-4003-84d4-1f49f37fc512",
+Cell[18993, 479, 557, 14, 45, "RelatedLinksSection",ExpressionUUID->"53d5edbb-d871-4003-84d4-1f49f37fc512",
  CellID->79578221],
-Cell[18194, 477, 204, 4, 17, "RelatedLinks",ExpressionUUID->"870dc5cb-5322-4597-80fe-f926ba4ba7e5",
+Cell[19553, 495, 204, 4, 17, "RelatedLinks",ExpressionUUID->"870dc5cb-5322-4597-80fe-f926ba4ba7e5",
  CellID->441764044],
-Cell[18401, 483, 203, 4, 17, "RelatedLinks",ExpressionUUID->"6c469bb1-cdec-411f-bf25-55e43929ea53",
+Cell[19760, 501, 203, 4, 17, "RelatedLinks",ExpressionUUID->"6c469bb1-cdec-411f-bf25-55e43929ea53",
  CellID->17982777]
 }, Open  ]],
-Cell[18619, 490, 151, 1, 43, "History",ExpressionUUID->"1737aa83-651d-4ef9-b4b6-28e4f6c61e6d",
+Cell[19978, 508, 151, 1, 43, "History",ExpressionUUID->"1737aa83-651d-4ef9-b4b6-28e4f6c61e6d",
  CellID->197610966],
-Cell[18773, 493, 97, 1, 25, "FooterCell",ExpressionUUID->"25c6e07d-1528-46e6-a9de-c18e33befd59",
+Cell[20132, 511, 97, 1, 25, "FooterCell",ExpressionUUID->"25c6e07d-1528-46e6-a9de-c18e33befd59",
  CellID->39777036]
 }
 ]

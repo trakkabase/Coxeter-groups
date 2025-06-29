@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13348,        354]
+NotebookDataLength[     13353,        354]
 NotebookOptionsPosition[      9233,        255]
-NotebookOutlinePosition[     10959,        303]
-CellTagsIndexPosition[     10916,        300]
+NotebookOutlinePosition[     10964,        303]
+CellTagsIndexPosition[     10921,        300]
 WindowTitle->Defining a new Coxeter system - CoxeterGroups
 WindowFrame->Normal*)
 
@@ -254,8 +254,8 @@ Cell[" ", "FooterCell",
  CellID->170640280,ExpressionUUID->"6b7c6af6-d2e2-4281-b60b-553be4d6d3ca"]
 },
 Saveable->False,
-WindowSize->{956, 873},
-WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+WindowSize->{956, 987},
+WindowMargins->{{Automatic, -977}, {906, Automatic}},
 WindowTitle->"Defining a new Coxeter system - CoxeterGroups",
 DockedCells->FEPrivate`FrontEndResource["FEExpressions", "HelpViewerToolbar"],
 PageHeaders->{{None, None, None}, {None, None, 

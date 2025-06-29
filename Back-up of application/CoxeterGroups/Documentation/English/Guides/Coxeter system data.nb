@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16088,        399]
+NotebookDataLength[     16093,        399]
 NotebookOptionsPosition[     11707,        303]
-NotebookOutlinePosition[     13330,        348]
-CellTagsIndexPosition[     13287,        345]
+NotebookOutlinePosition[     13335,        348]
+CellTagsIndexPosition[     13292,        345]
 WindowTitle->Coxeter system data - CoxeterGroups
 WindowFrame->Normal*)
 
@@ -302,8 +302,8 @@ with respect to a given Coxeter matrix."
 }, Open  ]]
 },
 Saveable->False,
-WindowSize->{958, 873},
-WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+WindowSize->{958, 988},
+WindowMargins->{{Automatic, -978}, {905, Automatic}},
 WindowTitle->"Coxeter system data - CoxeterGroups",
 DockedCells->FEPrivate`FrontEndResource["FEExpressions", "HelpViewerToolbar"],
 PageHeaders->{{None, None, None}, {None, None, 

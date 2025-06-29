@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     24826,        631]
-NotebookOptionsPosition[     19507,        508]
-NotebookOutlinePosition[     21462,        560]
-CellTagsIndexPosition[     21377,        555]
+NotebookDataLength[     26208,        651]
+NotebookOptionsPosition[     20887,        528]
+NotebookOutlinePosition[     22842,        580]
+CellTagsIndexPosition[     22757,        575]
 WindowTitle->PresentationDiagram - CoxeterGroups`BasicCoxeterFunctions`
 WindowFrame->Normal*)
 
@@ -206,7 +206,12 @@ Cell[BoxData[
         UndirectedEdge[1, 5] -> 2, UndirectedEdge[3, 4] -> 2, 
          UndirectedEdge[1, 2] -> 2, UndirectedEdge[4, 5] -> 2, 
          UndirectedEdge[2, 3] -> 2}, 
-       VertexLabels -> {3 -> "3", 5 -> "5", 4 -> "4", 2 -> "2", 1 -> "1"}}]]}, 
+       VertexLabels -> {
+        3 -> "\!\(\*SubscriptBox[\"\\\"s\\\"\", \"\\\"3\\\"\"]\)", 5 -> 
+         "\!\(\*SubscriptBox[\"\\\"s\\\"\", \"\\\"5\\\"\"]\)", 4 -> 
+         "\!\(\*SubscriptBox[\"\\\"s\\\"\", \"\\\"4\\\"\"]\)", 2 -> 
+         "\!\(\*SubscriptBox[\"\\\"s\\\"\", \"\\\"2\\\"\"]\)", 1 -> 
+         "\!\(\*SubscriptBox[\"\\\"s\\\"\", \"\\\"1\\\"\"]\)"}}]]}, 
     TagBox[GraphicsGroupBox[{
        {Hue[0.6, 0.7, 0.5], Opacity[
         0.7], {LineBox[{{-0.9510565162951538, 
@@ -238,30 +243,35 @@ Cell[BoxData[
         0.7]}], {
          DiskBox[{-0.9510565162951538, 0.3090169943749484}, 
           0.021812234931106983], 
-         InsetBox["\<\"1\"\>", 
+         InsetBox["\<\"\\!\\(\\*SubscriptBox[\\\"\\\\\\\"s\\\\\\\"\\\", \
+\\\"\\\\\\\"1\\\\\\\"\\\"]\\)\"\>", 
           Offset[{2, 2}, {-0.9292442813640468, 0.3308292293060554}], 
           ImageScaled[{0, 0}],
           BaseStyle->"Graphics"]}, {
          DiskBox[{-7.044813998280222*^-16, 1.}, 0.021812234931106983], 
-         InsetBox["\<\"2\"\>", 
+         InsetBox["\<\"\\!\\(\\*SubscriptBox[\\\"\\\\\\\"s\\\\\\\"\\\", \
+\\\"\\\\\\\"2\\\\\\\"\\\"]\\)\"\>", 
           Offset[{2, 2}, {0.02181223493110628, 1.021812234931107}], 
           ImageScaled[{0, 0}],
           BaseStyle->"Graphics"]}, {
          DiskBox[{0.9510565162951533, 0.30901699437494634}, 
           0.021812234931106983], 
-         InsetBox["\<\"3\"\>", 
+         InsetBox["\<\"\\!\\(\\*SubscriptBox[\\\"\\\\\\\"s\\\\\\\"\\\", \
+\\\"\\\\\\\"3\\\\\\\"\\\"]\\)\"\>", 
           Offset[{2, 2}, {0.9728687512262603, 0.3308292293060533}], 
           ImageScaled[{0, 0}],
           BaseStyle->"Graphics"]}, {
          DiskBox[{0.5877852522924738, -0.8090169943749481}, 
           0.021812234931106983], 
-         InsetBox["\<\"4\"\>", 
+         InsetBox["\<\"\\!\\(\\*SubscriptBox[\\\"\\\\\\\"s\\\\\\\"\\\", \
+\\\"\\\\\\\"4\\\\\\\"\\\"]\\)\"\>", 
           Offset[{2, 2}, {0.6095974872235808, -0.7872047594438412}], 
           ImageScaled[{0, 0}],
           BaseStyle->"Graphics"]}, {
          DiskBox[{-0.5877852522924726, -0.8090169943749468}, 
           0.021812234931106983], 
-         InsetBox["\<\"5\"\>", 
+         InsetBox["\<\"\\!\\(\\*SubscriptBox[\\\"\\\\\\\"s\\\\\\\"\\\", \
+\\\"\\\\\\\"5\\\\\\\"\\\"]\\)\"\>", 
           Offset[{2, 2}, {-0.5659730173613656, -0.7872047594438398}], 
           ImageScaled[{0, 0}],
           BaseStyle->"Graphics"]}}}],
@@ -273,7 +283,7 @@ Cell[BoxData[
   FrameTicks->None]], "Output",
  CellContext->"Cell$$121920`",
  CellLabel->"Out[2]=",
- CellID->16444105,ExpressionUUID->"3eefd938-8a05-4730-a3d8-4576e1f84c3a"]
+ CellID->107045463,ExpressionUUID->"5b6f5b58-d518-4732-96a2-3ef3cca6fa9e"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -282,7 +292,7 @@ Cell[BoxData[
  RowBox[{"PresentationDiagram", "[", 
   RowBox[{"RABipartiteG", "[", 
    RowBox[{"2", ",", "3"}], "]"}], "]"}]], "Input",
- CellLabel->"In[5]:=",
+ CellLabel->"In[3]:=",
  CellID->578218393,ExpressionUUID->"c02d44b3-ce21-4465-8cac-38502ba38a5a"],
 
 Cell[BoxData[
@@ -298,7 +308,12 @@ Cell[BoxData[
         UndirectedEdge[1, 5] -> 2, UndirectedEdge[1, 4] -> 2, 
          UndirectedEdge[3, 4] -> 2, UndirectedEdge[2, 5] -> 2, 
          UndirectedEdge[2, 4] -> 2, UndirectedEdge[3, 5] -> 2}, 
-       VertexLabels -> {3 -> "3", 5 -> "5", 4 -> "4", 2 -> "2", 1 -> "1"}}]]}, 
+       VertexLabels -> {
+        3 -> "\!\(\*SubscriptBox[\"\\\"s\\\"\", \"\\\"3\\\"\"]\)", 5 -> 
+         "\!\(\*SubscriptBox[\"\\\"s\\\"\", \"\\\"5\\\"\"]\)", 4 -> 
+         "\!\(\*SubscriptBox[\"\\\"s\\\"\", \"\\\"4\\\"\"]\)", 2 -> 
+         "\!\(\*SubscriptBox[\"\\\"s\\\"\", \"\\\"2\\\"\"]\)", 1 -> 
+         "\!\(\*SubscriptBox[\"\\\"s\\\"\", \"\\\"1\\\"\"]\)"}}]]}, 
     TagBox[GraphicsGroupBox[{
        {Hue[0.6, 0.7, 0.5], Opacity[
         0.7], {LineBox[{{0., 0.6087417523902826}, {0.9333547488570143, 
@@ -330,30 +345,35 @@ Cell[BoxData[
           BaseStyle->"Graphics"]}}, 
        {Hue[0.6, 0.2, 0.8], EdgeForm[{GrayLevel[0], Opacity[
         0.7]}], {DiskBox[{0., 0.6087417523902826}, 0.019737998967176512], 
-         InsetBox["\<\"1\"\>", 
+         InsetBox["\<\"\\!\\(\\*SubscriptBox[\\\"\\\\\\\"s\\\\\\\"\\\", \
+\\\"\\\\\\\"1\\\\\\\"\\\"]\\)\"\>", 
           Offset[{2, 2}, {0.019737998967176512, 0.6284797513574591}], 
           ImageScaled[{0, 0}],
           BaseStyle->"Graphics"]}, {
          DiskBox[{1.6536717088818484, 1.2169184785346623}, 
           0.019737998967176512], 
-         InsetBox["\<\"2\"\>", 
+         InsetBox["\<\"\\!\\(\\*SubscriptBox[\\\"\\\\\\\"s\\\\\\\"\\\", \
+\\\"\\\\\\\"2\\\\\\\"\\\"]\\)\"\>", 
           Offset[{2, 2}, {1.6734097078490249, 1.2366564775018387}], 
           ImageScaled[{0, 0}],
           BaseStyle->"Graphics"]}, {
          DiskBox[{1.6534100458758214, 0.}, 0.019737998967176512], 
-         InsetBox["\<\"3\"\>", 
+         InsetBox["\<\"\\!\\(\\*SubscriptBox[\\\"\\\\\\\"s\\\\\\\"\\\", \
+\\\"\\\\\\\"3\\\\\\\"\\\"]\\)\"\>", 
           Offset[{2, 2}, {1.6731480448429978, 0.019737998967176512}], 
           ImageScaled[{0, 0}],
           BaseStyle->"Graphics"]}, {
          DiskBox[{0.9333547488570143, 0.9506184749911817}, 
           0.019737998967176512], 
-         InsetBox["\<\"4\"\>", 
+         InsetBox["\<\"\\!\\(\\*SubscriptBox[\\\"\\\\\\\"s\\\\\\\"\\\", \
+\\\"\\\\\\\"4\\\\\\\"\\\"]\\)\"\>", 
           Offset[{2, 2}, {0.9530927478241908, 0.9703564739583582}], 
           ImageScaled[{0, 0}],
           BaseStyle->"Graphics"]}, {
          DiskBox[{0.9328471144431412, 0.2666987770466018}, 
           0.019737998967176512], 
-         InsetBox["\<\"5\"\>", 
+         InsetBox["\<\"\\!\\(\\*SubscriptBox[\\\"\\\\\\\"s\\\\\\\"\\\", \
+\\\"\\\\\\\"5\\\\\\\"\\\"]\\)\"\>", 
           Offset[{2, 2}, {0.9525851134103177, 0.28643677601377826}], 
           ImageScaled[{0, 0}],
           BaseStyle->"Graphics"]}}}],
@@ -364,8 +384,8 @@ Cell[BoxData[
   FormatType->TraditionalForm,
   FrameTicks->None]], "Output",
  CellContext->"Cell$$121920`",
- CellLabel->"Out[5]=",
- CellID->62907055,ExpressionUUID->"c2bd33b4-2c62-440f-acba-57cf239801f4"]
+ CellLabel->"Out[3]=",
+ CellID->232474981,ExpressionUUID->"341d28e5-592b-440e-bf48-1cb74536af60"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -554,7 +574,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 21179, 548}
+ {"PrimaryExamplesSection", 22559, 568}
  }
 *)
 (*NotebookFileOutline
@@ -588,50 +608,50 @@ Cell[6705, 182, 155, 3, 26, "Input",ExpressionUUID->"f045f559-e9cb-49a6-88bc-1f0
 Cell[CellGroupData[{
 Cell[6885, 189, 207, 4, 26, "Input",ExpressionUUID->"ce6829d3-8c3b-4695-8d83-b9dc4f22a10c",
  CellID->345294994],
-Cell[7095, 195, 3667, 80, 201, "Output",ExpressionUUID->"3eefd938-8a05-4730-a3d8-4576e1f84c3a",
- CellID->16444105]
+Cell[7095, 195, 4357, 90, 197, "Output",ExpressionUUID->"5b6f5b58-d518-4732-96a2-3ef3cca6fa9e",
+ CellID->107045463]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10799, 280, 233, 5, 26, "Input",ExpressionUUID->"c02d44b3-ce21-4465-8cac-38502ba38a5a",
+Cell[11489, 290, 233, 5, 26, "Input",ExpressionUUID->"c02d44b3-ce21-4465-8cac-38502ba38a5a",
  CellID->578218393],
-Cell[11035, 287, 3833, 80, 165, "Output",ExpressionUUID->"c2bd33b4-2c62-440f-acba-57cf239801f4",
- CellID->62907055]
+Cell[11725, 297, 4523, 90, 162, "Output",ExpressionUUID->"341d28e5-592b-440e-bf48-1cb74536af60",
+ CellID->232474981]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14929, 374, 548, 14, 45, "SeeAlsoSection",ExpressionUUID->"0b4b9fb0-7dd8-423c-b594-1b2f21eb4d88",
+Cell[16309, 394, 548, 14, 45, "SeeAlsoSection",ExpressionUUID->"0b4b9fb0-7dd8-423c-b594-1b2f21eb4d88",
  CellID->259843048],
-Cell[15480, 390, 739, 20, 19, "SeeAlso",ExpressionUUID->"a5146a6d-a075-4d89-8af3-ac0504a9268e",
+Cell[16860, 410, 739, 20, 19, "SeeAlso",ExpressionUUID->"a5146a6d-a075-4d89-8af3-ac0504a9268e",
  CellID->471443537]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16256, 415, 548, 14, 45, "TutorialsSection",ExpressionUUID->"fb99a22a-f71d-48e9-acde-12e7c261211f",
+Cell[17636, 435, 548, 14, 45, "TutorialsSection",ExpressionUUID->"fb99a22a-f71d-48e9-acde-12e7c261211f",
  CellID->307070],
-Cell[16807, 431, 209, 3, 17, "Tutorials",ExpressionUUID->"7d6c3718-a5d9-41ea-a298-aa4766157c4b",
+Cell[18187, 451, 209, 3, 17, "Tutorials",ExpressionUUID->"7d6c3718-a5d9-41ea-a298-aa4766157c4b",
  CellID->138052328],
-Cell[17019, 436, 209, 3, 17, "Tutorials",ExpressionUUID->"965dd509-6eec-4f7b-9bb4-f791809a1afb",
+Cell[18399, 456, 209, 3, 17, "Tutorials",ExpressionUUID->"965dd509-6eec-4f7b-9bb4-f791809a1afb",
  CellID->140736554]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17265, 444, 552, 14, 45, "MoreAboutSection",ExpressionUUID->"add3ba83-35ac-4804-8867-ff0ecf6abe40",
+Cell[18645, 464, 552, 14, 45, "MoreAboutSection",ExpressionUUID->"add3ba83-35ac-4804-8867-ff0ecf6abe40",
  CellID->599208323],
-Cell[17820, 460, 203, 3, 17, "MoreAbout",ExpressionUUID->"6942a4c8-128c-4b41-836e-349a7ec88eee",
+Cell[19200, 480, 203, 3, 17, "MoreAbout",ExpressionUUID->"6942a4c8-128c-4b41-836e-349a7ec88eee",
  CellID->220892569],
-Cell[18026, 465, 203, 3, 17, "MoreAbout",ExpressionUUID->"2c6c4bf8-4a6b-4b70-b8be-3a05fbb8daeb",
+Cell[19406, 485, 203, 3, 17, "MoreAbout",ExpressionUUID->"2c6c4bf8-4a6b-4b70-b8be-3a05fbb8daeb",
  CellID->113875566]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18266, 473, 557, 14, 45, "RelatedLinksSection",ExpressionUUID->"4d1c9947-40aa-4258-b3cd-6699cc0af9bf",
+Cell[19646, 493, 557, 14, 45, "RelatedLinksSection",ExpressionUUID->"4d1c9947-40aa-4258-b3cd-6699cc0af9bf",
  CellID->47202240],
-Cell[18826, 489, 204, 4, 17, "RelatedLinks",ExpressionUUID->"bf8f669f-f8d7-44ca-aaf2-af119ba4672d",
+Cell[20206, 509, 204, 4, 17, "RelatedLinks",ExpressionUUID->"bf8f669f-f8d7-44ca-aaf2-af119ba4672d",
  CellID->389974298],
-Cell[19033, 495, 204, 4, 17, "RelatedLinks",ExpressionUUID->"182bb2ea-d011-4460-80d1-1d7248eea479",
+Cell[20413, 515, 204, 4, 17, "RelatedLinks",ExpressionUUID->"182bb2ea-d011-4460-80d1-1d7248eea479",
  CellID->151801860]
 }, Open  ]],
-Cell[19252, 502, 150, 1, 43, "History",ExpressionUUID->"3c49fbfb-841b-484d-81b6-41d12beb77db",
+Cell[20632, 522, 150, 1, 43, "History",ExpressionUUID->"3c49fbfb-841b-484d-81b6-41d12beb77db",
  CellID->86139913],
-Cell[19405, 505, 98, 1, 25, "FooterCell",ExpressionUUID->"184884dc-a037-4b27-877f-1b88b926a8d3",
+Cell[20785, 525, 98, 1, 25, "FooterCell",ExpressionUUID->"184884dc-a037-4b27-877f-1b88b926a8d3",
  CellID->816889010]
 }
 ]

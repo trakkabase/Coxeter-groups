@@ -34,13 +34,12 @@ BeginPackage["CoxeterGroups`ElementEnumeration`",{"CoxeterGroups`BasicCoxeterFun
 
 Unprotect[
 (*Tits' solution to the word problem*)
-TitsM1,TitsM2,CoxeterReduce,FindCoxeterReducedWord,TitsWordProblem,
+TitsM1,TitsM2,CoxeterReduce,FindCoxeterReducedWord,TitsWordProblem,ReducibleWordQ,
 (*Tits' solution to the word problem*)
 TitsRepresentation,LinearWordProblem,
 (*Functions on words*)
-CoxeterLength,DeleteRepeatedElements,CoxeterMultiply,
+CoxeterLength,CoxeterLengthQ,DeleteRepeatedElements,CoxeterMultiply,
 (*Group names*)
-GroupName,
 (*Group element storage*)
 LengthEnumerated,EnumeratedQ,SmoothEnumeratedQ,ElementDirName, ExportElementList,
 (*Enumeration by length*)
@@ -48,13 +47,12 @@ CoxeterGroupElements
 ];
 ClearAll[
 (*Tits' solution to the word problem*)
-TitsM1,TitsM2,CoxeterReduce,FindCoxeterReducedWord,TitsWordProblem,
+TitsM1,TitsM2,CoxeterReduce,FindCoxeterReducedWord,TitsWordProblem,ReducibleWordQ,
 (*Tits' solution to the word problem*)
 TitsRepresentation,LinearWordProblem,
 (*Functions on words*)
-CoxeterLength,DeleteRepeatedElements,CoxeterMultiply,
+CoxeterLength,CoxeterLengthQ,DeleteRepeatedElements,CoxeterMultiply,
 (*Group names*)
-GroupName,
 (*Group element storage*)
 LengthEnumerated,EnumeratedQ,SmoothEnumeratedQ,ElementDirName,ExportElementList,
 (*Enumeration by length*)
@@ -68,6 +66,7 @@ TitsM2[W,wList] produces a list of all words accessible from any word in wList b
 CoxeterReduce::usage="CoxeterReduce[M,w] produces a list of all possible reduced words representing w in the Coxeter system associated to M.";
 FindCoxeterReducedWord::usage="FindCoxeterReducedWord[M,w] produces some reduced word representing w in the Coxeter system associated to M.";
 TitsWordProblem::usage="TitsWordProblem[M, w, v] returns true if w and v are words representing the same element in the Coxeter system associated to M, False otherwie.";
+ReducibleWordQ::usage="ReducibleWordQ[M, w] returns True is w represents an element of the Coxeter system associated to M which has shorter length than the string length of w.";
 
 
 TitsRepresentation::usage="TitsRepresentation[M,w] gives the matrix by which the element w acts in the Tits represnetation of the Coxeter system asociated to M.";
@@ -77,6 +76,8 @@ LinearWordProblem[M,vList,w] returns True if w is a word representing the same e
 
 
 CoxeterLength::usage="CoxeterLength[M,w] gives the length of w with respect to the Coxeter generating set of the Coxeter system associated to M.";
+CoxeterLengthQ::usage="CoxeterLengthQ[M, w, {k}] returns true if the length of w as an element of the Coxeter system associated to M equals k.
+CoxeterLengthQ[M, w, k] returns true if the length of w as an element of the Coxeter system associated to M is at most k.";
 DeleteRepeatedElements::usage="DeleteRepeatedElements[M,wList] removes words from wList which represent the same group elements in the Coxeter system associated to M as other words from the list.";
 CoxeterMultiply::usage="CoxeterMultiply[M,v,w] returns a reduced word representing the element vw in the Coxeter system associated to M.";
 
@@ -100,6 +101,7 @@ TitsM2::argerr="Two arguments expected.";
 CoxeterReduce::argerr="Two arguments expected.";
 FindCoxeterReducedWord::argerr="Two arguments expected.";
 TitsWordProblem::argerr="Three arguments expected.";
+ReducibleWordQ::argerr="Two arguments expected.";
 
 
 TitsRepresentation::argerr="Two arguments expeacted.";
@@ -107,6 +109,7 @@ LinearWordProblem::argerr="Three arguments expected.";
 
 
 CoxeterLength::argerr="Two arguments expected.";
+CoxeterLengthQ::argerr="Three arguments expected.";
 DeleteRepeatedElements::argerr="Two arguments expected.";
 CoxeterMultiply::argerr="Three arguments expected.";
 
@@ -133,27 +136,21 @@ CoxeterGroupElements::argerr="Two arguments expected.";
 Begin["`Private`"];
 
 
-(*Unprotect[
-(*Tits' solution to the word problem*)
-Locate, LocateAll,InverseBraid,Relations,M1ReducibleWordQ,FindCoxeterReducibleWord
-];
-ClearAll[
-(*Tits' solution to the word problem*)
-Locate, LocateAll,InverseBraid,Relations,M1ReducibleWordQ,FindCoxeterReducibleWord
-];*)
-
-
 TitsM1[args___]:=(Message[TitsM1::argerr];$Failed)
 TitsM2[args___]:=(Message[TitsM2::argerr];$Failed)
 CoxeterReduce[args___]:=(Message[CoxeterReduce::argerr];$Failed)
 FindCoxeterReducedWord[args___]:=(Message[FindCoxeterReducedWord::argerr];$Failed)
 TitsWordProblem[args___]:=(Message[TitsWordProblem::argerr];$Failed)
+ReducibleWordQ[args___]:=(Message[ReducibleWordQ::argerr];$Failed)
 
 
-TitsM1[w_]:=If[
-StringLength[StringReplace[w,x_~~x_->""] ]==StringLength[w],
+TitsM1[w_]:=Module[{moves},
+moves=StringReplace[w,"s"~~x__~~"s"~~x__/;!StringContainsQ[x,"s"]->""];
+If[
+StringLength[moves]==StringLength[w],
 w,
-TitsM1[StringReplace[w,x_~~x_->""] ]
+TitsM1[moves]
+]
 ]
 
 
@@ -163,7 +160,12 @@ Locate[w_String,b_String]:={b,#}&/@StringPosition[w,b]
 LocateAll[w_String,b_List]:=Fold[Join,Locate[w,#]&/@b]
 
 
-InverseBraid[w_]:=StringReplace[w,{StringTake[w,{1}]->StringTake[w,{2}],StringTake[w,{2}]-> StringTake[w,{1}]}]
+InverseBraid[w_]:=Module[{sPos,first,second},
+sPos=#[[1]]&/@StringPosition[w<>"s","s"];
+first={sPos[[1]],sPos[[2]]-1};
+second={sPos[[2]],sPos[[3]]-1};
+CoxeterWordRewrite[w,{StringTake[w,first]->StringTake[w,second],StringTake[w,second]-> StringTake[w,first]}]
+]
 
 
 Relations[M_]:=Module[{all,depth,rel},
@@ -180,8 +182,12 @@ TitsM2[M_,wList_List]:=DeleteDuplicates[Join[wList,Fold[Join,TitsM2[M,#]&/@wList
 
 
 (* ::Input::Initialization:: *)
-M1ReducibleWordQ[w_]:=StringContainsQ[w,x_~~x_]
+M1ReducibleWordQ[w_]:=StringContainsQ[w,"s"~~x__~~"s"~~x__/;!StringContainsQ[x,"s"]]
 M1ReducibleWordQ[wList_List]:=Fold[Or,M1ReducibleWordQ[#]&/@wList]
+
+
+ReducibleWordQ[M_,w_String]:=If[M1ReducibleWordQ[w],True,ReducibleWordQ[M,TitsM2[M,w]]]
+ReducibleWordQ[M_,wList_List]:=If[Fold[Or,M1ReducibleWordQ[#]&/@wList],True,If[TitsM2[M,wList]==wList,False,ReducibleWordQ[M,TitsM2[M,wList]]]]
 
 
 (* ::Input::Initialization:: *)
@@ -216,17 +222,25 @@ TitsRepresentation[args___]:=(Message[TitsRepresentation::argerr];$Failed)
 LinearWordProblem[args___]:=(Message[LinearWordProblem::argerr];$Failed)
 
 
-TitsRepresentation[M_,w_String]:=
-If[StringLength[w]==0,
-IdentityMatrix[Length[M]],
-If[StringLength[w]==1,
-Module[{i},
-i=ToExpression[w];
+TitsRepresentation[M_,w_String]:=IdentityMatrix[Length[M]]/;WordLength[w]==0
+TitsRepresentation[M_,w_String]:=Module[{i},
+i=GeneratorIndex[w];
 ArrayFlatten[{Table[Transpose[{UnitVector[Length[M],j]-2BilinearForm[M][[i]][[j]]UnitVector[Length[M],i]}],{j,Length[M]}]}] 
-],
-Simplify[Dot[TitsRepresentation[M,StringTake[w,-1]],TitsRepresentation[M,StringDrop[w,-1]]]]
-]
-]
+]/;WordLength[w]==1
+TitsRepresentation[M_,w_String]:=Module[{i},
+i=StringLength[w]-Last[StringPosition[w,"s"]][[1]]+1;
+Simplify[Dot[TitsRepresentation[M,StringTake[w,-i]],TitsRepresentation[M,StringDrop[w,-i]]]]
+]/;WordLength[w]>1
+
+
+TitsRepresentation[M_,{k_Integer}]:=Values[Import[FileNameJoin[{ElementDirName[M,"GroupElements"],ToString[k]<>".mx"}]]]/;EnumeratedQ[M,k]
+TitsRepresentation[M_,{0}]:=TitsRepresentation[M,""]/;!EnumeratedQ[M,0]
+TitsRepresentation[M_,{1}]:=TitsRepresentation[M,#]&/@Generators[M]/;!EnumeratedQ[M,1]
+TitsRepresentation[M_,{k_Integer}]:=Module[{first},
+CoxeterGroupElements[M,{k}];
+TitsRepresentation[M,{k}]
+]/;!EnumeratedQ[M,k]&&k>=2
+TitsRepresentation[M_,k_Integer]:=Fold[Join,Table[TitsRepresentation[M,{i}],{i,0,k}]]
 
 
 LinearWordProblem[M_,v_String,w_String]:=TitsRepresentation[M,v]==TitsRepresentation[M,w]
@@ -235,12 +249,16 @@ LinearWordProblem[M_,vList_List,w_String]:=LinearWordProblem[M,w,vList]
 
 
 CoxeterLength[args___]:=(Message[CoxeterLength::argerr];$Failed)
+CoxeterLengthQ[args___]:=(Message[CoxeterLengthQ::argerr];$Failed)
 DeleteRepeatedElements[args___]:=(Message[DeleteRepeatedElements::argerr];$Failed)
 CoxeterMultiply[args___]:=(Message[CoxeterMultiply::argerr];$Failed)
 
 
 (* ::Input::Initialization:: *)
-CoxeterLength[M_,w_]:=StringLength[FindCoxeterReducedWord[M,w]]
+CoxeterLength[M_,w_]:=WordLength[FindCoxeterReducedWord[M,w]]
+
+
+CoxeterLengthQ[M_,w_,k_]:=MemberQ[TitsRepresentation[M,k],TitsRepresentation[M,w]]
 
 
 DeleteRepeatedElements[M_,wList_List]:=DeleteDuplicatesBy[wList,TitsRepresentation[M,#]&]
@@ -274,7 +292,7 @@ GroupName[EE8]="EE_8";
 GroupName[EE8]="EE_8";
 GroupName[FE4]="FE_4";
 GroupName[GE2]="GE_2";
-GroupName[M_]:="TriangleCG("<>ToString[M[[1]][[2]]]<>","<>ToString[M[[1]][[3]]]<>","<>ToString[M[[2]][[3]]]<>")"/;Length[M]==3&&HyperbolicCGQ[M]&&ValidCoxeterMatrixQ[M]
+GroupName[M_]:="TriangleCG("<>ToString[M[[1]][[3]]]<>","<>ToString[M[[1]][[2]]]<>","<>ToString[M[[2]][[3]]]<>")"/;Length[M]==3&&HyperbolicCGQ[M]&&ValidCoxeterMatrixQ[M]
 GroupName[M_]:="FreeCG_"<>ToString[Length[M]]/;M==FreeCG[Length[M]]&&Length[M]>1
 GroupName[M_]:="RAPolygonG_"<>ToString[Length[M]]/;M==RAPolygonG[Length[M]]&&Length[M]>=4
 GroupName[M_]:=Module[{m,n},
@@ -313,8 +331,8 @@ False
 ]
 
 
-ElementDirName[M_,dataType_]:=FileNameJoin[{$UserBaseDirectory,"Applications","CoxeterGroups","GroupData",dataType,GroupName[M]}]/;MemberQ[{"GroupElements","SmoothElements"},dataType]&&NamedQ[M]&&ValidFileNameQ[GroupName[M]]
-ElementDirName[M_,dataType_]:=(Message[ElementDirName::dataType];$Failed)/;!MemberQ[{"GroupElements","SmoothElements"},dataType]
+ElementDirName[M_,dataType_]:=FileNameJoin[{$UserBaseDirectory,"Applications","CoxeterGroups","GroupData",dataType,GroupName[M]}]/;MemberQ[{"GroupElements","GroupElements2","SmoothElements","SommthElements2"},dataType]&&NamedQ[M]&&ValidFileNameQ[GroupName[M]]
+ElementDirName[M_,dataType_]:=(Message[ElementDirName::dataType];$Failed)/;!MemberQ[{"GroupElements","GroupElements2","SmoothElements","SommthElements2"},dataType]
 
 
 ElementDirExistQ[M_,dataType_]:=DirectoryQ[ElementDirName[M,dataType]]
@@ -323,14 +341,14 @@ ElementDirExistQ[M_,dataType_]:=DirectoryQ[ElementDirName[M,dataType]]
 CreateElementDir[M_,dataType_]:=CreateDirectory[ElementDirName[M,dataType]]
 
 
-ExportElementList[M_,{k_},wordList_,"GroupElements"]:=Module[{},
+ExportElementList[M_,{k_},assoc_,"GroupElements"]:=Module[{},
 If[Not[ElementDirExistQ[M,"GroupElements"]],CreateElementDir[M,"GroupElements"],Null];
-Export[FileNameJoin[{ElementDirName[M,"GroupElements"],"0.mx"}],{""}];
-Export[FileNameJoin[{ElementDirName[M,"GroupElements"],"1.mx"}],Generators[M]];
-Export[FileNameJoin[{ElementDirName[M,"GroupElements"],"2.mx"}],wordList]
+Export[FileNameJoin[{ElementDirName[M,"GroupElements"],"0.mx"}],<|""->TitsRepresentation[M,""]|>];
+Export[FileNameJoin[{ElementDirName[M,"GroupElements"],"1.mx"}],Association[#->TitsRepresentation[M,#]&/@Generators[M]]];
+Export[FileNameJoin[{ElementDirName[M,"GroupElements"],"2.mx"}],assoc]
 ]/;k==2
-ExportElementList[M_,{k_},wordList_,"GroupElements"]:=
-Export[FileNameJoin[{ElementDirName[M,"GroupElements"],ToString[k]<>".mx"}],wordList]/;k>=3
+ExportElementList[M_,{k_},assoc_,"GroupElements"]:=
+Export[FileNameJoin[{ElementDirName[M,"GroupElements"],ToString[k]<>".mx"}],assoc]/;k>=3
 
 
 ExportElementList[M_,{k_},wordList_,"SmoothElements"]:=Module[{},
@@ -343,7 +361,27 @@ Export[FileNameJoin[{ElementDirName[M,"SmoothElements"],ToString[k]<>".mx"}],wor
 ]
 
 
-ExportElementList[M_,{k_},wordList_,dataType_]:=(Message[ExportElementList::dataType];$Failed)/;!MemberQ[{"GroupElements","SmoothElements"},dataType]
+ExportElementList[M_,{k_},wordAssoc_,"GroupElements2"]:=Module[{},
+If[
+!ElementDirExistQ[M,"GroupElements2"],
+CreateElementDir[M,"GroupElements2"],
+Null
+];
+Export[FileNameJoin[{ElementDirName[M,"GroupElements2"],ToString[k]<>".mx"}],wordAssoc]
+]
+
+
+ExportElementList[M_,{k_},wordList_,dataType_]:=(Message[ExportElementList::dataType];$Failed)/;!MemberQ[{"GroupElements","GroupElements2","SmoothElements","SommthElements2"},dataType]
+
+
+ExportElementList[M_,{k_},wordList_,"SmoothElements2"]:=Module[{},
+If[
+!ElementDirExistQ[M,"SmoothElements2"],
+CreateElementDir[M,"SmoothElements2"],
+Null
+];
+Export[FileNameJoin[{ElementDirName[M,"SmoothElements2"],ToString[k]<>".mx"}],wordList]
+]
 
 
 LengthEnumerated[M_]:=Module[{output},
@@ -373,8 +411,8 @@ CoxeterGroupElements[M_,Infinity]:=(Message[CoxeterGroupElements::infiniteLength
 
 
 CoxeterGroupElements[M_,{0}]:={""}
-CoxeterGroupElements[M_,{1}]:=ToString[#]&/@Range[Length[M]]
-CoxeterGroupElements[M_,{k_}]:=Module[{freeWords,irreducibleWords,newWords},
+CoxeterGroupElements[M_,{1}]:=Generators[M]
+CoxeterGroupElements[M_,{k_}]:=Module[{freeWords,irreducibleWords,newWords,assoc},
 freeWords=Flatten[
 Table[
 CoxeterGroupElements[M,{k-1}][[i]]<>CoxeterGroupElements[M,{1}][[j]],
@@ -384,9 +422,10 @@ CoxeterGroupElements[M,{k-1}][[i]]<>CoxeterGroupElements[M,{1}][[j]],
 ];
 irreducibleWords=Select[freeWords,Not[LinearWordProblem[M,#,CoxeterGroupElements[M,{k-2}]]]&](*this is quite inefficient*);
 newWords=DeleteRepeatedElements[M,irreducibleWords];
-ExportElementList[M,{k},newWords,"GroupElements"];
+assoc=Association[#->TitsRepresentation[M,#]&/@newWords];
+ExportElementList[M,{k},assoc,"GroupElements"];
 newWords
-]/;2<= k<= MaxLength[M]&&Not[EnumeratedQ[M,k]]
+]/;2<= k<= MaxLength[M]&&!EnumeratedQ[M,k]
 CoxeterGroupElements[M_,0]:=CoxeterGroupElements[M,{0}]
 CoxeterGroupElements[M_,k_Integer]:=If[
 k<=MaxLength[M],
@@ -395,14 +434,8 @@ k<=MaxLength[M],
 ]
 
 
-CoxeterGroupElements[M_,{k_}]:=Import[FileNameJoin[{ElementDirName[M,"GroupElements"],ToString[k]<>".mx"}]]/;EnumeratedQ[M,k]
+CoxeterGroupElements[M_,{k_}]:=Keys[Import[FileNameJoin[{ElementDirName[M,"GroupElements"],ToString[k]<>".mx"}]]]/;EnumeratedQ[M,k]
 CoxeterGroupElements[M_,{k_}]:=(Message[CoxeterGroupElements::maxLength,k];{})/;k>MaxLength[M]
-
-
-(*Protect[
-(*Tits' solution to the word problem*)
-Locate, LocateAll,InverseBraid,Relations,M1ReducibleWordQ,FindCoxeterReducibleWord
-];*)
 
 
 End[];
@@ -410,13 +443,12 @@ End[];
 
 Protect[
 (*Tits' solution to the word problem*)
-TitsM1,TitsM2,CoxeterReduce,FindCoxeterReducedWord,TitsWordProblem,
+TitsM1,TitsM2,CoxeterReduce,FindCoxeterReducedWord,TitsWordProblem,ReducibleWordQ,
 (*Tits' solution to the word problem*)
 TitsRepresentation,LinearWordProblem,
 (*Functions on words*)
-CoxeterLength,DeleteRepeatedElements,CoxeterMultiply,
+CoxeterLength,CoxeterLengthQ,DeleteRepeatedElements,CoxeterMultiply,
 (*Group names*)
-GroupName,
 (*Group element storage*)
 LengthEnumerated,EnumeratedQ,SmoothEnumeratedQ,ElementDirName,ExportElementList,
 (*Enumeration by length*)
