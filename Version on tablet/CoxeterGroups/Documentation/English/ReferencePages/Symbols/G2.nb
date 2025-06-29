@@ -1,0 +1,456 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     16728,        448]
+NotebookOptionsPosition[     11789,        333]
+NotebookOutlinePosition[     13620,        383]
+CellTagsIndexPosition[     13535,        378]
+WindowTitle->G2 - CoxeterGroups`BasicCoxeterFunctions`
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["COXETERGROUPS`BASICCOXETERFUNCTIONS` SYMBOL", "PacletNameCell",
+     ExpressionUUID->"77ed07a0-5a95-4750-afc5-4bf75f27feb5"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"Tutorials \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"Title of tutorial 1\"\>":>
+       Documentation`HelpLookup[
+        StringJoin[
+        "paclet:", "CoxeterGroups", 
+         "/tutorial/tutorialName1"]], "\<\"Title of tutorial 2\"\>":>
+       Documentation`HelpLookup[
+        StringJoin["paclet:", "CoxeterGroups", "/tutorial/tutorialName2"]]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "38f95889-f26f-4fb8-bb9b-e86ccfb8df98"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"See Also \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"Symbol1\"\>":>Documentation`HelpLookup[
+        StringJoin[
+        "paclet:", "CoxeterGroups", "/ref/Symbol1"]], "\<\"Symbol2\"\>":>
+       Documentation`HelpLookup[
+        StringJoin["paclet:", "CoxeterGroups", "/ref/Symbol2"]]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "770d704c-7db1-42e4-a20c-4b45a0387c4f"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"More About \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"Guide 1\"\>":>Documentation`HelpLookup[
+        StringJoin[
+        "paclet:", "CoxeterGroups", "/guide/Guide1"]], "\<\"Guide 2\"\>":>
+       Documentation`HelpLookup[
+        StringJoin["paclet:", "CoxeterGroups", "/guide/Guide2"]]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "d571ee84-3dfc-47b4-ab3a-51c9742d6788"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"URL \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"Go to CoxeterGroups/ref/G2 URL\"\>":>
+       FrontEndExecute[{
+         NotebookLocate[{
+           URL["your.website.goes.here/documentationIfAny"], None}]}], 
+       Delimiter, "\<\"Go to wolfram URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+           "http://reference.wolfram.com/mathematica/guide/Mathematica.html"],
+            None}]}], "\<\"Go to authors URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL["your.website.goes.here"], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "e8d679da-4410-4e4e-b351-46cac8d20659"]
+    }], "AnchorBar",ExpressionUUID->"37ba8848-9f02-490e-88f4-173e2ca4c1ec"]}
+  }]], "AnchorBarGrid",
+ CellID->753422864,ExpressionUUID->"32904dfb-39c1-4501-874c-d917fd1741a4"],
+
+Cell[CellGroupData[{
+
+Cell["G2", "ObjectName",
+ CellID->164981087,ExpressionUUID->"e5cc6ec7-c6c2-4a39-8f23-ded87a28d21e"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{
+       ButtonBox["G2",
+        BaseStyle->"Link",
+        ButtonData->"paclet:CoxeterGroups/ref/G2"], "[", 
+       StyleBox["args", "TI"], "]"}]], "InlineFormula",ExpressionUUID->
+      "6a141281-7d62-4e20-86b1-cade3fca342f"],
+     "\[LineSeparator]G2 returns the Coxeter matrix of type \
+\!\(\*SubscriptBox[\"\\\"G\\\"\", \"\\\"2\\\"\"]\)."
+    }],ExpressionUUID->"f23369cb-bcf4-407e-bc61-596aa568b2f3"]}
+  }]], "Usage",
+ CellID->45526851,ExpressionUUID->"5f43339e-63b3-45aa-be23-97511f7ebae7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[
+  FrameBox[
+   StyleBox[
+    RowBox[{"MORE", " ", "INFORMATION"}], "NotesFrameText"],
+   StripOnInput->False],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->
+   "Preemptive"]],ExpressionUUID->"f675cf01-9257-4bb8-bca8-49aeee9a857a"]], \
+"NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->944920716,
+ ApplicationMaker`DocumentationMaker`Private`WholeCellGroupOpener -> 
+ True,ExpressionUUID->"54388d2e-ad0a-4440-9d52-2bb1d13d1c8e"],
+
+Cell["Note about the function goes here.", "Notes",
+ CellID->90532165,ExpressionUUID->"e1961b73-3235-4d47-9de8-6a1eac8fe739"],
+
+Cell["Another Note about the function goes here.", "Notes",
+ CellID->254599989,ExpressionUUID->"3bf69022-ae76-4650-a9ff-0f2d19ae4bcf"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["EXAMPLES",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->381626029,
+ ApplicationMaker`DocumentationMaker`Private`WholeCellGroupOpener -> 
+ True,ExpressionUUID->"7a915b8e-3c37-4fab-a862-4bde1d6046fd"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(#)", "ExampleCount",ExpressionUUID->
+  "b4ec29d4-e768-432c-ba24-2761e6324eef"]
+}], "ExampleSection", "ExampleSection",
+ CellID->253432125,
+ ApplicationMaker`DocumentationMaker`Private`WholeCellGroupOpener -> 
+ True,ExpressionUUID->"9f169dbb-9de5-471f-86a9-5576f33b615a"],
+
+Cell["Use the ExampleText style to write cells like this one.", "ExampleText",
+ CellID->85952380,ExpressionUUID->"780c43c2-fbe7-4879-9a80-02bf69ffa25c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Scope",
+   "  ",
+   Cell["(#)", "ExampleCount",ExpressionUUID->
+    "da91b756-4ca1-43a7-b78f-35162ff7391d"]
+  }], "ExampleSection",ExpressionUUID->"ae4727a7-d93c-4c0c-b410-3fa959e275e9"],
+  $Line = 0; Null]], "ExampleSection", "ExampleSection",
+ CellID->224406520,
+ ApplicationMaker`DocumentationMaker`Private`WholeCellGroupOpener -> 
+ True,ExpressionUUID->"a2847dde-601a-40e8-bd25-b14314a9a02c"],
+
+Cell["Use the ExampleText style to write cells like this one.", "ExampleText",
+ CellID->569956769,ExpressionUUID->"3b042404-27f2-42ea-85fb-468338d7fc32"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["SEE ALSO",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "SeeAlsoSection",
+ CellID->783122831,
+ ApplicationMaker`DocumentationMaker`Private`WholeCellGroupOpener -> 
+ True,ExpressionUUID->"1ab66e58-fc96-4a05-bb4a-09329dcefcdb"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  StyleBox[
+   ButtonBox["SymbolOne",
+    BaseStyle->"Link",
+    ButtonData->"paclet:CoxeterGroups/ref/SymbolOne"],
+   FontFamily->"Verdana"]], "InlineFormula",ExpressionUUID->
+  "6574da84-6387-438a-a03b-971904cef66a"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[BoxData[
+  StyleBox[
+   ButtonBox["SymbolTwo",
+    BaseStyle->"Link",
+    ButtonData->"paclet:CoxeterGroups/ref/SymbolTwo"],
+   FontFamily->"Verdana"]], "InlineFormula",ExpressionUUID->
+  "491789a1-d204-4fd4-85f0-376c3f2b99aa"]
+}], "SeeAlso",
+ CellID->260446916,ExpressionUUID->"1c7a39b4-d82a-47a9-959c-38114e67e8e4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["TUTORIALS",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "TutorialsSection",
+ CellID->329035224,
+ ApplicationMaker`DocumentationMaker`Private`WholeCellGroupOpener -> 
+ True,ExpressionUUID->"aa7d9448-6ef5-4396-acd5-fda39ae0b2a4"],
+
+Cell[TextData[ButtonBox["Tutorial Title 1",
+ BaseStyle->"Link",
+ ButtonData->"paclet:CoxeterGroups/tutorial/tutorial1"]], "Tutorials",
+ CellID->258650675,ExpressionUUID->"2f24a25d-3203-4017-be8e-1f9ac52ee056"],
+
+Cell[TextData[ButtonBox["Tutorial Title 2",
+ BaseStyle->"Link",
+ ButtonData->"paclet:CoxeterGroups/tutorial/tutorial2"]], "Tutorials",
+ CellID->285064945,ExpressionUUID->"16c15a92-db82-4f4c-8666-e1f41756a91e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["MORE ABOUT",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "MoreAboutSection",
+ CellID->192683185,
+ ApplicationMaker`DocumentationMaker`Private`WholeCellGroupOpener -> 
+ True,ExpressionUUID->"050f689c-6ec6-4eee-8eff-f03d3a79dd86"],
+
+Cell[TextData[ButtonBox["Title of Guide 1",
+ BaseStyle->"Link",
+ ButtonData->"paclet:CoxeterGroups/guide/Guide1"]], "MoreAbout",
+ CellID->215599612,ExpressionUUID->"a4d15460-9592-4f4f-9e5b-1a1aa1204815"],
+
+Cell[TextData[ButtonBox["Title of Guide 2",
+ BaseStyle->"Link",
+ ButtonData->"paclet:CoxeterGroups/guide/Guide2"]], "MoreAbout",
+ CellID->365901636,ExpressionUUID->"eef803c5-76ed-42f3-b7f6-9732ced0db9b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["RELATED LINKS",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "RelatedLinksSection",
+ CellID->21176093,
+ ApplicationMaker`DocumentationMaker`Private`WholeCellGroupOpener -> 
+ True,ExpressionUUID->"ba7dddf2-40b2-4ea4-8c56-f3580c621cac"],
+
+Cell[TextData[ButtonBox["Link Title 1",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["URL.goes.here"], None}]], "RelatedLinks",
+ CellID->747977429,ExpressionUUID->"85d795f6-7104-4f0a-a03b-7fb287d3aab7"],
+
+Cell[TextData[ButtonBox["Link Title 2",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["URL.goes.here"], None}]], "RelatedLinks",
+ CellID->695065593,ExpressionUUID->"7cceb140-f1ba-46e0-bd12-f927411e0132"]
+}, Open  ]],
+
+Cell["Made for Mathematica 8  |  Last modified in February 2022", "History",
+ CellID->42384838,ExpressionUUID->"d7a2393b-0004-4db9-98ba-7f2c81ed18de"],
+
+Cell[" ", "FooterCell",
+ CellID->267773232,ExpressionUUID->"31325c5a-acce-4330-a3b6-cd74b0caac38"]
+},
+Saveable->False,
+WindowSize->{775, 705},
+WindowMargins->{{288, Automatic}, {Automatic, 54}},
+WindowTitle->"G2 - CoxeterGroups`BasicCoxeterFunctions`",
+DockedCells->FEPrivate`FrontEndResource["FEExpressions", "HelpViewerToolbar"],
+PageHeaders->{{None, None, None}, {None, None, 
+   Cell[
+    TextData[{
+      Cell[
+       TextData[{""}], "PageHeader"], 
+      Cell[
+       TextData[{
+         CounterBox["Page"]}], "PageNumber"]}], 
+    CellMargins -> {{Inherited, -29}, {Inherited, Inherited}}]}},
+PageFooters->{{None, None, None}, {
+   Cell[
+    TextData[{""}], "PageFooter"], None, None}},
+TaggingRules->{
+ "ModificationHighlight" -> False, 
+  "Metadata" -> {
+   "context" -> "CoxeterGroups`", "keywords" -> {"g2", "G2"}, "index" -> True,
+     "label" -> "CoxeterGroups`BasicCoxeterFunctions` Symbol", "language" -> 
+    "en", "paclet" -> "CoxeterGroups BasicCoxeterFunctions", "status" -> "", 
+    "summary" -> 
+    "G2 returns the Coxeter matrix of type \!\(\*SubscriptBox[\"\\\"G\\\"\", \
+\"\\\"2\\\"\"]\).", "synonyms" -> {"g2", "G2"}, "title" -> "G2", 
+    "windowTitle" -> "G2", "type" -> "Symbol", "uri" -> 
+    "CoxeterGroups/ref/G2", "WorkflowDockedCell" -> ""}, 
+  "SearchTextTranslated" -> "", "LinkTrails" -> "", "NewStyles" -> False},
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "Reference.nb", 
+  CharacterEncoding -> "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[5434, 145, 593, 15, 45, "PrimaryExamplesSection",ExpressionUUID->"7a915b8e-3c37-4fab-a862-4bde1d6046fd",
+   CellTags->"PrimaryExamplesSection",
+   CellID->381626029]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 13337, 371}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[613, 21, 3006, 67, 47, "AnchorBarGrid",ExpressionUUID->"32904dfb-39c1-4501-874c-d917fd1741a4",
+ CellID->753422864],
+Cell[CellGroupData[{
+Cell[3644, 92, 99, 1, 51, "ObjectName",ExpressionUUID->"e5cc6ec7-c6c2-4a39-8f23-ded87a28d21e",
+ CellID->164981087],
+Cell[3746, 95, 576, 13, 83, "Usage",ExpressionUUID->"5f43339e-63b3-45aa-be23-97511f7ebae7",
+ CellID->45526851]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4359, 113, 773, 21, 39, "NotesSection",ExpressionUUID->"54388d2e-ad0a-4440-9d52-2bb1d13d1c8e",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->944920716],
+Cell[5135, 136, 125, 1, 30, "Notes",ExpressionUUID->"e1961b73-3235-4d47-9de8-6a1eac8fe739",
+ CellID->90532165],
+Cell[5263, 139, 134, 1, 30, "Notes",ExpressionUUID->"3bf69022-ae76-4650-a9ff-0f2d19ae4bcf",
+ CellID->254599989]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5434, 145, 593, 15, 45, "PrimaryExamplesSection",ExpressionUUID->"7a915b8e-3c37-4fab-a862-4bde1d6046fd",
+ CellTags->"PrimaryExamplesSection",
+ CellID->381626029],
+Cell[CellGroupData[{
+Cell[6052, 164, 356, 8, 31, "ExampleSection",ExpressionUUID->"9f169dbb-9de5-471f-86a9-5576f33b615a",
+ CellID->253432125],
+Cell[6411, 174, 152, 1, 32, "ExampleText",ExpressionUUID->"780c43c2-fbe7-4879-9a80-02bf69ffa25c",
+ CellID->85952380]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6600, 180, 449, 10, 33, "ExampleSection",ExpressionUUID->"a2847dde-601a-40e8-bd25-b14314a9a02c",
+ CellID->224406520],
+Cell[7052, 192, 153, 1, 32, "ExampleText",ExpressionUUID->"3b042404-27f2-42ea-85fb-468338d7fc32",
+ CellID->569956769]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7254, 199, 548, 14, 45, "SeeAlsoSection",ExpressionUUID->"1ab66e58-fc96-4a05-bb4a-09329dcefcdb",
+ CellID->783122831],
+Cell[7805, 215, 693, 20, 19, "SeeAlso",ExpressionUUID->"1c7a39b4-d82a-47a9-959c-38114e67e8e4",
+ CellID->260446916]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8535, 240, 551, 14, 45, "TutorialsSection",ExpressionUUID->"aa7d9448-6ef5-4396-acd5-fda39ae0b2a4",
+ CellID->329035224],
+Cell[9089, 256, 209, 3, 17, "Tutorials",ExpressionUUID->"2f24a25d-3203-4017-be8e-1f9ac52ee056",
+ CellID->258650675],
+Cell[9301, 261, 209, 3, 17, "Tutorials",ExpressionUUID->"16c15a92-db82-4f4c-8666-e1f41756a91e",
+ CellID->285064945]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9547, 269, 552, 14, 45, "MoreAboutSection",ExpressionUUID->"050f689c-6ec6-4eee-8eff-f03d3a79dd86",
+ CellID->192683185],
+Cell[10102, 285, 203, 3, 17, "MoreAbout",ExpressionUUID->"a4d15460-9592-4f4f-9e5b-1a1aa1204815",
+ CellID->215599612],
+Cell[10308, 290, 203, 3, 17, "MoreAbout",ExpressionUUID->"eef803c5-76ed-42f3-b7f6-9732ced0db9b",
+ CellID->365901636]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10548, 298, 557, 14, 45, "RelatedLinksSection",ExpressionUUID->"ba7dddf2-40b2-4ea4-8c56-f3580c621cac",
+ CellID->21176093],
+Cell[11108, 314, 204, 4, 17, "RelatedLinks",ExpressionUUID->"85d795f6-7104-4f0a-a03b-7fb287d3aab7",
+ CellID->747977429],
+Cell[11315, 320, 204, 4, 17, "RelatedLinks",ExpressionUUID->"7cceb140-f1ba-46e0-bd12-f927411e0132",
+ CellID->695065593]
+}, Open  ]],
+Cell[11534, 327, 150, 1, 43, "History",ExpressionUUID->"d7a2393b-0004-4db9-98ba-7f2c81ed18de",
+ CellID->42384838],
+Cell[11687, 330, 98, 1, 25, "FooterCell",ExpressionUUID->"31325c5a-acce-4330-a3b6-cd74b0caac38",
+ CellID->267773232]
+}
+]
+*)
+

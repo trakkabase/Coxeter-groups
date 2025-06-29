@@ -1,0 +1,231 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7999,        223]
+NotebookOptionsPosition[      5811,        182]
+NotebookOutlinePosition[      6480,        205]
+CellTagsIndexPosition[      6437,        202]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{":", "Title", ":", " ", "FoldingComplexes"}], " ", "*)"}], " ", 
+  "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", "Author", ":", " ", 
+    RowBox[{"David", " ", "Sheard"}]}], " ", "*)"}], "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", "Summary", ":", " ", 
+    RowBox[{
+    "Functions", " ", "to", " ", "perform", " ", "operations", " ", "on", " ",
+      "square", " ", "complexes", " ", "like", " ", "Stallings", " ", 
+     RowBox[{"folds", "."}]}]}], " ", "*)"}], "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", "Context", ":", " ", "CoxeterGroups`FoldingComplexes`"}], " ",
+    "*)"}], "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Package", " ", "version"}], ":", " ", "1.0"}], " ", "*)"}], "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", "History", ":", "  ", 
+    RowBox[{
+    "Version", " ", "1.0", " ", "February", " ", "28", " ", "2022"}]}], " ", 
+   "*)"}], "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", 
+    RowBox[{"Mathematica", " ", "version"}], ":", " ", 
+    RowBox[{"12.0", ".0", " ", "for", " ", "Microsoft", " ", "Windows", " ", 
+     RowBox[{"(", 
+      RowBox[{"64", "-", "bit"}], ")"}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"April", " ", "6"}], ",", " ", "2019"}], ")"}]}]}], " ", 
+   "*)"}], "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{":", "Discussion", ":", " ", 
+    RowBox[{
+     StyleBox["Give",
+      FontColor->RGBColor[1, 0, 0]], 
+     StyleBox[" ",
+      FontColor->RGBColor[1, 0, 0]], 
+     StyleBox["more",
+      FontColor->RGBColor[1, 0, 0]], 
+     StyleBox[" ",
+      FontColor->RGBColor[1, 0, 0]], 
+     StyleBox["details",
+      FontColor->RGBColor[1, 0, 0]], 
+     StyleBox[" ",
+      FontColor->RGBColor[1, 0, 0]], 
+     RowBox[{
+      StyleBox["here",
+       FontColor->RGBColor[1, 0, 0]], "."}]}]}], "*)"}]}]], "Code",
+ CellChangeTimes->{{3.8550587712469387`*^9, 
+  3.8550587971359825`*^9}},ExpressionUUID->"e6ec5359-8602-47b3-83bf-\
+7746fe3d349a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "BeginPackage", "[", "\"\<CoxeterGroups`FoldingComplexes`\>\"", "]"}], 
+  ";"}]], "Code",ExpressionUUID->"577d5c5d-445f-42f7-a811-8cfe87f34fda"],
+
+Cell["Clearing public functions", "Text",
+ CellChangeTimes->{{3.855057947135688*^9, 
+  3.855057953727314*^9}},ExpressionUUID->"ce904926-6163-4f8e-9c6d-\
+c1ff63d276e9"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+  "Unprotect", "[", "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "ClearAll", "[", "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.855057956316985*^9, 
+  3.8550579686145*^9}},ExpressionUUID->"6ebe8625-ffe6-4351-939a-e84eea67613b"],
+
+Cell["Usage Messages", "Subsection",
+ CellChangeTimes->{{3.85505798349082*^9, 
+  3.8550579884291925`*^9}},ExpressionUUID->"799feabb-3b0a-4330-8397-\
+e51f2541d4f3"],
+
+Cell["Error Messages", "Subsection",
+ CellChangeTimes->{{3.855057996187267*^9, 
+  3.855058001691546*^9}},ExpressionUUID->"99d284a8-7fd2-4a2b-9bad-\
+26f70c5a87e2"],
+
+Cell[CellGroupData[{
+
+Cell["Initialisation", "Subsection",
+ CellChangeTimes->{{3.8550580203807635`*^9, 
+  3.855058023305772*^9}},ExpressionUUID->"a3b37941-bacb-476e-8ed2-\
+079f653fb67e"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}]], "Code",ExpressionU\
+UID->"943fb791-2b9c-4c44-8d4b-bad147bea1f9"],
+
+Cell["Clearing private functions", "Text",
+ CellChangeTimes->{{3.8550580264720583`*^9, 
+  3.8550580342823706`*^9}},ExpressionUUID->"3d90444b-8883-498e-9836-\
+202a33ab4468"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+  "Unprotect", "[", "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "ClearAll", "[", "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.855057956316985*^9, 
+  3.8550579686145*^9}},ExpressionUUID->"ee9bc399-c85c-42a3-a56f-4633e995b489"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Finalisation", "Subsection",
+ CellChangeTimes->{{3.85505807217948*^9, 
+  3.855058074236624*^9}},ExpressionUUID->"94b16e54-b04b-4dd6-ad84-\
+a7a323b90639"],
+
+Cell["Protecting private functions", "Text",
+ CellChangeTimes->{{3.8550580773290515`*^9, 
+  3.855058086508705*^9}},ExpressionUUID->"24b8f025-433b-46ee-9575-\
+84b6a5deb9c6"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Protect", "[", "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}],
+   ";"}]], "Input",
+ CellChangeTimes->{{3.8550581168004107`*^9, 
+  3.855058121996812*^9}},ExpressionUUID->"1891e2cf-8003-4f43-b4d8-\
+d4ad51e13573"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]], "Code",ExpressionUUID->"2f03209b-97c8-49bf-8d33-afb78f7a1bc6"],
+
+Cell["Protecting public functions", "Text",
+ CellChangeTimes->{{3.8550580930384645`*^9, 
+  3.8550581017930117`*^9}},ExpressionUUID->"7d21435d-6a0d-413f-b7e1-\
+d3d60b1ce2e9"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Protect", "[", "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}],
+   ";"}]], "Input",
+ CellChangeTimes->{{3.855058124653308*^9, 
+  3.8550581274471536`*^9}},ExpressionUUID->"10d35e8b-243d-4f79-871d-\
+1742afc2b449"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"EndPackage", "[", "]"}], ";"}]], "Code",ExpressionUUID->"dceb366e-5bd4-4b3d-bb6e-ca06dbe4e814"]
+}, Open  ]]
+},
+AutoGeneratedPackage->Automatic,
+WindowSize->{775, 705},
+WindowMargins->{{288, Automatic}, {Automatic, 54}},
+TaggingRules->None,
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[StyleDefinitions -> "Default.nb"]], 
+   Cell[
+    StyleData["Input"], InitializationCell -> True]}, Visible -> False, 
+  FrontEndVersion -> "12.0 for Microsoft Windows (64-bit) (April 8, 2019)", 
+  StyleDefinitions -> "PrivateStylesheetFormatting.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1963, 55, 177, "Code",ExpressionUUID->"e6ec5359-8602-47b3-83bf-7746fe3d349a"],
+Cell[2524, 77, 181, 4, 50, "Code",ExpressionUUID->"577d5c5d-445f-42f7-a811-8cfe87f34fda"],
+Cell[2708, 83, 167, 3, 34, "Text",ExpressionUUID->"ce904926-6163-4f8e-9c6d-c1ff63d276e9"],
+Cell[2878, 88, 378, 10, 140, "Input",ExpressionUUID->"6ebe8625-ffe6-4351-939a-e84eea67613b"],
+Cell[3259, 100, 163, 3, 53, "Subsection",ExpressionUUID->"799feabb-3b0a-4330-8397-e51f2541d4f3"],
+Cell[3425, 105, 162, 3, 37, "Subsection",ExpressionUUID->"99d284a8-7fd2-4a2b-9bad-26f70c5a87e2"],
+Cell[CellGroupData[{
+Cell[3612, 112, 164, 3, 37, "Subsection",ExpressionUUID->"a3b37941-bacb-476e-8ed2-079f653fb67e"],
+Cell[3779, 117, 148, 3, 50, "Code",ExpressionUUID->"943fb791-2b9c-4c44-8d4b-bad147bea1f9"],
+Cell[3930, 122, 172, 3, 34, "Text",ExpressionUUID->"3d90444b-8883-498e-9836-202a33ab4468"],
+Cell[4105, 127, 378, 10, 140, "Input",ExpressionUUID->"ee9bc399-c85c-42a3-a56f-4633e995b489"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4520, 142, 159, 3, 53, "Subsection",ExpressionUUID->"94b16e54-b04b-4dd6-ad84-a7a323b90639"],
+Cell[4682, 147, 172, 3, 34, "Text",ExpressionUUID->"24b8f025-433b-46ee-9575-84b6a5deb9c6"],
+Cell[4857, 152, 250, 6, 83, "Input",ExpressionUUID->"1891e2cf-8003-4f43-b4d8-d4ad51e13573"],
+Cell[5110, 160, 123, 2, 50, "Code",ExpressionUUID->"2f03209b-97c8-49bf-8d33-afb78f7a1bc6"],
+Cell[5236, 164, 173, 3, 34, "Text",ExpressionUUID->"7d21435d-6a0d-413f-b7e1-d3d60b1ce2e9"],
+Cell[5412, 169, 250, 6, 83, "Input",ExpressionUUID->"10d35e8b-243d-4f79-871d-1742afc2b449"],
+Cell[5665, 177, 130, 2, 50, "Code",ExpressionUUID->"dceb366e-5bd4-4b3d-bb6e-ca06dbe4e814"]
+}, Open  ]]
+}
+]
+*)
+
